@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hansy.dataservice.busi.mappers.BizTypeMapper">
+	<!-- 1、配置返回结果Map和参数Map -->
+	<resultMap type="BizType" id="baseBizTypeResultMap">
+		<id property="typeCode" column="TYPE_CODE"/>
+		<result property="typeName" column="TYPE_NAME"/>
+		<result property="id" column="ID"/>
+	</resultMap>
+	<resultMap type="BizType" id="bizTypeResultMap" extends="baseBizTypeResultMap">
+	</resultMap>
+	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
+	<parameterMap type="BizType" id="bizTypeParameterMap">
+		<parameter property="typeCode" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="typeName" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="id" javaType="string" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!-- 2、各个SeqID -->
+	<insert id="add" parameterMap="bizTypeParameterMap">
+		INSERT INTO T_BIZ_TYPE (TYPE_CODE, TYPE_NAME, ID) VALUES (
+			#{typeCode, jdbcType=VARCHAR}, 
+			#{typeName, jdbcType=VARCHAR}, 
+			#{id, jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
+	<!--
+	<select id="isExists" resultType="integer" parameterMap="bizTypeParameterMap">
+		SELECT COUNT(1) FROM T_BIZ_TYPE WHERE DEPT_NAME=#{deptName}
+		<if test="deptId != null and deptId !='' ">
+			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
+		</if>
+	</select>
+	-->
+	<select id="getById" resultMap="bizTypeResultMap" parameterType="string">
+		SELECT * FROM T_BIZ_TYPE WHERE TYPE_CODE = #{value}
+	</select>
+	<select id="page" resultMap="bizTypeResultMap" parameterType="BizType">
+		SELECT * FROM T_BIZ_TYPE WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<select id="getTotal" resultType="long" parameterType="BizType">
+		SELECT COUNT(1) FROM T_BIZ_TYPE WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM T_BIZ_TYPE WHERE TYPE_CODE = #{value}
+	</delete>
+	<update id="edit" parameterType="BizType">
+		UPDATE T_BIZ_TYPE 
+		<!-- 各种更改的字段 --> 
+		<set>
+			<if test="typeName != null and typeName !='' ">
+				TYPE_NAME = #{typeName, jdbcType=VARCHAR}, 
+			</if>
+			<if test="id != null and id !='' ">
+				ID = #{id, jdbcType=VARCHAR}, 
+			</if>
+
+			WHERE TYPE_CODE = #{typeCode, jdbcType=VARCHAR} 
+		</set>
+	</update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hansy.dataservice.busi1.mappers.LoanBlackListMapper">
+	<!-- 1、配置返回结果Map和参数Map -->
+	<resultMap type="LoanBlackList" id="baseLoanBlackListResultMap">
+		<id property="tableKey" column="TABLE_KEY"/>
+		<result property="custName" column="CUST_NAME"/>
+		<result property="certType" column="CERT_TYPE"/>
+		<result property="certNo" column="CERT_NO"/>
+		<result property="listStatus" column="LIST_STATUS"/>
+		<result property="listType" column="LIST_TYPE"/>
+		<result property="remark" column="REMARK"/>
+		<result property="createUser" column="CREATE_USER"/>
+		<result property="createTime" column="CREATE_TIME"/>
+		<result property="checkUser" column="CHECK_USER"/>
+		<result property="checkTime" column="CHECK_TIME"/>
+		<result property="cardNo" column="CARD_NO"/>
+	</resultMap>
+	<resultMap type="LoanBlackList" id="loanBlackListResultMap" extends="baseLoanBlackListResultMap">
+	</resultMap>
+	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
+	<parameterMap type="LoanBlackList" id="loanBlackListParameterMap">
+		<parameter property="tableKey" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="custName" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="certType" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="certNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="listStatus" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="listType" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="remark" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="createUser" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="createTime" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="checkUser" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="checkTime" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="cardNo" javaType="string" jdbcType="VARCHAR"/>
+	</parameterMap>
+
+	<!-- 2、各个SeqID -->
+	<insert id="add" parameterMap="loanBlackListParameterMap">
+		INSERT INTO T_LOAN_BLACK_LIST (TABLE_KEY, CUST_NAME, CERT_TYPE, CERT_NO, LIST_STATUS, LIST_TYPE, REMARK, CREATE_USER, CREATE_TIME, CHECK_USER, CHECK_TIME, CARD_NO) VALUES (
+			#{tableKey, jdbcType=VARCHAR}, 
+			#{custName, jdbcType=VARCHAR}, 
+			#{certType, jdbcType=VARCHAR}, 
+			#{certNo, jdbcType=VARCHAR}, 
+			#{listStatus, jdbcType=VARCHAR}, 
+			#{listType, jdbcType=VARCHAR}, 
+			#{remark, jdbcType=VARCHAR}, 
+			#{createUser, jdbcType=VARCHAR}, 
+			#{createTime, jdbcType=TIMESTAMP}, 
+			#{checkUser, jdbcType=VARCHAR}, 
+			#{checkTime, jdbcType=TIMESTAMP}, 
+			#{cardNo, jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
+	<!--
+	<select id="isExists" resultType="integer" parameterMap="loanBlackListParameterMap">
+		SELECT COUNT(1) FROM T_LOAN_BLACK_LIST WHERE DEPT_NAME=#{deptName}
+		<if test="deptId != null and deptId !='' ">
+			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
+		</if>
+	</select>
+	-->
+	<select id="getById" resultMap="loanBlackListResultMap" parameterType="string">
+		SELECT * FROM T_LOAN_BLACK_LIST WHERE TABLE_KEY = #{value}
+	</select>
+	<select id="page" resultMap="loanBlackListResultMap" parameterType="LoanBlackList">
+		SELECT * FROM T_LOAN_BLACK_LIST WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<select id="getTotal" resultType="long" parameterType="LoanBlackList">
+		SELECT COUNT(1) FROM T_LOAN_BLACK_LIST WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM T_LOAN_BLACK_LIST WHERE TABLE_KEY = #{value}
+	</delete>
+	<update id="edit" parameterType="LoanBlackList">
+		UPDATE T_LOAN_BLACK_LIST 
+		<!-- 各种更改的字段 --> 
+		<set>
+			<if test="custName != null and custName !='' ">
+				CUST_NAME = #{custName, jdbcType=VARCHAR}, 
+			</if>
+			<if test="certType != null and certType !='' ">
+				CERT_TYPE = #{certType, jdbcType=VARCHAR}, 
+			</if>
+			<if test="certNo != null and certNo !='' ">
+				CERT_NO = #{certNo, jdbcType=VARCHAR}, 
+			</if>
+			<if test="listStatus != null and listStatus !='' ">
+				LIST_STATUS = #{listStatus, jdbcType=VARCHAR}, 
+			</if>
+			<if test="listType != null and listType !='' ">
+				LIST_TYPE = #{listType, jdbcType=VARCHAR}, 
+			</if>
+			<if test="remark != null and remark !='' ">
+				REMARK = #{remark, jdbcType=VARCHAR}, 
+			</if>
+			<if test="createUser != null and createUser !='' ">
+				CREATE_USER = #{createUser, jdbcType=VARCHAR}, 
+			</if>
+			<if test="createTime != null and createTime !='' ">
+				CREATE_TIME = #{createTime, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="checkUser != null and checkUser !='' ">
+				CHECK_USER = #{checkUser, jdbcType=VARCHAR}, 
+			</if>
+			<if test="checkTime != null and checkTime !='' ">
+				CHECK_TIME = #{checkTime, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="cardNo != null and cardNo !='' ">
+				CARD_NO = #{cardNo, jdbcType=VARCHAR}, 
+			</if>
+
+			WHERE TABLE_KEY = #{tableKey, jdbcType=VARCHAR} 
+		</set>
+	</update>
+</mapper>

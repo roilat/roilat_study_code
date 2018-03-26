@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.eking.HNTravel.mappers.CustomerRepayPlansMapper">
+	<!-- 1、配置返回结果Map和参数Map -->
+	<resultMap type="CustomerRepayPlans" id="baseCustomerRepayPlansResultMap">
+		<id property="id" column="id"/>
+		<result property="custNo" column="Cust_no"/>
+		<result property="prodNo" column="Prod_no"/>
+		<result property="prodName" column="Prod_name"/>
+		<result property="loanAmt" column="Loan_amt"/>
+		<result property="prftRat" column="Prft_rat"/>
+		<result property="mthRepayDay" column="Mth_repay_day"/>
+		<result property="repayTyp" column="Repay_typ"/>
+		<result property="prodPerd" column="Prod_Perd"/>
+		<result property="payPlanDt" column="pay_plan_dt"/>
+		<result property="payDays" column="pay_days"/>
+		<result property="payPlanAmt" column="pay_plan_amt"/>
+		<result property="payPlanIntAmt" column="pay_plan_int_amt"/>
+		<result property="payPlanPpleAmt" column="pay_plan_pple_amt"/>
+		<result property="payActualDt" column="pay_actual_dt"/>
+		<result property="payActualAmt" column="pay_actual_amt"/>
+		<result property="payActualIntAmt" column="pay_actual_int_amt"/>
+		<result property="payActualPpleAmt" column="pay_actual_pple_amt"/>
+		<result property="stat" column="stat"/>
+		<result property="created" column="created"/>
+		<result property="modified" column="modified"/>
+	</resultMap>
+	<resultMap type="CustomerRepayPlans" id="customerRepayPlansResultMap" extends="baseCustomerRepayPlansResultMap">
+	</resultMap>
+	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
+	<parameterMap type="CustomerRepayPlans" id="customerRepayPlansParameterMap">
+		<parameter property="id" javaType="integer" jdbcType="INTEGER"/>
+		<parameter property="custNo" javaType="integer" jdbcType="INTEGER"/>
+		<parameter property="prodNo" javaType="integer" jdbcType="INTEGER"/>
+		<parameter property="prodName" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="loanAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="prftRat" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="mthRepayDay" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="repayTyp" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="prodPerd" javaType="integer" jdbcType="INTEGER"/>
+		<parameter property="payPlanDt" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="payDays" javaType="integer" jdbcType="INTEGER"/>
+		<parameter property="payPlanAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="payPlanIntAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="payPlanPpleAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="payActualDt" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="payActualAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="payActualIntAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="payActualPpleAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="stat" javaType="string" jdbcType="CHAR"/>
+		<parameter property="created" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="modified" javaType="date" jdbcType="TIMESTAMP"/>
+	</parameterMap>
+
+	<!-- 2、各个SeqID -->
+	<insert id="add" parameterMap="customerRepayPlansParameterMap">
+		INSERT INTO cust_pay_plans (id, Cust_no, Prod_no, Prod_name, Loan_amt, Prft_rat, Mth_repay_day, Repay_typ, Prod_Perd, pay_plan_dt, pay_days, pay_plan_amt, pay_plan_int_amt, pay_plan_pple_amt, pay_actual_dt, pay_actual_amt, pay_actual_int_amt, pay_actual_pple_amt, stat, created, modified) VALUES (
+			#{id, jdbcType=INTEGER}, 
+			#{custNo, jdbcType=INTEGER}, 
+			#{prodNo, jdbcType=INTEGER}, 
+			#{prodName, jdbcType=VARCHAR}, 
+			#{loanAmt, jdbcType=DECIMAL }, 
+			#{prftRat, jdbcType=DECIMAL }, 
+			#{mthRepayDay, jdbcType=TIMESTAMP}, 
+			#{repayTyp, jdbcType=VARCHAR}, 
+			#{prodPerd, jdbcType=INTEGER}, 
+			#{payPlanDt, jdbcType=TIMESTAMP}, 
+			#{payDays, jdbcType=INTEGER}, 
+			#{payPlanAmt, jdbcType=DECIMAL }, 
+			#{payPlanIntAmt, jdbcType=DECIMAL }, 
+			#{payPlanPpleAmt, jdbcType=DECIMAL }, 
+			#{payActualDt, jdbcType=TIMESTAMP}, 
+			#{payActualAmt, jdbcType=DECIMAL }, 
+			#{payActualIntAmt, jdbcType=DECIMAL }, 
+			#{payActualPpleAmt, jdbcType=DECIMAL }, 
+			#{stat, jdbcType=CHAR}, 
+			#{created, jdbcType=TIMESTAMP}, 
+			#{modified, jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
+	<!--
+	<select id="isExists" resultType="integer" parameterMap="customerRepayPlansParameterMap">
+		SELECT COUNT(1) FROM cust_pay_plans WHERE DEPT_NAME=#{deptName}
+		<if test="deptId != null and deptId !='' ">
+			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
+		</if>
+	</select>
+	-->
+	<select id="getById" resultMap="customerRepayPlansResultMap" parameterType="string">
+		SELECT * FROM cust_pay_plans WHERE id = #{value}
+	</select>
+	<select id="page" resultMap="customerRepayPlansResultMap" parameterType="CustomerRepayPlans">
+		SELECT * FROM cust_pay_plans WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<select id="getTotal" resultType="long" parameterType="CustomerRepayPlans">
+		SELECT COUNT(1) FROM cust_pay_plans WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM cust_pay_plans WHERE id = #{value}
+	</delete>
+	<update id="edit" parameterType="CustomerRepayPlans">
+		UPDATE cust_pay_plans 
+		<!-- 各种更改的字段 --> 
+		<set>
+			<if test="custNo != null and custNo !='' ">
+				Cust_no = #{custNo, jdbcType=INTEGER}, 
+			</if>
+			<if test="prodNo != null and prodNo !='' ">
+				Prod_no = #{prodNo, jdbcType=INTEGER}, 
+			</if>
+			<if test="prodName != null and prodName !='' ">
+				Prod_name = #{prodName, jdbcType=VARCHAR}, 
+			</if>
+			<if test="loanAmt != null and loanAmt !='' ">
+				Loan_amt = #{loanAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="prftRat != null and prftRat !='' ">
+				Prft_rat = #{prftRat, jdbcType=DECIMAL }, 
+			</if>
+			<if test="mthRepayDay != null and mthRepayDay !='' ">
+				Mth_repay_day = #{mthRepayDay, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="repayTyp != null and repayTyp !='' ">
+				Repay_typ = #{repayTyp, jdbcType=VARCHAR}, 
+			</if>
+			<if test="prodPerd != null and prodPerd !='' ">
+				Prod_Perd = #{prodPerd, jdbcType=INTEGER}, 
+			</if>
+			<if test="payPlanDt != null and payPlanDt !='' ">
+				pay_plan_dt = #{payPlanDt, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="payDays != null and payDays !='' ">
+				pay_days = #{payDays, jdbcType=INTEGER}, 
+			</if>
+			<if test="payPlanAmt != null and payPlanAmt !='' ">
+				pay_plan_amt = #{payPlanAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="payPlanIntAmt != null and payPlanIntAmt !='' ">
+				pay_plan_int_amt = #{payPlanIntAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="payPlanPpleAmt != null and payPlanPpleAmt !='' ">
+				pay_plan_pple_amt = #{payPlanPpleAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="payActualDt != null and payActualDt !='' ">
+				pay_actual_dt = #{payActualDt, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="payActualAmt != null and payActualAmt !='' ">
+				pay_actual_amt = #{payActualAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="payActualIntAmt != null and payActualIntAmt !='' ">
+				pay_actual_int_amt = #{payActualIntAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="payActualPpleAmt != null and payActualPpleAmt !='' ">
+				pay_actual_pple_amt = #{payActualPpleAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="stat != null and stat !='' ">
+				stat = #{stat, jdbcType=CHAR}, 
+			</if>
+			<if test="created != null and created !='' ">
+				created = #{created, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="modified != null and modified !='' ">
+				modified = #{modified, jdbcType=TIMESTAMP}, 
+			</if>
+
+			WHERE id = #{id, jdbcType=INTEGER} 
+		</set>
+	</update>
+</mapper>

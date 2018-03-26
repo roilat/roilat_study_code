@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.p2p.invst.mappers.InvstAcctMapper">
+	<!-- 1、配置返回结果Map和参数Map -->
+	<resultMap type="InvstAcct" id="baseInvstAcctResultMap">
+		<id property="acctNo" column="Acct_no"/>
+		<result property="custNo" column="Cust_no"/>
+		<result property="custName" column="Cust_name"/>
+		<result property="loginPwd" column="Login_pwd"/>
+		<result property="payPwd" column="pay_pwd"/>
+		<result property="acctTyp" column="Acct_typ"/>
+		<result property="openOrg" column="open_org"/>
+		<result property="subjNo" column="subj_no"/>
+		<result property="Bal" column="Bal"/>
+		<result property="avalBal" column="Aval_bal"/>
+		<result property="frzAmt" column="Frz_amt"/>
+		<result property="invstAmt" column="Invst_amt"/>
+		<result property="batFlag" column="BAT_FLAG"/>
+		<result property="acctStat" column="Acct_stat"/>
+		<result property="frzStat" column="Frz_stat"/>
+		<result property="openDate" column="Open_date"/>
+		<result property="lastTxDate" column="Last_Tx_date"/>
+		<result property="lastDayPrft" column="Last_day_prft"/>
+		<result property="lastMthPrft" column="Last_mth_prft"/>
+		<result property="lastYearPrft" column="Last_year_prft"/>
+		<result property="totlPrft" column="Totl_prft"/>
+		<result property="totlInvst" column="Totl_invst"/>
+		<result property="totlAmt" column="Totl_amt"/>
+		<result property="totlPpleAmt" column="totl_pple_amt"/>
+		<result property="totlIntAmt" column="Totl_int_amt"/>
+		<result property="baseTotlPrft" column="base_totl_prft"/>
+		<result property="prftAvgRat" column="Prft_avg_rat"/>
+		<result property="instDate" column="Inst_date"/>
+		<result property="updtDate" column="Updt_date"/>
+		<result property="recordStat" column="record_stat"/>
+	</resultMap>
+	<resultMap type="InvstAcct" id="invstAcctResultMap" extends="baseInvstAcctResultMap">
+	</resultMap>
+	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
+	<parameterMap type="InvstAcct" id="invstAcctParameterMap">
+		<parameter property="acctNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="custNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="custName" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="loginPwd" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="payPwd" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="acctTyp" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="openOrg" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="subjNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="Bal" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="avalBal" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="frzAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="invstAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="batFlag" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="acctStat" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="frzStat" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="openDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="lastTxDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="lastDayPrft" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="lastMthPrft" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="lastYearPrft" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="totlPrft" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="totlInvst" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="totlAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="totlPpleAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="totlIntAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="baseTotlPrft" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="prftAvgRat" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="instDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="updtDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="recordStat" javaType="string" jdbcType="CHAR"/>
+	</parameterMap>
+
+	<!-- 2、各个SeqID -->
+	<insert id="add" parameterMap="invstAcctParameterMap">
+		INSERT INTO invst_acct (Acct_no, Cust_no, Cust_name, Login_pwd, pay_pwd, Acct_typ, open_org, subj_no, Bal, Aval_bal, Frz_amt, Invst_amt, BAT_FLAG, Acct_stat, Frz_stat, Open_date, Last_Tx_date, Last_day_prft, Last_mth_prft, Last_year_prft, Totl_prft, Totl_invst, Totl_amt, totl_pple_amt, Totl_int_amt, base_totl_prft, Prft_avg_rat, Inst_date, Updt_date, record_stat) VALUES (
+			#{acctNo, jdbcType=VARCHAR}, 
+			#{custNo, jdbcType=VARCHAR}, 
+			#{custName, jdbcType=VARCHAR}, 
+			#{loginPwd, jdbcType=VARCHAR}, 
+			#{payPwd, jdbcType=VARCHAR}, 
+			#{acctTyp, jdbcType=VARCHAR}, 
+			#{openOrg, jdbcType=VARCHAR}, 
+			#{subjNo, jdbcType=VARCHAR}, 
+			#{Bal, jdbcType=DECIMAL }, 
+			#{avalBal, jdbcType=DECIMAL }, 
+			#{frzAmt, jdbcType=DECIMAL }, 
+			#{invstAmt, jdbcType=DECIMAL }, 
+			#{batFlag, jdbcType=VARCHAR}, 
+			#{acctStat, jdbcType=VARCHAR}, 
+			#{frzStat, jdbcType=VARCHAR}, 
+			#{openDate, jdbcType=TIMESTAMP}, 
+			#{lastTxDate, jdbcType=TIMESTAMP}, 
+			#{lastDayPrft, jdbcType=DECIMAL }, 
+			#{lastMthPrft, jdbcType=DECIMAL }, 
+			#{lastYearPrft, jdbcType=DECIMAL }, 
+			#{totlPrft, jdbcType=DECIMAL }, 
+			#{totlInvst, jdbcType=DECIMAL }, 
+			#{totlAmt, jdbcType=DECIMAL }, 
+			#{totlPpleAmt, jdbcType=DECIMAL }, 
+			#{totlIntAmt, jdbcType=DECIMAL }, 
+			#{baseTotlPrft, jdbcType=DECIMAL }, 
+			#{prftAvgRat, jdbcType=DECIMAL }, 
+			#{instDate, jdbcType=TIMESTAMP}, 
+			#{updtDate, jdbcType=TIMESTAMP}, 
+			#{recordStat, jdbcType=CHAR}
+		)
+	</insert>
+	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
+	<!--
+	<select id="isExists" resultType="integer" parameterMap="invstAcctParameterMap">
+		SELECT COUNT(1) FROM invst_acct WHERE DEPT_NAME=#{deptName}
+		<if test="deptId != null and deptId !='' ">
+			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
+		</if>
+	</select>
+	-->
+	<select id="getById" resultMap="invstAcctResultMap" parameterType="string">
+		SELECT * FROM invst_acct WHERE Acct_no = #{value}
+	</select>
+	<select id="page" resultMap="invstAcctResultMap" parameterType="InvstAcct">
+		SELECT * FROM invst_acct WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<select id="getTotal" resultType="long" parameterType="InvstAcct">
+		SELECT COUNT(1) FROM invst_acct WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM invst_acct WHERE Acct_no = #{value}
+	</delete>
+	<update id="edit" parameterType="InvstAcct">
+		UPDATE invst_acct 
+		<!-- 各种更改的字段 --> 
+		<set>
+			<if test="custNo != null and custNo !='' ">
+				Cust_no = #{custNo, jdbcType=VARCHAR}, 
+			</if>
+			<if test="custName != null and custName !='' ">
+				Cust_name = #{custName, jdbcType=VARCHAR}, 
+			</if>
+			<if test="loginPwd != null and loginPwd !='' ">
+				Login_pwd = #{loginPwd, jdbcType=VARCHAR}, 
+			</if>
+			<if test="payPwd != null and payPwd !='' ">
+				pay_pwd = #{payPwd, jdbcType=VARCHAR}, 
+			</if>
+			<if test="acctTyp != null and acctTyp !='' ">
+				Acct_typ = #{acctTyp, jdbcType=VARCHAR}, 
+			</if>
+			<if test="openOrg != null and openOrg !='' ">
+				open_org = #{openOrg, jdbcType=VARCHAR}, 
+			</if>
+			<if test="subjNo != null and subjNo !='' ">
+				subj_no = #{subjNo, jdbcType=VARCHAR}, 
+			</if>
+			<if test="Bal != null and Bal !='' ">
+				Bal = #{Bal, jdbcType=DECIMAL }, 
+			</if>
+			<if test="avalBal != null and avalBal !='' ">
+				Aval_bal = #{avalBal, jdbcType=DECIMAL }, 
+			</if>
+			<if test="frzAmt != null and frzAmt !='' ">
+				Frz_amt = #{frzAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="invstAmt != null and invstAmt !='' ">
+				Invst_amt = #{invstAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="batFlag != null and batFlag !='' ">
+				BAT_FLAG = #{batFlag, jdbcType=VARCHAR}, 
+			</if>
+			<if test="acctStat != null and acctStat !='' ">
+				Acct_stat = #{acctStat, jdbcType=VARCHAR}, 
+			</if>
+			<if test="frzStat != null and frzStat !='' ">
+				Frz_stat = #{frzStat, jdbcType=VARCHAR}, 
+			</if>
+			<if test="openDate != null and openDate !='' ">
+				Open_date = #{openDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="lastTxDate != null and lastTxDate !='' ">
+				Last_Tx_date = #{lastTxDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="lastDayPrft != null and lastDayPrft !='' ">
+				Last_day_prft = #{lastDayPrft, jdbcType=DECIMAL }, 
+			</if>
+			<if test="lastMthPrft != null and lastMthPrft !='' ">
+				Last_mth_prft = #{lastMthPrft, jdbcType=DECIMAL }, 
+			</if>
+			<if test="lastYearPrft != null and lastYearPrft !='' ">
+				Last_year_prft = #{lastYearPrft, jdbcType=DECIMAL }, 
+			</if>
+			<if test="totlPrft != null and totlPrft !='' ">
+				Totl_prft = #{totlPrft, jdbcType=DECIMAL }, 
+			</if>
+			<if test="totlInvst != null and totlInvst !='' ">
+				Totl_invst = #{totlInvst, jdbcType=DECIMAL }, 
+			</if>
+			<if test="totlAmt != null and totlAmt !='' ">
+				Totl_amt = #{totlAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="totlPpleAmt != null and totlPpleAmt !='' ">
+				totl_pple_amt = #{totlPpleAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="totlIntAmt != null and totlIntAmt !='' ">
+				Totl_int_amt = #{totlIntAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="baseTotlPrft != null and baseTotlPrft !='' ">
+				base_totl_prft = #{baseTotlPrft, jdbcType=DECIMAL }, 
+			</if>
+			<if test="prftAvgRat != null and prftAvgRat !='' ">
+				Prft_avg_rat = #{prftAvgRat, jdbcType=DECIMAL }, 
+			</if>
+			<if test="instDate != null and instDate !='' ">
+				Inst_date = #{instDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="updtDate != null and updtDate !='' ">
+				Updt_date = #{updtDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="recordStat != null and recordStat !='' ">
+				record_stat = #{recordStat, jdbcType=CHAR}, 
+			</if>
+
+			WHERE Acct_no = #{acctNo, jdbcType=VARCHAR} 
+		</set>
+	</update>
+</mapper>

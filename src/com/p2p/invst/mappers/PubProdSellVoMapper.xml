@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.p2p.invst.mappers.PubProdSellVoMapper">
+	<!-- 1、配置返回结果Map和参数Map -->
+	<resultMap type="PubProdSellVo" id="basePubProdSellVoResultMap">
+		<id property="prodNo" column="Prod_no"/>
+		<result property="onlineDate" column="Online_date"/>
+		<result property="voteAmt" column="vote_amt"/>
+		<result property="frozenAmt" column="frozen_amt"/>
+		<result property="custNo" column="Cust_no"/>
+		<result property="bgnSellDate" column="Bgn_Sell_date"/>
+		<result property="dueBidDate" column="Due_bid_date"/>
+		<result property="instDate" column="INST_DATE"/>
+		<result property="updtDate" column="UPDT_DATE"/>
+	</resultMap>
+	<resultMap type="PubProdSellVo" id="pubProdSellVoResultMap" extends="basePubProdSellVoResultMap">
+	</resultMap>
+	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
+	<parameterMap type="PubProdSellVo" id="pubProdSellVoParameterMap">
+		<parameter property="prodNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="onlineDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="voteAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="frozenAmt" javaType="decimal" jdbcType="DECIMAL "/>
+		<parameter property="custNo" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="bgnSellDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="dueBidDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="instDate" javaType="date" jdbcType="TIMESTAMP"/>
+		<parameter property="updtDate" javaType="date" jdbcType="TIMESTAMP"/>
+	</parameterMap>
+
+	<!-- 2、各个SeqID -->
+	<insert id="add" parameterMap="pubProdSellVoParameterMap">
+		INSERT INTO pub_prod_sell (Prod_no, Online_date, vote_amt, frozen_amt, Cust_no, Bgn_Sell_date, Due_bid_date, INST_DATE, UPDT_DATE) VALUES (
+			#{prodNo, jdbcType=VARCHAR}, 
+			#{onlineDate, jdbcType=TIMESTAMP}, 
+			#{voteAmt, jdbcType=DECIMAL }, 
+			#{frozenAmt, jdbcType=DECIMAL }, 
+			#{custNo, jdbcType=VARCHAR}, 
+			#{bgnSellDate, jdbcType=TIMESTAMP}, 
+			#{dueBidDate, jdbcType=TIMESTAMP}, 
+			#{instDate, jdbcType=TIMESTAMP}, 
+			#{updtDate, jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
+	<!--
+	<select id="isExists" resultType="integer" parameterMap="pubProdSellVoParameterMap">
+		SELECT COUNT(1) FROM pub_prod_sell WHERE DEPT_NAME=#{deptName}
+		<if test="deptId != null and deptId !='' ">
+			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
+		</if>
+	</select>
+	-->
+	<select id="getById" resultMap="pubProdSellVoResultMap" parameterType="string">
+		SELECT * FROM pub_prod_sell WHERE Prod_no = #{value}
+	</select>
+	<select id="page" resultMap="pubProdSellVoResultMap" parameterType="PubProdSellVo">
+		SELECT * FROM pub_prod_sell WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<select id="getTotal" resultType="long" parameterType="PubProdSellVo">
+		SELECT COUNT(1) FROM pub_prod_sell WHERE 1=1
+		<!-- 各种条件 --> 
+		<!--
+		<if test="deptName != null and deptName !='' ">
+			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
+		</if>
+		-->
+	</select>
+	<delete id="deleteById" parameterType="string">
+		DELETE FROM pub_prod_sell WHERE Prod_no = #{value}
+	</delete>
+	<update id="edit" parameterType="PubProdSellVo">
+		UPDATE pub_prod_sell 
+		<!-- 各种更改的字段 --> 
+		<set>
+			<if test="onlineDate != null and onlineDate !='' ">
+				Online_date = #{onlineDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="voteAmt != null and voteAmt !='' ">
+				vote_amt = #{voteAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="frozenAmt != null and frozenAmt !='' ">
+				frozen_amt = #{frozenAmt, jdbcType=DECIMAL }, 
+			</if>
+			<if test="custNo != null and custNo !='' ">
+				Cust_no = #{custNo, jdbcType=VARCHAR}, 
+			</if>
+			<if test="bgnSellDate != null and bgnSellDate !='' ">
+				Bgn_Sell_date = #{bgnSellDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="dueBidDate != null and dueBidDate !='' ">
+				Due_bid_date = #{dueBidDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="instDate != null and instDate !='' ">
+				INST_DATE = #{instDate, jdbcType=TIMESTAMP}, 
+			</if>
+			<if test="updtDate != null and updtDate !='' ">
+				UPDT_DATE = #{updtDate, jdbcType=TIMESTAMP}, 
+			</if>
+
+			WHERE Prod_no = #{prodNo, jdbcType=VARCHAR} 
+		</set>
+	</update>
+</mapper>
