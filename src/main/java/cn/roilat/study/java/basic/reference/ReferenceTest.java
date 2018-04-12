@@ -44,7 +44,7 @@ public class ReferenceTest {
 		
 		
 		System.out.println(obj);
-		System.out.println(softReference.get());//-Xmx1M,实际需要1.4M获取
+		System.out.println(softReference.get());//-Xmx5M,实际需要xxxM获取
 		System.out.println(weakReference.get());//gc 后就没有了
 		System.out.println(phantomReference.get());//虚引用无法获取对象
 		/**
