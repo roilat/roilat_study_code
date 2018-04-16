@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
@@ -17,8 +18,6 @@ public class EncodeFileWithBase64 {
 		String folder = ".\\src\\main\\java\\cn\\roilat\\study\\algorithm\\base64\\testFiles\\";
 		encodeAndSave(folder,"Idea快捷键麟.docx","Idea快捷键麟_bak.docx","Idea快捷键麟_encoded.txt");
 		decodeAndSave(folder,"Idea快捷键麟_encoded.txt","Idea快捷键麟_decode.docx");
-		encodeAndSave(folder,"工作内容.txt","工作内容_bak.txt","工作内容_encode.txt");
-		decodeAndSave(folder,"工作内容_encode.txt","工作内容_decode.txt");
 	}
 	public static void encodeAndSave(String path,String sourceName,String bakupName,String targetName) throws IOException {
 		//src related
