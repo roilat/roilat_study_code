@@ -1,7 +1,7 @@
 
-package cn.roilat.study.algorithm.rsa;
+package cn.roilat.study.algorithm.base64;
 
-public final class Base64 {
+public final class MyBase64 {
 
     static private final int     BASELENGTH           = 128;
     static private final int     LOOKUPLENGTH         = 64;
@@ -61,6 +61,7 @@ public final class Base64 {
         return (octect < BASELENGTH && base64Alphabet[octect] != -1);
     }
 
+    
     /**
      * Encodes hex octects into Base64
      *
@@ -85,7 +86,7 @@ public final class Base64 {
 
         encodedData = new char[numberQuartet * 4];
 
-        byte k = 0, l = 0, b1 = 0, b2 = 0, b3 = 0;
+		byte t1 = 0, t2 = 0, t3 = 0, t4 = 0, t5 = 0, b1 = 0, b2 = 0, b3 = 0;
 
         int encodedIndex = 0;
         int dataIndex = 0;
@@ -102,50 +103,36 @@ public final class Base64 {
                 System.out.println("b1= " + b1 + ", b2= " + b2 + ", b3= " + b3);
             }
 
-            l = (byte) (b2 & 0x0f);
-            k = (byte) (b1 & 0x03);
+			t1 = (byte) (b1 >>> 2 & 0x3f);
+			t2 = (byte) ((byte) (b1 << 4 & 0x30) | (byte) (b2 >>> 4 & 0x0f));
+			t3 = (byte) ((byte) (b2 << 2 & 0x3c) | (byte) (b3 >>> 6 & 0x03));
+			t4 = (byte) (b3 & 0x3f);
 
-            byte val1 = ((b1 & SIGN) == 0) ? (byte) (b1 >> 2) : (byte) ((b1) >> 2 ^ 0xc0);
-            byte val2 = ((b2 & SIGN) == 0) ? (byte) (b2 >> 4) : (byte) ((b2) >> 4 ^ 0xf0);
-            byte val3 = ((b3 & SIGN) == 0) ? (byte) (b3 >> 6) : (byte) ((b3) >> 6 ^ 0xfc);
-
-            if (fDebug) {
-                System.out.println("val2 = " + val2);
-                System.out.println("k4   = " + (k << 4));
-                System.out.println("vak  = " + (val2 | (k << 4)));
-            }
-
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[val2 | (k << 4)];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[(l << 2) | val3];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[b3 & 0x3f];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t1];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t2];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t3];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t4];
         }
 
         // form integral number of 6-bit groups
         if (fewerThan24bits == EIGHTBIT) {
             b1 = binaryData[dataIndex];
-            k = (byte) (b1 & 0x03);
-            if (fDebug) {
-                System.out.println("b1=" + b1);
-                System.out.println("b1<<2 = " + (b1 >> 2));
-            }
-            byte val1 = ((b1 & SIGN) == 0) ? (byte) (b1 >> 2) : (byte) ((b1) >> 2 ^ 0xc0);
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[k << 4];
+			t1 = (byte) (b1 >>> 2);
+			t2 = (byte) (b1 << 4 & 0x30);
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t1];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t2];
             encodedData[encodedIndex++] = PAD;
             encodedData[encodedIndex++] = PAD;
         } else if (fewerThan24bits == SIXTEENBIT) {
             b1 = binaryData[dataIndex];
             b2 = binaryData[dataIndex + 1];
-            l = (byte) (b2 & 0x0f);
-            k = (byte) (b1 & 0x03);
+			t1 = (byte) (b1 >>> 2);
+			t3 = (byte) ((b2 << 2) & 0x3f);
+			t2 = (byte) ((byte) (b1 << 4 & 0x30) | (byte) (b2 >>> 4 & 0x0f));
 
-            byte val1 = ((b1 & SIGN) == 0) ? (byte) (b1 >> 2) : (byte) ((b1) >> 2 ^ 0xc0);
-            byte val2 = ((b2 & SIGN) == 0) ? (byte) (b2 >> 4) : (byte) ((b2) >> 4 ^ 0xf0);
-
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[val1];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[val2 | (k << 4)];
-            encodedData[encodedIndex++] = lookUpBase64Alphabet[l << 2];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t1];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t2];
+            encodedData[encodedIndex++] = lookUpBase64Alphabet[t3];
             encodedData[encodedIndex++] = PAD;
         }
 

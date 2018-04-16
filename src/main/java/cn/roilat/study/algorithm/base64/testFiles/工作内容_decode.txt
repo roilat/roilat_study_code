@@ -1,0 +1,102 @@
+T1_20180319_&commonDayLimit=100
+图床：
+tps_url=http://tps.alibaba-inc.com/api.imageupload
+tps_accessToken=6c6a7429-5728-4b35-9a29-9226e1954009
+tps_nick=hgboss-dev-System
+tps_work_id=hgboss-dev-System
+
+
+
+合规评审意见添加富文本框支持优化
+增加了几个参数
+
+
+
+RpHgbossReviewTaskDO
+rp_hgboss_review_result
+rp_hgboss_review_task
+
+
+access_token:601a274979e430ef8573e10beda504cc
+
+
+{
+   "errcode": 0,
+   "errmsg": "ok",
+   "userlist":    [
+            {
+         "name": "浚源",
+         "userid": "36015334896118"
+      },
+            {
+         "name": "李岳泽",
+         "userid": "051226180826178168"
+      },
+            {
+         "name": "god立刻",
+         "userid": "manager6087"
+      }
+   ]
+}
+
+{"chatid":"chat95064dce7714a64d0fb2f44871216bf1","msgtype":"action_card"}
+
+{
+   "errcode": 0,
+   "errmsg": "ok",
+   "chatid": "chat95064dce7714a64d0fb2f44871216bf1",
+   "openConversationId": "cidSFEYFI3gZBq3WmK7HyRnYQ==",
+   "conversationTag": 2
+}
+
+{
+    "chatid": "chat95064dce7714a64d0fb2f44871216bf1",
+    "msgtype": "action_card",
+    "action_card": {
+        "title": "是透出到会话列表和通知的文案",
+        "markdown": "支持markdown格式的正文内容",
+        "single_title": "查看详情",
+        "single_url": "https://www.baidu.com/"
+    }
+}
+
+部门id:
+61506510
+钉群：chat95064dce7714a64d0fb2f44871216bf1
+
+
+
+
+{
+    "chatid": "chat95064dce7714a64d0fb2f44871216bf1",
+    "msgtype": "markdown",
+    "markdown": {
+        "title": "首屏会话透出的展示内容",
+        "text": "标题\n# 一级标题\n## 二级标题\n### 三级标题\n#### 四级标题\n##### 五级标题\n###### 六级标题 \n引用> A man who stands for nothing will fall for anything. 文字加粗、斜体\n**bold\n***italic\n* 链接[this is a link](http://name.com) \n图片![](http://name.com/pic.jpg) \n无序列表- item1- item2 \n有序列表1. item12. item2"
+    }
+}
+
+
+SELECT * FROM `rp_hgboss_review_task` 
+
+SELECT * FROM `rp_hgboss_review_result` ORDER BY id  desc;
+ LIMIT 20
+SELECT * FROM rp_hgboss_industry_info;
+://tps.alibaba-inc.com/token/apply），这个比较快。
+2、邮件服务申请，包括一个服务的配置和模版，这个不清楚（http://doc.alipay.net/pages/viewpage.action?pageId=97078150）。
+
+
+重要事件：
+1、富文本功能中，增加的参数需要在aone上进行配置变更。且这些参数需要在上线时，重新获取（图床）。
+2、邮件发送：serviceCode:MKT_20180331_rccenter_hg_surveillance_email_notice;ServiceName:小微金服-金融核心平台-rccenter-合规中台-邮件发送
+配置说明文档地址(部分账号密码可以在这里找到)：http://doc.alipay.net/pages/viewpage.action?pageId=44731421
+邮件使用文档：http://doc.alipay.net/pages/viewpage.action?pageId=23535911
+查询页面：https://gotonemng.test.alipay.net/gotoneBusiness.htm
+gotone.rz00b.alipay.net:12200
+gotone-pool.${inner.domain}:12200
+
+监管环境立项页面效果图：
+https://lark.alipay.com/tq3fcx/vnfltp/artboards/19974
+
+
+https://gotonemng.test.alipay.net/msgSendStrategyEdit.htm?businessId=10043&commonMinLimit=0&autoActivityPre=MKT2_20180319_&commonHourLimit=2&oneTimePre=MK
