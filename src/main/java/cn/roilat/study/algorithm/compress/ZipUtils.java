@@ -66,15 +66,12 @@ public class ZipUtils {
 		try {
 			zos = new ZipOutputStream(out);
 			for (File srcFile : srcFiles) {
-				/*byte[] buf = new byte[BUFFER_SIZE];
-				zos.putNextEntry(new ZipEntry(srcFile.getName()));
-				int len;
-				FileInputStream in = new FileInputStream(srcFile);
-				while ((len = in.read(buf)) != -1) {
-					zos.write(buf, 0, len);
-				}
-				zos.closeEntry();
-				in.close();*/
+				/*
+				 * byte[] buf = new byte[BUFFER_SIZE]; zos.putNextEntry(new
+				 * ZipEntry(srcFile.getName())); int len; FileInputStream in = new
+				 * FileInputStream(srcFile); while ((len = in.read(buf)) != -1) { zos.write(buf,
+				 * 0, len); } zos.closeEntry(); in.close();
+				 */
 				compress(srcFile, zos, srcFile.getName(), true);
 			}
 			long end = System.currentTimeMillis();
