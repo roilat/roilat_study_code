@@ -1,59 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hansy.dataservice.sys.mappers.QueryOrgPayConfMapper">
-	<!-- 1、配置返回结果Map和参数Map -->
-	<resultMap type="QueryOrgPayConf" id="baseQueryOrgPayConfResultMap">
-	</resultMap>
-	<resultMap type="QueryOrgPayConf" id="queryOrgPayConfResultMap" extends="baseQueryOrgPayConfResultMap">
-	</resultMap>
-	<!-- <parameter property="deptId" javaType="string" jdbcType="VARCHAR"/> -->
-	<parameterMap type="QueryOrgPayConf" id="queryOrgPayConfParameterMap">
-	</parameterMap>
-
-	<!-- 2、各个SeqID -->
-	<insert id="add" parameterMap="queryOrgPayConfParameterMap">
-		INSERT INTO T_QUERY_ORG_PAY_CONF () VALUES (
-
-		)
-	</insert>
-	<!-- 判断不可重复的属性是否已经存在，这里默认只判断deptName属性，具体的业务再进行修改添加 -->
-	<!--
-	<select id="isExists" resultType="integer" parameterMap="queryOrgPayConfParameterMap">
-		SELECT COUNT(1) FROM T_QUERY_ORG_PAY_CONF WHERE DEPT_NAME=#{deptName}
-		<if test="deptId != null and deptId !='' ">
-			<![CDATA[ AND DEPT_ID <> #{deptId, jdbcType=VARCHAR} ]]>
-		</if>
-	</select>
-	-->
-	<select id="getById" resultMap="queryOrgPayConfResultMap" parameterType="string">
-		SELECT * FROM T_QUERY_ORG_PAY_CONF WHERE  = #{value}
-	</select>
-	<select id="page" resultMap="queryOrgPayConfResultMap" parameterType="QueryOrgPayConf">
-		SELECT * FROM T_QUERY_ORG_PAY_CONF WHERE 1=1
-		<!-- 各种条件 --> 
-		<!--
-		<if test="deptName != null and deptName !='' ">
-			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
-		</if>
-		-->
-	</select>
-	<select id="getTotal" resultType="long" parameterType="QueryOrgPayConf">
-		SELECT COUNT(1) FROM T_QUERY_ORG_PAY_CONF WHERE 1=1
-		<!-- 各种条件 --> 
-		<!--
-		<if test="deptName != null and deptName !='' ">
-			<![CDATA[ AND DEPT_NAME LIKE CONCAT(CONCAT('%', #{deptName}),'%')]]>
-		</if>
-		-->
-	</select>
-	<delete id="deleteById" parameterType="string">
-		DELETE FROM T_QUERY_ORG_PAY_CONF WHERE null = #{value}
-	</delete>
-	<update id="edit" parameterType="QueryOrgPayConf">
-		UPDATE T_QUERY_ORG_PAY_CONF 
-		<!-- 各种更改的字段 --> 
-		<set>
-
-		</set>
-	</update>
-</mapper>
