@@ -26,7 +26,7 @@ public class ThreadTest {
 	}
 	
 	public static void testConcurrent(){
-		final int num = 500;
+		final int num = 10000;
 		final CountDownLatch begin = new CountDownLatch(1);
 		final CountDownLatch end = new CountDownLatch(num);
 		for (int i = 0; i < num; i++) {
@@ -67,7 +67,7 @@ class MyWorker implements Runnable {
 	public static int successCount = 0;
 	public static int startedCount = 0;
 	public static int exceptionCount = 0;
-	final String urlString = "http://59.212.213.18:8080/cloud/login/otherLogin.do";//http://59.212.213.18:8080/cloud/login/login.do
+	final String urlString = "http://fcrcportal-zth-6.gz00b.dev.alipay.net/hgboss/api/gateway.json?_input_charset=utf-8&componentName=RC_INDUSTRY_INFO_SUBSCRIBE_RULE&actionName=QUERY_ALL_SOURCE";//http://59.212.213.18:8080/cloud/login/login.do
 
 	final int id;
 	

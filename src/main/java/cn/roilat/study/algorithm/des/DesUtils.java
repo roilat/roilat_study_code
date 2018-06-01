@@ -9,6 +9,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
+import com.taobao.api.internal.util.DESUtil;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -116,5 +117,9 @@ public class DesUtils {
 		// 用密钥初始化Cipher对象
 		cipher.init(Cipher.DECRYPT_MODE, securekey, sr);
 		return cipher.doFinal(data);
+	}
+	public static void main(String[] args) throws Exception {DESUtil
+		System.out.println(DesUtils.encrypt("admin", KEY));
+		System.out.println(DesUtils.decrypt("qdbZx61W9k4=", KEY));
 	}
 }
