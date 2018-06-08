@@ -1,3 +1,6 @@
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.api.DefaultDingTalkClient;
@@ -9,16 +12,16 @@ import com.dingtalk.api.response.CorpMessageCorpconversationGetsendprogressRespo
 import com.taobao.api.ApiException;
 
 public class DingEnterpriseInfoSend {
-	public static String access_token = "8a671a77352c35b7a9a5217fb3929012";
+	public static String access_token = "29b53dca078d3c8f895d732935b97c7e";
 	public static Long agent_id = 176869871L;
 
-	public static void main(String[] args) throws ApiException {
-		/*Long taskId = send();
-		query(taskId);*/
-		query(10734730196L);
+	public static void main(String[] args) throws ApiException, UnsupportedEncodingException {
+		Long taskId = send();
+		query(taskId);
+		//query(taskId);
 	}
 	
-	public static Long send() throws ApiException {
+	public static Long send() throws ApiException, UnsupportedEncodingException {
 		DingTalkClient client = new DefaultDingTalkClient("https://eco.taobao.com/router/rest");
 		CorpMessageCorpconversationAsyncsendRequest req = new CorpMessageCorpconversationAsyncsendRequest();
 		req.setMsgtype("oa");
@@ -47,7 +50,7 @@ public class DingEnterpriseInfoSend {
 		System.out.println(rsp.getBody());
 	}
 	
-	public static String genMsg() {
+	public static String genMsg() throws UnsupportedEncodingException {
 		JSONObject head = new JSONObject();
 		head.put("bgcolor", "FFBBBBBB");
 		head.put("text", "【媒体聚焦】保监会拟禁止险企与问题私募合作--金融--人民网");
@@ -65,9 +68,10 @@ public class DingEnterpriseInfoSend {
 		
 		JSONObject msg = new JSONObject();
 		msg.put("message_url", "http://www.cbrc.gov.cn/chinese/home/docView/C9C43805D3534C91A705DA5968A26220.html");
-		msg.put("pc_message_url", "http://www.cbrc.gov.cn/chinese/home/docView/C9C43805D3534C91A705DA5968A26220.html");
+		msg.put("pc_message_url", "dingtalk://dingtalkclient/page/link?url="+URLEncoder.encode("http://www.cbrc.gov.cn/chinese/home/docView/C9C43805D3534C91A705DA5968A26220.html","UTF8")+"&pc_slide=false");
 		msg.put("head", head);
 		msg.put("body", body);
+		System.out.println(msg.get("pc_message_url"));
 		return msg.toJSONString();
 	}
 }
