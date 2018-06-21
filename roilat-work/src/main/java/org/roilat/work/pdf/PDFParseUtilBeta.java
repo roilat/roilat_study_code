@@ -159,7 +159,7 @@ public class PDFParseUtilBeta {
     }
     
 
-    public JSONArray parseSinglePdf(File file) throws Exception {
+    public JSONObject parseSinglePdf(File file) throws Exception {
         PdfReader reader = new PdfReader(new FileInputStream(file));
         List<TextChunk> list = this.parsePDF(reader);
         //System.out.println("---------------------------分隔线---------------------------------------");
@@ -187,7 +187,9 @@ public class PDFParseUtilBeta {
                 throw new Exception("表格内容解析处理失败---" + file.getName());
             }
         }
-        JSONArray result = new JSONArray();
+        
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
 
         JSONObject obj;
         String[] titles = firstTr.text();
@@ -197,8 +199,11 @@ public class PDFParseUtilBeta {
             for (int j = 0; j < titles.length; j++) {
                 obj.put(titles[j], tableTds.get(j).text());
             }
-            result.add(obj);
+            array.add(obj);
         }
+        result.put("fileName", file.getName());
+        result.put("head", titles);
+        result.put("data", array);
         return result;
     }
 

@@ -5,8 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
 
 import org.junit.Test;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.pdf.StringUtils;
 
 public class PDFParseUtilBetaTest {
 
@@ -19,14 +28,15 @@ public class PDFParseUtilBetaTest {
         File file = new File(filePath);
         if(file.exists()) {
             File[] files = file.listFiles();
-            int i = 0;
+            int fileCount = 0;
             int success = 0;
             int fail = 0;
+            List<JSONObject> list = new ArrayList<JSONObject>();
             for (File f : files) {
                 if(f.getName().endsWith(".pdf")) {
                     try {
                         System.out.println("---------------------------分隔线---------------------------------------");
-                        System.out.println(parseUtilBeta.parseSinglePdf(f));
+                        list.add(parseUtilBeta.parseSinglePdf(f));
                         savePath = "D:\\文件下载\\pdf\\success\\";
                         success += 1;
                     } catch (Exception e) {
@@ -35,10 +45,44 @@ public class PDFParseUtilBetaTest {
                         fail += 1;
                     }finally {
                         FileChannel fc = new FileOutputStream(savePath + File.separator
-                            + i++ + "-" + f.getName()).getChannel();
+                            + fileCount++ + "-" + f.getName()).getChannel();
                         new FileInputStream(f).getChannel().transferTo(0, f.length(), fc);
                     }
                 }
+            }
+            //遍历所有文件
+            for (JSONObject jsonObject : list) {
+                System.out.println(String.format("\"---------------------------%s------------------------\"", jsonObject.get("fileName")));
+                StringBuffer head = new StringBuffer();
+                StringBuffer content = new StringBuffer();
+                JSONArray datas = jsonObject.getJSONArray("data");
+                //遍历文件中的所有行
+                for (int i = 0; i < datas.size(); i++) {                    
+                    JSONObject data = datas.getJSONObject(i);
+                    //遍历所有列
+                    Iterator<Entry<String, Object>> iter = data.entrySet().iterator();
+                    Formatter formatter = new Formatter();
+                    while(iter.hasNext()) {
+                        Entry<String, Object> item = iter.next();
+                        String value = (String) item.getValue();
+                        value = (value != null)
+                            ? (value.length() > 17) ? value.substring(0, 17) + "..." : value
+                            : "";
+                        String key = (String) item.getKey();
+                        key = (key != null)
+                                ? (key.length() > 17) ? key.substring(0, 17) + "..." : key
+                                    : "";
+                        content.append(String.format("%1$20s", value));
+                        if(i == 0) {
+                            head.append(String.format("%1$20s", key));
+                        }
+                    }//end while
+                    content.append("\n");
+                }//遍历文件中的所有行 end
+                System.out.println("--header--" + head.toString() + "--header--");
+                System.out.println(content.toString());
+                head.setLength(0);
+                content.setLength(0);
             }
             System.out.println("success is " + success + ",fail is " + fail);
         }
