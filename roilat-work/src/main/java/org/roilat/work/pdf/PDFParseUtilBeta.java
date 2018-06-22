@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -17,6 +16,13 @@ import java.util.TreeMap;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfCopy;
+import com.itextpdf.text.pdf.PdfImportedPage;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.LineSegment;
 import com.itextpdf.text.pdf.parser.LocationTextExtractionStrategy;
@@ -126,6 +132,9 @@ public class PDFParseUtilBeta {
                     Matrix riseOffsetTransform = new Matrix(0, -renderInfo.getRise());
                     segment = segment.transformBy(riseOffsetTransform);
                 }
+                if (renderInfo.getText() != null) {
+                    System.out.println("---" + renderInfo.getText());
+                }
                 TextChunk tc = new TextChunk(renderInfo.getText(),
                     tclStrat.createLocation(renderInfo, segment));
                 //System.out.println(segment.getBoundingRectange());
@@ -157,7 +166,6 @@ public class PDFParseUtilBeta {
             return false;
         return str.charAt(str.length() - 1) == ' ';
     }
-    
 
     public JSONObject parseSinglePdf(File file) throws Exception {
         PdfReader reader = new PdfReader(new FileInputStream(file));
@@ -174,7 +182,7 @@ public class PDFParseUtilBeta {
         }*/
 
         Collections.sort(tableTrs);
-        if(tableTrs == null || tableTrs.size() <= 0) {
+        if (tableTrs == null || tableTrs.size() <= 0) {
             throw new Exception("表头解析处理失败---" + file.getName());
         }
         TableTr firstTr = tableTrs.get(0);
@@ -187,7 +195,7 @@ public class PDFParseUtilBeta {
                 throw new Exception("表格内容解析处理失败---" + file.getName());
             }
         }
-        
+
         JSONObject result = new JSONObject();
         JSONArray array = new JSONArray();
 
@@ -477,8 +485,45 @@ public class PDFParseUtilBeta {
             return sb.toString();
         }
     }
-    
-    
-    
-    
+
+    /** 
+     * 截取pdfFile的第from页至第end页，组成一个新的文件名 
+     * @param pdfFile  需要分割的PDF
+     * @param savepath  新PDF
+     * @param from  起始页
+     * @param end  结束页
+     */
+    public static void splitPDFFile(String respdfFile, String savepath, int from, int end) {
+        Document document = null;
+        PdfCopy copy = null;
+        try {
+            PdfReader reader = new PdfReader(respdfFile);
+            int n = reader.getNumberOfPages();
+            if (end == 0) {
+                end = n;
+            }
+            document = new Document(reader.getPageSize(1));
+            copy = new PdfCopy(document, new FileOutputStream(savepath));
+            document.open();
+            for (int j = from; j <= end; j++) {
+                System.out.println(document.newPage());
+                PdfImportedPage page = copy.getImportedPage(reader, j);
+                page.getBoundingBox().setBorder(2);
+                page.getBoundingBox().setBorderColor(BaseColor.DARK_GRAY);
+                page.setColorFill(BaseColor.BLUE);
+                copy.addPage(page);
+            }
+            Rectangle element = new Rectangle(100, 100);
+            element.setBorder(2);
+            element.setBackgroundColor(BaseColor.GREEN);
+            document.add(element );
+            document.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -15,6 +15,8 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.StringUtils;
 
 public class PDFParseUtilBetaTest {
@@ -87,6 +89,19 @@ public class PDFParseUtilBetaTest {
             System.out.println("success is " + success + ",fail is " + fail);
         }
         
+    }
+    
+    @Test
+    public void test() throws IOException {
+        String fileName = "src/test/java/org/roilat/work/pdf/2015111611194967923.pdf";
+        String newFileName = "src/test/java/org/roilat/work/pdf/2015111611194967923_bak.pdf";
+        PdfReader reader = new PdfReader(fileName);
+        PDFParseUtilBeta.splitPDFFile(fileName, newFileName, 1, 1);
+        Rectangle rt = reader.getPageSize(1);
+        System.out.println(reader.getPageContent(1).length);
+        System.out.println(reader.getPageResources(1));
+        System.out.println(rt);
+
     }
 
 }
