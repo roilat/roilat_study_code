@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
@@ -17,13 +16,18 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.StringUtils;
 
+/**
+ * 以处以iText5.x实现
+ * 
+ * @author roilat-J
+ * @version $Id: PDFParseUtilBetaTest.java, v 0.1 2018年6月25日 上午11:10:11 roilat-J Exp $
+ */
 public class PDFParseUtilBetaTest {
 
     @SuppressWarnings("resource")
     @Test
-    public void testParseSinglePdf() throws IOException {
+    public void testParseFPdfs() throws IOException {
         String filePath = "D:\\文件下载\\pdf\\pdf\\";
         String savePath = null;
         PDFParseUtilBeta parseUtilBeta = new PDFParseUtilBeta();
@@ -63,7 +67,7 @@ public class PDFParseUtilBetaTest {
                     JSONObject data = datas.getJSONObject(i);
                     //遍历所有列
                     Iterator<Entry<String, Object>> iter = data.entrySet().iterator();
-                    Formatter formatter = new Formatter();
+                    //Formatter formatter = new Formatter();
                     while(iter.hasNext()) {
                         Entry<String, Object> item = iter.next();
                         String value = (String) item.getValue();
@@ -92,7 +96,13 @@ public class PDFParseUtilBetaTest {
     }
     
     @Test
-    public void test() throws IOException {
+    public void testParseSinglePdf() throws Exception {
+        PDFParseUtilBeta parseUtilBeta = new PDFParseUtilBeta();
+        System.out.println(parseUtilBeta.parseSinglePdf(new File("src/test/java/org/roilat/work/pdf/2015111611194967923.pdf")));
+    }
+    
+    @Test
+    public void testSplitPDFFile() throws IOException {
         String fileName = "src/test/java/org/roilat/work/pdf/2015111611194967923.pdf";
         String newFileName = "src/test/java/org/roilat/work/pdf/2015111611194967923_bak.pdf";
         PdfReader reader = new PdfReader(fileName);
@@ -103,5 +113,7 @@ public class PDFParseUtilBetaTest {
         System.out.println(rt);
 
     }
+
+
 
 }

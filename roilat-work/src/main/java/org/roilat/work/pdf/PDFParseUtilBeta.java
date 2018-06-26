@@ -33,6 +33,12 @@ import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.TextRenderInfo;
 import com.itextpdf.text.pdf.parser.Vector;
 
+/**
+ * 以处以iText5.x实现
+ * 
+ * @author roilat-J
+ * @version $Id: PDFParseUtilBeta.java, v 0.1 2018年6月25日 上午11:10:43 roilat-J Exp $
+ */
 public class PDFParseUtilBeta {
 
     public final String TABLE_FIRST_HEAD_STRING = "序号";
@@ -171,9 +177,9 @@ public class PDFParseUtilBeta {
         PdfReader reader = new PdfReader(new FileInputStream(file));
         List<TextChunk> list = this.parsePDF(reader);
         //System.out.println("---------------------------分隔线---------------------------------------");
-        /*for (TextChunk textChunk : list) {
+        for (TextChunk textChunk : list) {
             System.out.println(textChunk.getText() + "(" + textChunk.getStartLocation() + "---" + textChunk.getEndLocation()+")");
-        }*/
+        }
 
         List<TableTr> tableTrs = this.doCalcTr(list);
         /*for (Iterator<TableTr> iterator = tableTrs.iterator(); iterator.hasNext();) {
