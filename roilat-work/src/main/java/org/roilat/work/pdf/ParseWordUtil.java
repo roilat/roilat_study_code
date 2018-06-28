@@ -26,13 +26,23 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.roilat.study.utils.File2HexPrintUtil;
-
 public class ParseWordUtil {
+    
+    enum DocType{
+        DOCX(".docx"),
+        DOC(".doc");
+        String fileSuffix;
+        DocType(String fileSuffix){
+            this.fileSuffix = fileSuffix;
+        }
+        public String toString() {
+            return this.fileSuffix;
+        }
+    }
 
     @SuppressWarnings("resource")
     public static void parseWords(String pdfPath, String successPath, String failPath,
-                                  String firstTitleName) throws IOException {
+                                  String firstTitleName,DocType docType) throws IOException {
         String savePath = null;
         File file = new File(pdfPath);
         if (file.exists()) {
@@ -42,9 +52,16 @@ public class ParseWordUtil {
             int fail = 0;
             List<JSONObject> list = new ArrayList<JSONObject>();
             for (File f : files) {
-                if (f.getName().endsWith(".docx")) {
+                if (f.getName().endsWith(docType.toString())) {
                     try {
-                        JSONObject obj = parseSingleDocx(f, firstTitleName);
+                        JSONObject obj = null;
+                        if (DocType.DOCX.equals(docType)) {
+                            obj = parseSingleDocx(f, firstTitleName);
+                        }else if (DocType.DOC.equals(docType)){
+                            obj = parseSingleDoc(f, firstTitleName);
+                        }else {
+                            return;
+                        }
                         if (obj != null) {
                             list.add(obj);
                             savePath = successPath;
@@ -57,10 +74,12 @@ public class ParseWordUtil {
                         savePath = failPath;
                         fail += 1;
                     } finally {
-                        FileChannel fc = new FileOutputStream(
-                            savePath + File.separator + fileCount++ + "-" + f.getName())
-                                .getChannel();
-                        new FileInputStream(f).getChannel().transferTo(0, f.length(), fc);
+                        if(savePath != null) {
+                            FileChannel fc = new FileOutputStream(
+                                savePath + File.separator + fileCount++ + "-" + f.getName())
+                                    .getChannel();
+                            new FileInputStream(f).getChannel().transferTo(0, f.length(), fc);
+                        }
                     }
                 }
             }
@@ -90,9 +109,11 @@ public class ParseWordUtil {
                         key = (key != null)
                             ? (key.length() > 17) ? key.substring(0, 17) + "..." : key
                             : "";
-                        content.append(String.format("%1$20s", value));
+                        
                         if (i == 0) {
                             head.append(String.format("%1$20s", key));
+                        }else {
+                            content.append(String.format("%1$20s", value));
                         }
                     } //end while
                     content.append("\n");
@@ -161,11 +182,12 @@ public class ParseWordUtil {
         return null;
     }
 
+    @SuppressWarnings("resource")
     public static JSONObject parseSingleDoc(File f, String firstTitleName) {
         try (FileInputStream in = new FileInputStream(f); //载入文档  
                 POIFSFileSystem pfs = new POIFSFileSystem(in);
-                HWPFDocument hwpf = new HWPFDocument(pfs);) {
-
+                ) {
+            HWPFDocument hwpf = new HWPFDocument(pfs);
             Range range = hwpf.getRange();//得到文档的读取范围  
             TableIterator it = new TableIterator(range);
             //迭代文档中的表格  
@@ -238,7 +260,7 @@ public class ParseWordUtil {
         String failPath = "D:\\文件下载\\word\\fail\\";
         String successPath = "D:\\文件下载\\word\\success\\";
         String firstTitleName = "序号";
-        ParseWordUtil.parseWords(filePath, successPath, failPath, firstTitleName);
+        ParseWordUtil.parseWords(filePath, successPath, failPath, firstTitleName,DocType.DOC);
 
     }
 }

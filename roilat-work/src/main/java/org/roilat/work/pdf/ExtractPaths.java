@@ -173,7 +173,7 @@ public class ExtractPaths {
             final List<PathConstructionRenderInfo> pathInfos = new ArrayList<>();
         };
 
-        try (InputStream resource = getClass().getResourceAsStream("2015111611194967923.pdf")) {//testColor.pdf
+        try (InputStream resource = getClass().getResourceAsStream("testColor.pdf")) {//2015111611194967923.pdf
             PdfReader pdfReader = new PdfReader(resource);
 
             for (int page = 1; page <= pdfReader.getNumberOfPages(); page++) {

@@ -321,7 +321,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>3.0</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.jtds</groupId>
 			<artifactId>jtds</artifactId>
@@ -611,11 +611,7 @@
 			<version>1.1.1.6</version>
 		</dependency>
 		<!-- cn.roilat.study.algorithm.compress.compare 需要这些依赖 -->
-		<dependency>
-			<groupId>org.jgroups</groupId>
-			<artifactId>jgroups-raft</artifactId>
-			<version>0.2</version>
-		</dependency>
+
 		<!-- <dependency> <groupId>com.bpnet</groupId> <artifactId>gen</artifactId> 
 			<version>0.0.3-SNAPSHOT</version> </dependency> -->
 		<dependency>
@@ -636,6 +632,11 @@
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcpkix-jdk15on</artifactId>
 			<version>1.59</version>
+		</dependency>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-runtime</artifactId>
+			<version>4.7</version>
 		</dependency>
 	</dependencies>
 </project>
