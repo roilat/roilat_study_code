@@ -7,6 +7,8 @@ package cn.roilat.study.algorithm.basic.sort;
  * 3、针对所有的元素重复以上的步骤，除了最后一个。
  * 4、持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
  * 
+ * 优化：某一轮结束位置为j，但是这一轮的最后一次交换发生在lastSwap的位置，则lastSwap到j之间是排好序的，下一轮的结束点就不必是j--了，而直接到lastSwap即可
+ * 
  * @author roilat-J
  * @version $Id: BubbleSort.java, v 0.1 2018年6月29日 下午4:09:31 roilat-J Exp $
  */
@@ -21,10 +23,13 @@ public class BubbleSort extends BaseSort {
         System.out.println("start to do BubbleSort...");
         int end = pos + len;
         assert start <= end && pos <= start;
-        for (int i = end - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
+        //作为优化，数组长度为12，如果第n(n<12)次在第6个数之后未发生交换，且知第六个数为前5个数中最大的数，可知后边的数据必然已经排好序，所以不必再j--而是直接跳到lastSwap所在的位置。
+        for (int lastSwap = 0, i = end - 1; i > start; i = lastSwap) {//每一轮要初始化为0，防止某一轮未发生交换，lastSwap保留上一轮的值进入死循环
+            lastSwap = 0;
+            for (int j = start; j < i; j++) {
                 if (a[j] > a[j + 1]) {
                     exchange(a, j, j + 1);
+                    lastSwap = j;//最后一次交换位置的坐标
                 }
             }
         }

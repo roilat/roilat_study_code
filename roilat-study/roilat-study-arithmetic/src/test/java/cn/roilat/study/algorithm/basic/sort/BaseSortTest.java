@@ -1,5 +1,7 @@
 package cn.roilat.study.algorithm.basic.sort;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 
 public class BaseSortTest extends TestCase {
@@ -14,10 +16,11 @@ public class BaseSortTest extends TestCase {
     }
 
     public void printArray(Object[] o) {
-        for (Object object : o) {
+        /*for (Object object : o) {
             System.out.print(object + " ");
         }
-        System.out.println();
+        System.out.println();*/
+        System.out.println(Arrays.toString(o));
     }
 
     public void testExchange() {

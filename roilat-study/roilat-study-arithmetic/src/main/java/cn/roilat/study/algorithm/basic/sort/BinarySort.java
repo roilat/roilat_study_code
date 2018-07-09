@@ -1,7 +1,7 @@
 package cn.roilat.study.algorithm.basic.sort;
 
 /**
- * 二分排序
+ * 二分排序（属于插入排序，可以使用start参数）
  * 二分法插入排序是在插入第i个元素时，对前面的0～i-1元素进行折半，先跟他们中间的那个元素比，如果小，则对前半再进行折半，否则对后半进行折半，直到left>right，然后再把第i个元素前1位与目标位置之间的所有元素后移，再把第i个元素放在目标位置上。
  * 这里默认使用升序
  * 部分思想来源于{@link}java.util.ComparableTimSort

@@ -21,12 +21,20 @@ public class BaseSort {
         }
     }
 
-    public void sort(Integer[] a, int pos, int len) {
+    /**
+     * 
+     * 
+     * @param a
+     * @param pos
+     * @param len
+     * @param ifInsertSort  是否为插入类排序
+     */
+    public void sort(Integer[] a, int pos, int len, boolean ifInsertSort) {
         assert pos >= 0 && len > 0 && a.length >= pos + len;
         if (len < 2) {
             return;
         }
-        int initRunLen = countRunAndMakeAscending(a, pos, pos + len - 1);
+        int initRunLen = ifInsertSort ? countRunAndMakeAscending(a, pos, pos + len - 1) : pos;
         doSort(a, pos, len, initRunLen);
     }
 
@@ -34,6 +42,13 @@ public class BaseSort {
 
     }
 
+    /**
+     * 
+     * 
+     * @param a
+     * @param x
+     * @param y
+     */
     protected void exchange(Integer[] a, int x, int y) {
         a[x] = a[x] ^ a[y];//$x^$xy
         a[y] = a[x] ^ a[y];//$x^$y^$y=$x
