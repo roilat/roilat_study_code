@@ -1,4 +1,4 @@
-package cn.roilat.study.socket;
+package cn.roilat.study.socket.demo;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

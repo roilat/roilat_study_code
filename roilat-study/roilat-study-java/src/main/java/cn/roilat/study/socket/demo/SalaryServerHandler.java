@@ -1,4 +1,4 @@
-package cn.roilat.study.socket;
+package cn.roilat.study.socket.demo;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;

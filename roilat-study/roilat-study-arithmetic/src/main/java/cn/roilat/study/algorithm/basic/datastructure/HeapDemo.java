@@ -1,13 +1,22 @@
 package cn.roilat.study.algorithm.basic.datastructure;
 
-import java.util.Arrays;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import cn.roilat.study.algorithm.basic.display.tree.IntNode;
+import cn.roilat.study.algorithm.basic.display.tree.TreePanel;
 
 public class HeapDemo {
     public static void main(String[] args) {
-        Integer[] array = { 10, 2, 49, 20, 11, 84, 44, 23, 41, 84, 12, 22 };
-        System.out.println(Arrays.toString(array));
+        Integer[] array = { 10, 2, 49, 20, 11, 84, 44, 23, 41, 84, 12, 22, 33 };
         Heap heap = new Heap(array);
-        System.out.println(Arrays.toString(heap.toArray()));
+        heap.display();
+        System.out.println(heap.pop(true));
+        heap.display();
+
     }
 }
 
@@ -31,8 +40,37 @@ class Heap {
         return array;
     }
 
-    public void pop() {
+    public int pop(boolean keepOrder) {
+        return keepOrder ? doPopOrdered() : popUnordered();
+    }
 
+    /**
+     * 保持堆的有序性
+     * 
+     * @return
+     */
+    private int popUnordered() {
+        exchange(0, array.length - 1);
+        int ret = array[array.length - 1];
+        Integer[] newArray = new Integer[array.length - 1];
+        System.arraycopy(array, 0, newArray, 0, newArray.length);
+        array = newArray;
+        this.display();
+        shiftDown(0);
+        return ret;
+    }
+
+    /**
+     * 仅保持堆的特性，无序
+     * 
+     * @return
+     */
+    private int doPopOrdered() {
+        int ret = array[array.length - 1];
+        Integer[] newArray = new Integer[array.length - 1];
+        System.arraycopy(array, 1, newArray, 0, newArray.length);
+        array = newArray;
+        return ret;
     }
 
     /**
@@ -47,6 +85,7 @@ class Heap {
             }
             if (array[pos] > array[i]) {
                 exchange(pos, i);
+                pos = i;
                 i = i * 2 + 1;
             } else {
                 break;
@@ -119,4 +158,29 @@ class Heap {
         } //否则
         array[i] = tmp;
     }
+
+    public void display() {
+
+        TreePanel panel1 = new TreePanel(TreePanel.CHILD_ALIGN_RELATIVE);
+        panel1.setTree(new IntNode(array));
+        contentPane.setLayout(new GridLayout(++gridSize, 1));
+        contentPane.add(panel1);
+
+        frame.add(contentPane, BorderLayout.CENTER);
+        initDisplay(1200, gridSize * 400);
+    }
+
+    private void initDisplay(int witdh, int height) {
+        frame.setSize(witdh, height);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private JFrame frame       = new JFrame();
+    private JPanel contentPane = new JPanel();
+    /*    private JScrollPane jScrollPane = new JScrollPane();
+    {
+        jScrollPane.add(contentPane);
+    }*/
+    private int    gridSize    = 0;
 }
