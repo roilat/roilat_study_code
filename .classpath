@@ -28,7 +28,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/main/libs/taobao-sdk-java-auto_1479188381469-20180523-source.jar"/>
-	<classpathentry kind="lib" path="src/main/libs/taobao-sdk-java-auto_1479188381469-20180523.jar" sourcepath="src/main/libs/taobao-sdk-java-auto_1479188381469-20180523-source.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
