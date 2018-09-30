@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.insert;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 原始插入排序
@@ -19,9 +21,12 @@ public class InsertSort extends BaseSort {
             int temp = a[i];
             int j = i - 1;
             while (j >= start && a[j] > temp) {
+                cycleTimes ++;
+                exchangeTimes ++;
                 a[j + 1] = a[j];
                 j--;
             }
+            exchangeTimes ++;
             a[j + 1] = temp;
         }
         System.out.println("start to do InsertSort...");

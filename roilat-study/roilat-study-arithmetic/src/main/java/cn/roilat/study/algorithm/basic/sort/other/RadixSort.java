@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.other;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 基数排序

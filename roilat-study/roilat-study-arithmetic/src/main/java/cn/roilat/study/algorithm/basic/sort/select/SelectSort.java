@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.select;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 选择排序：每一次从待排序的数据元素中选出最小（或最大）的一个元素，
@@ -21,6 +23,7 @@ public class SelectSort extends BaseSort {
         for (int i = start; i < end - 1; i++) {
             int k = i;
             for (int j = i + 1; j < end; j++) {
+                cycleTimes++;
                 if (a[k] > a[j]) {
                     k = j;
                 }

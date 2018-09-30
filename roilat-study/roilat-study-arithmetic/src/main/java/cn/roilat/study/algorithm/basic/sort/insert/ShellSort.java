@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.insert;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 希尔排序

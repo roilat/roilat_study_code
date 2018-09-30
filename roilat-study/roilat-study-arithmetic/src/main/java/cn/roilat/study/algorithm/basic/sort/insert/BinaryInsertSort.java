@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.insert;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 二分排序（属于插入排序，可以使用start参数）
@@ -9,7 +11,7 @@ package cn.roilat.study.algorithm.basic.sort;
  * @author roilat-J
  * @version $Id: BinarySort.java, v 0.1 2018年6月29日 下午4:23:54 roilat-J Exp $
  */
-public class BinarySort extends BaseSort {
+public class BinaryInsertSort extends BaseSort {
 
     @Override
     public void doSort(Integer[] a, int pos, int len, int start) {

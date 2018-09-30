@@ -1,7 +1,9 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.exchange;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
- * 
+ * 冒泡排序
  * 1、比较相邻的元素。如果第一个比第二个大，就交换他们两个。
  * 2、对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。
  * 3、针对所有的元素重复以上的步骤，除了最后一个。
@@ -12,7 +14,7 @@ package cn.roilat.study.algorithm.basic.sort;
  * @author roilat-J
  * @version $Id: BubbleSort.java, v 0.1 2018年6月29日 下午4:09:31 roilat-J Exp $
  */
-public class BubbleSort extends BaseSort {
+public class SimpleBubbleSort extends BaseSort {
 
     /**
      * 升序
@@ -20,19 +22,17 @@ public class BubbleSort extends BaseSort {
      */
     @Override
     protected void doSort(Integer[] a, int pos, int len, int start) {
-        System.out.println("start to do BubbleSort...");
+        System.out.println("start to do SimpleBubbleSort...");
         int end = pos + len;
         assert start <= end && pos <= start;
-        //作为优化，数组长度为12，如果第n(n<12)次在第6个数之后未发生交换，且知第六个数为前5个数中最大的数，可知后边的数据必然已经排好序，所以不必再j--而是直接跳到lastSwap所在的位置。
-        for (int lastSwap = 0, i = end - 1; i > start; i = lastSwap) {//每一轮要初始化为0，防止某一轮未发生交换，lastSwap保留上一轮的值进入死循环
-            lastSwap = 0;
+        for (int i = end - 1; i > start; i--) {
             for (int j = start; j < i; j++) {
+                cycleTimes++;//循环次数
                 if (a[j] > a[j + 1]) {
                     exchange(a, j, j + 1);
-                    lastSwap = j;//最后一次交换位置的坐标
                 }
             }
         }
-        System.out.println("end to do BubbleSort...");
+        System.out.println("end to do SimpleBubbleSort...");
     }
 }

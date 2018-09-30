@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.exchange;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 
@@ -37,19 +39,24 @@ public class QuicklySort extends BaseSort {
         int pivot = a[left];
         while (left < right) {
             while (left < right && a[right] >= pivot) {
+                cycleTimes ++;//循环次数
                 right--;
             }
             if (left < right) {//
                 a[left++] = a[right];
+                exchangeTimes++;
             }
             while (left < right && a[left] <= pivot) {
+                cycleTimes ++;//循环次数
                 left++;
             }
             if (left < right) {
                 a[right--] = a[left];
+                exchangeTimes++;
             }
         }
         a[left] = pivot;
+        exchangeTimes++;
         return left;
     }
 }

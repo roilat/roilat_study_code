@@ -1,4 +1,6 @@
-package cn.roilat.study.algorithm.basic.sort;
+package cn.roilat.study.algorithm.basic.sort.merge;
+
+import cn.roilat.study.algorithm.basic.sort.BaseSort;
 
 /**
  * 归并排序
