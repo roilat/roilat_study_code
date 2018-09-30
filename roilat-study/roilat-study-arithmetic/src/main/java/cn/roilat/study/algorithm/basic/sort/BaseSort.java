@@ -50,7 +50,7 @@ public class BaseSort {
      * @param y
      */
     protected void exchange(Integer[] a, int x, int y) {
-        a[x] = a[x] ^ a[y];//$x^$xy
+        a[x] = a[x] ^ a[y];//$x^$y
         a[y] = a[x] ^ a[y];//$x^$y^$y=$x
         a[x] = a[x] ^ a[y];//$x^$y^$x=$y;y此时已经等于x的值；
     }

@@ -36,14 +36,16 @@ public class TemplateEngine {
 	        // 设置换行符
 	        setEnter(System.getProperty("line.separator"));
 	        // 读取模板文件
-	        String template = readTemplate("f://user.tpl");
+	        String template = "hello,this is ${name}, my id is ${id}, sex is ${sex}, age is ${age}, description is ${description}";//readTemplate("f://user.tpl");
 	        // 替换模板变量
 	        String dataString = replaceArgs(template, user);
+	        
+	        System.out.println(dataString);
 	        // 追加写入配置文件
-	        writeConf("f://user.conf", dataString, true);
+	        //writeConf("f://user.conf", dataString, true);
 	        // 测试删除对象
-	        TemplateEngine te = new TemplateEngine("f://user.conf");
-	        te.deleteObject("1");
+	       /* TemplateEngine te = new TemplateEngine("f://user.conf");
+	        te.deleteObject("1");*/
 	    }
 	 
 	    /**

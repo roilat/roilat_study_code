@@ -8,22 +8,33 @@ import java.util.concurrent.CountDownLatch;
  * @author roilat-J
  */
 public class Test3 {
-	public static void main(String[] args) throws InterruptedException {
-		// TODO 自动生成的方法存根
 
-		CountDownLatch countDownLatch = new CountDownLatch(2);
-		Worker3 worker0 = new Worker3("worker0", (long) (Math.random() * 2000 + 3000), countDownLatch);
-		Worker3 worker1 = new Worker3("worker1", (long) (Math.random() * 2000 + 3000), countDownLatch);
-		Worker3 worker2 = new Worker3("worker2", (long) (Math.random() * 2000 + 3000), countDownLatch);
+    public static Long start = System.currentTimeMillis();
 
-		worker0.start();
-		worker1.start();
-		countDownLatch.await();
+    public static void main(String[] args) throws InterruptedException {
+        // TODO 自动生成的方法存根
 
-		System.out.println("准备工作就绪");
-		worker2.start();
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        Worker3 worker0 = new Worker3("worker0", (long) (Math.random() * 2000 + 3000),
+            countDownLatch);
+        Worker3 worker1 = new Worker3("worker1", (long) (Math.random() * 2000 + 3000),
+            countDownLatch);
+        Worker3 worker2 = new Worker3("worker2", (long) (Math.random() * 2000 + 3000),
+            countDownLatch);
 
-	}
+        worker0.start();
+        worker1.start();
+        countDownLatch.await();
+
+        print("准备工作就绪");
+        worker2.start();
+
+    }
+
+    public static void print(String s) {
+        Long end = System.currentTimeMillis();
+        System.out.println(s + "(" + (end - start) + ")");
+    }
 }
 
 /**
@@ -31,36 +42,37 @@ public class Test3 {
  */
 class Worker3 extends Thread {
 
-	// 工作者名
-	private String name;
-	// 第一阶段工作时间
-	private long time;
+    // 工作者名
+    private String         name;
+    // 第一阶段工作时间
+    private long           time;
 
-	private CountDownLatch countDownLatch;
+    private CountDownLatch countDownLatch;
 
-	public Worker3(String name, long time, CountDownLatch countDownLatch) {
-		this.name = name;
-		this.time = time;
-		this.countDownLatch = countDownLatch;
-	}
+    public Worker3(String name, long time, CountDownLatch countDownLatch) {
+        this.name = name;
+        this.time = time;
+        this.countDownLatch = countDownLatch;
+    }
 
-	@Override
-	public void run() {
-		// TODO 自动生成的方法存根
-		try {
-			System.out.println(name + "开始工作");
-			Thread.sleep(time);
-			System.out.println(name + "第一阶段工作完成");
+    @Override
+    public void run() {
+        // TODO 自动生成的方法存根
+        try {
+            Test3.print(name + "开始工作");
+            Thread.sleep(time);
+            Test3.print(name + "第一阶段工作完成" + time);
 
-			countDownLatch.countDown();
+            countDownLatch.countDown();
 
-			Thread.sleep(2000); // 这里就姑且假设第二阶段工作都是要2秒完成
-			System.out.println(name + "第二阶段工作完成");
-			System.out.println(name + "工作完成，耗费时间=" + (time + 2000));
+            Thread.sleep(5000); // 这里就姑且假设第二阶段工作都是要2秒完成
+            Test3.print(name + "第二阶段工作完成");
+            Test3.print(name + "工作完成，耗费时间=" + (time + 5000));
 
-		} catch (InterruptedException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-	}
+        } catch (InterruptedException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
+    }
+
 }

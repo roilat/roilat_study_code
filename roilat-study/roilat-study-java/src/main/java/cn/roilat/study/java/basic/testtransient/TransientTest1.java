@@ -20,10 +20,12 @@ public class TransientTest1 {
 		User1 user = new User1();
 		user.setUsername("Alexia");
 		user.setPasswd("123456");
+		user.a = new A();
 
 		System.out.println("read before Serializable: ");
 		System.out.println("username: " + user.getUsername());
 		System.err.println("password: " + user.getPasswd());
+		System.err.println("a: " + user.a);
 
 		try {
 			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("src/main/java/cn/roilat/study/java/basic/testtransient/user.txt"));
@@ -43,6 +45,8 @@ public class TransientTest1 {
 			System.out.println("\nread after Serializable: ");
 			System.out.println("username: " + user.getUsername());
 			System.err.println("password: " + user.getPasswd());
+		     System.err.println("a: " + user.a);
+
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -54,11 +58,18 @@ public class TransientTest1 {
 	}
 }
 
+/**
+ * 如果未实现Serializable接口,将无法进行序列化
+ * 
+ * @author roilat-J
+ * @version $Id: TransientTest1.java, v 0.1 2018年9月28日 上午10:41:35 roilat-J Exp $
+ */
 class User1 implements Serializable {
 	private static final long serialVersionUID = 8294180014912103005L;
 
 	private String username;
 	private transient String passwd;
+	public A a;//变量如果是用户自定义类变量，则该类需要实现Serializable接口
 
 	public String getUsername() {
 		return username;
@@ -76,4 +87,18 @@ class User1 implements Serializable {
 		this.passwd = passwd;
 	}
 
+}
+
+/**
+ * 成员变量是类时，也要实现Serializable接口
+ * 
+ * 
+ * @author roilat-J
+ * @version $Id: TransientTest1.java, v 0.1 2018年9月28日 下午3:53:04 roilat-J Exp $
+ */
+class A implements Serializable{
+
+    /**  */
+    private static final long serialVersionUID = -1893238706189587565L;
+    
 }

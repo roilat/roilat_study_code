@@ -34,12 +34,12 @@ public class BinaryTreeSort extends BaseSort {
     }
 
     private void addNode(TreeNode node, Integer val, int index) {
-        if (node == null) {
+        /*if (node == null) {
             node = new TreeNode();
             node.currrentVal = val;
             node.index = index;
             return;
-        }
+        }*/
         if (node.currrentVal > val) {//小于当前节点,为左节点
             if (node.left == null) {
                 node.left = new TreeNode();

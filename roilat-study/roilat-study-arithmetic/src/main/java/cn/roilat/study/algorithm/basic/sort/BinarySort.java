@@ -47,7 +47,7 @@ public class BinarySort extends BaseSort {
             a[left] = pivot;
             start++;
         }
-        System.out.println("start to do BinarySort...");
+        System.out.println("end to do BinarySort...");
 
     }
 

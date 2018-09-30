@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--[if lt IE 9]>
+<script src="html5shiv.js"></script>
+<![endif]-->
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+header, section, footer, aside, nav, article, figure {
+	display: block;
+}
+
+header, ,nav, footer {
+	width: 1000px;
+}
+
+section, article {
+	height: 200px;
+	width: 400px;
+}
+
+aside {
+	height: 200px;
+	width: 600px;
+}
+</style>
+</head>
+<body>
+	<header> 我是header部分 </header>
+	<nav>导航栏</nav>
+	<section>我是section</section>
+	<article>
+		<header>我是article的header</header>
+		<div>我是arcticle内容</div>
+		<div>我是arcticle内容</div>
+	</article>
+	<footer>我是footer</footer>
+	<aside>我是aside</aside>
+
+	<article>
+		<header>
+			<h1>article元素使用方法</h1>
+			<p>
+				发表日期：
+				<time pubdate="pubdate" >2017/2/9</time>
+				<time pubdate="pubdate">123</time>
+			</p>
+		</header>
+		<p>此标签里显示的是article整个文章的主要内容，，下面的section元素里是对该文章的评论</p>
+		<section>
+			<h2>评论</h2>
+			<article>
+				<header>
+					<h3>发表者：Galin</h3>
+					<p>1小时前</p>
+				</header>
+				<p>这篇文章很不错啊，顶一下！</p>
+			</article>
+			<article>
+				<header>
+					<h3>发表者：木木</h3>
+					<p>1小时前</p>
+				</header>
+				<p>这篇文章很不错啊，对article解释的很详细</p>
+			</article>
+		</section>
+	</article>
+</body>
+</html>

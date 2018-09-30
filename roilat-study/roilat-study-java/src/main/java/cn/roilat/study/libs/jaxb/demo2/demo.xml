@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<graphMap namespace="gsmartcenter">
+  <configs>
+      <insert id="COMPANY-BASE-INFO-INSERT" dbType="akg">
+          <actions>
+              <insertVertex label="FaHeCompany" primaryKey="#testPrimaryKey#">
+                <props>
+                  <prop name="name" type="text" value="${baseInfo.companyName.fieldValue}" />
+                  <prop name="englishName" type="text" value="${baseInfo.companyEnglishName.fieldValue}" />
+                  <prop name="aliGroupHoldingsRatio" type="float" value="${baseInfo.aliGroupHoldingsRatio.fieldValue}" />
+                  <prop name="addressValidity" type="date" format="yyyy/MM/dd" value="${baseInfo.addressValidity.fieldValue}"/>
+                  <prop name="isHaveAgencyStaff" type="boolean" value="${baseInfo.isHaveAgencyStaff.fieldValue}"/>
+                  <prop name="testInt" type="int" value="${baseInfo.testInt.fieldValue}"/>
+                </props>
+              </insertVertex>
+        </actions>
+      </insert>
+
+      <insert id="TOPMANAGER-INFO-INSERT" dbType="akg">
+        <actions>
+            <insertVertex label="FaHePerson" primaryKey="#testPrimaryKey#">
+              <props>
+                <prop name="name" type="text" value="${man.name.fieldValue}" />
+                <prop name="identityNo" type="text" value="${man.identityNo.fieldValue}" />
+                <prop name="identityType" type="text" value="${man.identityType.fieldValue}" />
+              </props>
+            </insertVertex>
+            <insertEdge label="executives">
+              <startV label="FaHeCompany" primaryKey="#companyPrimaryKey#" />
+              <endV label="FaHePerson" primaryKey="#testPrimaryKey#" />
+              <props>
+                <prop name="type" type="text" value="${attributes.type.fieldValue}" />
+                <prop name="duty" type="text" value="${attributes.duty.fieldValue}" />
+                <prop name="appointmentDate" type="date" format="yyyy/MM/dd" value="${attributes.appointmentDate.fieldValue}" />
+              </props>
+            </insertEdge>
+        
+        </actions>
+      </insert>
+
+       <select id="COMPANYLIST-INFO-SELECT" dbType="akg">
+          <actions>
+              <mainQuery as="a">
+                <script >
+                    <![CDATA[
+                        g.V().hasLabel('FaHeCompany').or(has('name',X.like('%#keyword#%''),has('englishName',X.like('%#keyword#%')),has('ouCode',X.like('%#keyword#%'))).limit(500)
+                    ]]>
+                </script>
+
+            </mainQuery>
+            <subQuery as="b">
+                    <script >
+                      <![CDATA[
+                          g.V().hasLabel('FaHeCompany').has('primaryKey','${primaryKey}').outE('legalRepresentative').inV()
+                      ]]>
+                  </script>
+
+           </subQuery>
+
+      </actions>
+      <!-- <resultMap resultType="fobject" multiple="true">
+          <fo>
+            <props>
+              <prop name="companyId" value="${a.primaryKey}" />
+              <prop name="ouCode" value="${a.ouCode}" />
+              <prop name="name" value="${a.name}" />
+              <prop name="englishName" value="${a.englishName}" />
+              <prop name="regCapital" value="${a.regCapital}" />
+              <prop name="legalRepresentative" value="${b.name}" />
+              <prop name="isBranch" value="${a.isBranch}" />
+            </props>
+          </fo>
+
+      </resultMap> -->
+       <resultMap resultType="object" multiple="true">
+          <obj>
+            <script>
+                    <![CDATA[
+                        {
+                          baseInfo:{
+                              companyId:{
+                                fieldKey:'companyId',
+                                fieldValue:'${a.primaryKey}'
+                              },
+                              ouCode:{
+                                fieldKey:'ouCode',
+                                fieldValue:'${a.ouCode}'
+                              },
+                              name:{
+                                fieldKey:'name',
+                                fieldValue:'${a.name}'
+                              },
+                              englishName:{
+                                fieldKey:'englishName',
+                                fieldValue:'${a.englishName}'
+                              },
+                              regCapital:{
+                                fieldKey:'regCapital',
+                                fieldValue:'${a.regCapital}'
+                              },
+                              legalRepresentative:{
+                                fieldKey:'legalRepresentative',
+                                fieldValue:'${b.name}'
+                              },
+                              isBranch:{
+                                fieldKey:'isBranch',
+                                fieldValue:'${a.isBranch}'
+                              }
+                          }
+
+                        }
+                    ]]>
+            </script>
+          </obj>
+
+      </resultMap> 
+
+      </select>
+  
+  </configs>
+</graphMap>
