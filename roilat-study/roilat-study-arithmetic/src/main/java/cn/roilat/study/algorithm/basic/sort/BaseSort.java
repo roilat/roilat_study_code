@@ -2,8 +2,8 @@ package cn.roilat.study.algorithm.basic.sort;
 
 public class BaseSort {
 
-    protected int exchangeTimes;//交换次数
-    protected int cycleTimes;   //循环次数
+    protected long exchangeTimes;//交换次数
+    protected long cycleTimes;   //循环次数
     protected long timeCost;     //时间消耗
 
     /**
@@ -101,11 +101,11 @@ public class BaseSort {
         return runHi - low;
     }
 
-    public int getExchangeTimes() {
+    public long getExchangeTimes() {
         return exchangeTimes;
     }
 
-    public int getCycleTimes() {
+    public long getCycleTimes() {
         return cycleTimes;
     }
 

@@ -14,6 +14,8 @@ import cn.roilat.study.algorithm.basic.sort.insert.ShellSort;
 import cn.roilat.study.algorithm.basic.sort.merge.MergeSort;
 import cn.roilat.study.algorithm.basic.sort.merge.MergeSort2;
 import cn.roilat.study.algorithm.basic.sort.other.RadixSort;
+import cn.roilat.study.algorithm.basic.sort.select.HeapSort;
+import cn.roilat.study.algorithm.basic.sort.select.SelectSort;
 import junit.framework.TestCase;
 
 public class BaseSortTest extends TestCase {
@@ -27,12 +29,44 @@ public class BaseSortTest extends TestCase {
         System.out.println("------testRangeRevert------");
     }
 
+    /**
+     * 当o数据较大时，如果长度为100000的数组时，输出会占用较长的时候，而不是计算时使用的。
+     * 
+     * @param o
+     */
     public void printArray(Object[] o) {
         /*for (Object object : o) {
             System.out.print(object + " ");
         }
         System.out.println();*/
         System.out.println(Arrays.toString(o));
+    }
+    
+    public void testQuicklySort() throws Exception {
+        int len = 10000;
+        Integer[] originArr = genArray(len);
+        //printArray(originArr);
+        BaseSort quickSort = new QuicklySort();
+        quickSort.sort(originArr, 0, len, false);//先让数据有序且正序
+        printSortInfo(quickSort);
+        /**
+         * len = 10000;
+            start to do QuicklySort...
+            end to do QuicklySort...
+            exchange.QuicklySort waste time is :8,cycleTimes:138531,exchangeTimes:53415
+            len = 100000;
+            start to do QuicklySort...
+            end to do QuicklySort...
+            exchange.QuicklySort waste time is :25,cycleTimes:5193728,exchangeTimes:544563
+            len = 1000000;
+            start to do QuicklySort...
+            end to do QuicklySort...
+            exchange.QuicklySort waste time is :671,cycleTimes:424618156,exchangeTimes:5410491
+            len = 10000000;
+            start to do QuicklySort...
+            end to do QuicklySort...
+            exchange.QuicklySort waste time is :179461,cycleTimes:41049000461,exchangeTimes:55258139
+         */
     }
 
     public void testExchange() {
@@ -110,19 +144,19 @@ public class BaseSortTest extends TestCase {
         快速排序处理无序数据：
         start to do QuicklySort...
         end to do QuicklySort...
-        exchange.QuicklySort waste time is :36,cycleTimes:5193728,exchangeTimes:544563
+        exchange.QuicklySort waste time is :31,cycleTimes:5193728,exchangeTimes:544563
         快速排序处理有序且正序数据：
         start to do QuicklySort...
         end to do QuicklySort...
-        exchange.QuicklySort waste time is :6703,cycleTimes:710176432,exchangeTimes:644562
+        exchange.QuicklySort waste time is :7205,cycleTimes:5005143728,exchangeTimes:644562
         快速排序处理有序且反序数据：
         start to do QuicklySort...
         end to do QuicklySort...
-        exchange.QuicklySort waste time is :5353,cycleTimes:1415209178,exchangeTimes:794519
+        exchange.QuicklySort waste time is :5667,cycleTimes:10005143770,exchangeTimes:794519
         冒泡排序的效果是这样：
         start to do BubbleSort...
         end to do BubbleSort...
-        exchange.BubbleSort waste time is :71880,cycleTimes:704381000,exchangeTimes:-1791581051
+        exchange.BubbleSort waste time is :80888,cycleTimes:4999348296,exchangeTimes:2503386245
         */
     }
 
@@ -137,6 +171,8 @@ public class BaseSortTest extends TestCase {
         sortList.add(new MergeSort());
         sortList.add(new MergeSort2());
         sortList.add(new RadixSort());
+        sortList.add(new HeapSort());
+        sortList.add(new SelectSort());
         doTestSort(1000, sortList);
         /**
         cn.roilat.study.algorithm.basic.sort.exchange.BubbleSort waste time is :14

@@ -5,11 +5,17 @@ public class TestStackOverflow {
 
     public static void main(String[] args) {
         System.out.println("no exception");
-        infinitelyRecursiveMethod(1);
+        try {
+            infinitelyRecursiveMethod(1);
+        } catch (Error e) {
+            System.out.println("Error" + count);
+        } catch (Exception e) {
+            System.out.println("Exception" + count);
+        }
     }
 
     public static void infinitelyRecursiveMethod(long a) {
-        System.out.println(count++);
+        count++;
         infinitelyRecursiveMethod(a);
     }
 
