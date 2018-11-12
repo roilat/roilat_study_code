@@ -21,6 +21,7 @@ public class TestHashMap {
         System.out.println(map1);
         System.out.println(tk11.hashCode() + "---" + tk12.hashCode());//value 相同
         System.out.println(tk11.equals(tk12));//false
+        //使用默认的equals方法
         System.out.println("hash code返回一样，但是equal 结果不一样，导致对象是两个");
 
         System.out.println("-----------------------------------------------");

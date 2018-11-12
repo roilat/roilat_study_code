@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 
+import cn.roilat.study.utils.File2HexPrintUtil;
+
 public class File2HexPrintUtilTest {
 
     @Test

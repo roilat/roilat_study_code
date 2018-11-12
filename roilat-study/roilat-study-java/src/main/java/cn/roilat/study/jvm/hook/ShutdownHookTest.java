@@ -7,6 +7,7 @@ public class ShutdownHookTest {
 			Thread.sleep(100);
 			System.out.println(Thread.currentThread().getName() + " main thread running...");
 		}
+		System.out.println(new ShutdownHookTest());
 		 Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
              @Override
              public void run() {
@@ -18,4 +19,11 @@ public class ShutdownHookTest {
          }));
 		 System.out.println(Thread.currentThread().getName() + " end...");
 	}
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("ShutdownHookTest.finalize()");
+        super.finalize();
+    }
+	
 }

@@ -1,10 +1,81 @@
 
 
 
-SpringMVC工作原理						https://www.cnblogs.com/xiaoxi/p/6164383.html
-hashcode（）和equals（）的作用、区别、联系	https://www.cnblogs.com/keyi/p/7119825.html
-JVM-String常量池与运行时常量池				https://blog.csdn.net/sugar_rainbow/article/details/68150249
-Class文件中的常量池详解（上）				https://blog.csdn.net/wangtaomtk/article/details/52267548
-类文件结构								https://blog.csdn.net/zhaojianyin/article/details/71213987
-源码查看								http://rtfcode.com/
-Object对象的hashCode()底层实现			https://blog.csdn.net/qq_33032573/article/details/78853067
+SpringMVC工作原理								https://www.cnblogs.com/xiaoxi/p/6164383.html
+hashcode（）和equals（）的作用、区别、联系			https://www.cnblogs.com/keyi/p/7119825.html
+JVM-String常量池与运行时常量池						https://blog.csdn.net/sugar_rainbow/article/details/68150249
+Class文件中的常量池详解（上）						https://blog.csdn.net/wangtaomtk/article/details/52267548
+类文件结构										https://blog.csdn.net/zhaojianyin/article/details/71213987
+源码查看										http://rtfcode.com/
+Object对象的hashCode()底层实现					https://blog.csdn.net/qq_33032573/article/details/78853067
+一文让你明白Java字节码								http://www.importnew.com/24088.html
+Java 8: 从永久代（PermGen）到元空间（Metaspace）		https://blog.csdn.net/zhushuai1221/article/details/52122880
+自己写的java.lang.String类能否被加载				https://blog.csdn.net/u013206465/article/details/47170253
+Java中禁止的包名（Prohibited package name）		https://blog.csdn.net/xy865367161/article/details/52650795
+spring手动注册bean，移除bean，获取bean				https://blog.csdn.net/zhaozhirongfree1111/article/details/72962000
+java动态代理实现与原理详细分析						https://www.cnblogs.com/gonjan-blog/p/6685611.html
+浅谈CPU,GPU,TPU,DPU,NPU,BPU					https://www.sohu.com/a/191538165_777155
+Jquery插件集									http://www.jqhtml.com/category/article/plugs
+面试官：请你谈谈Java的类加载过程						https://blog.csdn.net/ln152315/article/details/79223441?utm_source=blogxgwz0
+自定义类加载器-从.class和.jar中读取					https://segmentfault.com/a/1190000008669892
+Java类加载机制与Tomcat类加载器架构					https://blog.csdn.net/fuzhongmin05/article/details/57404890/
+深入理解Java类加载器(ClassLoader)					https://blog.csdn.net/javazejian/article/details/73413292
+JDK8的@CallerSensitive						https://blog.csdn.net/aguda_king/article/details/72355807
+JVM注解@CallSensitive							https://blog.csdn.net/HEL_WOR/article/details/50199797
+什么是 CDN										https://blog.csdn.net/lu_embedded/article/details/80519898
+OCR 技术浅析									https://www.jianshu.com/p/921c1da740b5
+源码阅读系列：源码阅读方法							https://blog.csdn.net/a910626/article/details/51985251
+https://www.zhihu.com/question/19759722
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.zhihu.com/people/rednaxelafx/activities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cnblogs/roilat!23
