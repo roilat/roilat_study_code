@@ -50,4 +50,5 @@
 		scope="prototype" />
 	<bean id="SingletonClass" class="cn.roilat.study.spring.beans.SingletonClass"
 		scope="singleton" />
+	<bean id="singletonClass" class="cn.roilat.study.spring.beans.SingletonClass" />
 </beans>
