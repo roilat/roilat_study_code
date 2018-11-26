@@ -29,9 +29,9 @@ eclipse下生成Java类图和时序图，生成UML图				https://blog.csdn.net/g
 理解 Linux 的硬链接与软链接							https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html
 ECMAScript 定义类或对象							http://www.w3school.com.cn/js/pro_js_object_defining.asp
 [eclipse]UML之AmaterasUML 插件					https://www.cnblogs.com/xuepeng0521/p/3690338.html(直接参考：https://github.com/takezoe/amateras-modeler)
-
-
-
+监事											https://baike.baidu.com/item/%E7%9B%91%E4%BA%8B/5055962?fr=aladdin
+有限公司和有限责任公司的区别							https://zhidao.baidu.com/question/4716964.html
+《Spring源码深度解析》--Spring的整体架构与容器的基本实现	https://blog.csdn.net/benhuo931115/article/details/74611464/
 
 
 

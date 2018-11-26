@@ -1,5 +1,6 @@
 package cn.roilat.study.java.collection.list;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,5 +21,8 @@ public class TestArrayAsList {
         List<?> list = Arrays.asList(str);
         //list.add("21212");
         System.out.println(list.getClass());
+        
+        Object o = new Object();
+        new ArrayList<>().indexOf(o);
     }
 }

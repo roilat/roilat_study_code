@@ -1,13 +1,21 @@
 package cn.roilat.study.spring.beans;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractRefreshableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.support.AbstractRefreshableWebApplicationContext;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
         springAnnotationLoad();
-
+        springXmlLoad();
+        
+        AbstractRefreshableWebApplicationContext abstractRefreshableWebApplicationContext = new XmlWebApplicationContext();
+        AbstractRefreshableApplicationContext abstractRefreshableApplicationContext;
+        abstractRefreshableApplicationContext = new ClassPathXmlApplicationContext();
+        abstractRefreshableApplicationContext = abstractRefreshableWebApplicationContext;
+        
         /*      ContextLoaderListener contextLoaderListener = new ContextLoaderListener();
        ServletContext source = new ApplicationContext(new StandardContext());
         ServletContextEvent event = new ServletContextEvent(source );
