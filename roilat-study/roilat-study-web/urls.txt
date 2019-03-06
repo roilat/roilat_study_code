@@ -1,39 +1,141 @@
 
 
 
-SpringMVC工作原理								https://www.cnblogs.com/xiaoxi/p/6164383.html
-hashcode（）和equals（）的作用、区别、联系			https://www.cnblogs.com/keyi/p/7119825.html
-JVM-String常量池与运行时常量池						https://blog.csdn.net/sugar_rainbow/article/details/68150249
-Class文件中的常量池详解（上）						https://blog.csdn.net/wangtaomtk/article/details/52267548
-类文件结构										https://blog.csdn.net/zhaojianyin/article/details/71213987
-源码查看										http://rtfcode.com/
-Object对象的hashCode()底层实现					https://blog.csdn.net/qq_33032573/article/details/78853067
-一文让你明白Java字节码								http://www.importnew.com/24088.html
-Java 8: 从永久代（PermGen）到元空间（Metaspace）		https://blog.csdn.net/zhushuai1221/article/details/52122880
-自己写的java.lang.String类能否被加载				https://blog.csdn.net/u013206465/article/details/47170253
-Java中禁止的包名（Prohibited package name）		https://blog.csdn.net/xy865367161/article/details/52650795
-spring手动注册bean，移除bean，获取bean				https://blog.csdn.net/zhaozhirongfree1111/article/details/72962000
-java动态代理实现与原理详细分析						https://www.cnblogs.com/gonjan-blog/p/6685611.html
-浅谈CPU,GPU,TPU,DPU,NPU,BPU					https://www.sohu.com/a/191538165_777155
-Jquery插件集									http://www.jqhtml.com/category/article/plugs
-面试官：请你谈谈Java的类加载过程						https://blog.csdn.net/ln152315/article/details/79223441?utm_source=blogxgwz0
-自定义类加载器-从.class和.jar中读取					https://segmentfault.com/a/1190000008669892
-Java类加载机制与Tomcat类加载器架构					https://blog.csdn.net/fuzhongmin05/article/details/57404890/
-深入理解Java类加载器(ClassLoader)					https://blog.csdn.net/javazejian/article/details/73413292
-JDK8的@CallerSensitive						https://blog.csdn.net/aguda_king/article/details/72355807
-JVM注解@CallSensitive							https://blog.csdn.net/HEL_WOR/article/details/50199797
-什么是 CDN										https://blog.csdn.net/lu_embedded/article/details/80519898
-OCR 技术浅析									https://www.jianshu.com/p/921c1da740b5
-源码阅读系列：源码阅读方法							https://blog.csdn.net/a910626/article/details/51985251
-eclipse下生成Java类图和时序图，生成UML图				https://blog.csdn.net/guomainet309/article/details/53018009
-理解 Linux 的硬链接与软链接							https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html
-ECMAScript 定义类或对象							http://www.w3school.com.cn/js/pro_js_object_defining.asp
-[eclipse]UML之AmaterasUML 插件					https://www.cnblogs.com/xuepeng0521/p/3690338.html(直接参考：https://github.com/takezoe/amateras-modeler)
-监事											https://baike.baidu.com/item/%E7%9B%91%E4%BA%8B/5055962?fr=aladdin
-有限公司和有限责任公司的区别							https://zhidao.baidu.com/question/4716964.html
-《Spring源码深度解析》--Spring的整体架构与容器的基本实现	https://blog.csdn.net/benhuo931115/article/details/74611464/
+SpringMVC工作原理										https://www.cnblogs.com/xiaoxi/p/6164383.html
+hashcode（）和equals（）的作用、区别、联系					https://www.cnblogs.com/keyi/p/7119825.html
+JVM-String常量池与运行时常量池								https://blog.csdn.net/sugar_rainbow/article/details/68150249
+Class文件中的常量池详解（上）								https://blog.csdn.net/wangtaomtk/article/details/52267548
+类文件结构												https://blog.csdn.net/zhaojianyin/article/details/71213987
+源码查看												http://rtfcode.com/
+Object对象的hashCode()底层实现							https://blog.csdn.net/qq_33032573/article/details/78853067
+一文让你明白Java字节码										http://www.importnew.com/24088.html
+Java 8: 从永久代（PermGen）到元空间（Metaspace）				https://blog.csdn.net/zhushuai1221/article/details/52122880
+自己写的java.lang.String类能否被加载						https://blog.csdn.net/u013206465/article/details/47170253
+Java中禁止的包名（Prohibited package name）				https://blog.csdn.net/xy865367161/article/details/52650795
+spring手动注册bean，移除bean，获取bean						https://blog.csdn.net/zhaozhirongfree1111/article/details/72962000
+java动态代理实现与原理详细分析								https://www.cnblogs.com/gonjan-blog/p/6685611.html
+浅谈CPU,GPU,TPU,DPU,NPU,BPU							https://www.sohu.com/a/191538165_777155
+Jquery插件集											http://www.jqhtml.com/category/article/plugs
+面试官：请你谈谈Java的类加载过程								https://blog.csdn.net/ln152315/article/details/79223441?utm_source=blogxgwz0
+自定义类加载器-从.class和.jar中读取							https://segmentfault.com/a/1190000008669892
+Java类加载机制与Tomcat类加载器架构							https://blog.csdn.net/fuzhongmin05/article/details/57404890/
+深入理解Java类加载器(ClassLoader)							https://blog.csdn.net/javazejian/article/details/73413292
+JDK8的@CallerSensitive								https://blog.csdn.net/aguda_king/article/details/72355807
+JVM注解@CallSensitive									https://blog.csdn.net/HEL_WOR/article/details/50199797
+什么是 CDN												https://blog.csdn.net/lu_embedded/article/details/80519898
+OCR 技术浅析											https://www.jianshu.com/p/921c1da740b5
+源码阅读系列：源码阅读方法									https://blog.csdn.net/a910626/article/details/51985251
+eclipse下生成Java类图和时序图，生成UML图						https://blog.csdn.net/guomainet309/article/details/53018009
+理解 Linux 的硬链接与软链接									https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html
+ECMAScript 定义类或对象									http://www.w3school.com.cn/js/pro_js_object_defining.asp
+[eclipse]UML之AmaterasUML 插件							https://www.cnblogs.com/xuepeng0521/p/3690338.html(直接参考：https://github.com/takezoe/amateras-modeler)
+监事													https://baike.baidu.com/item/%E7%9B%91%E4%BA%8B/5055962?fr=aladdin
+有限公司和有限责任公司的区别									https://zhidao.baidu.com/question/4716964.html
+《Spring源码深度解析》--Spring的整体架构与容器的基本实现			https://blog.csdn.net/benhuo931115/article/details/74611464/
+HashMap的hash()										https://www.cnblogs.com/liujinhong/p/6576543.html
+Java HashMap工作原理及实现								http://yikun.github.io/2015/04/01/Java-HashMap%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/
+【Spring4揭秘 基础2】PropertySource和Enviroment			https://blog.csdn.net/u011179993/article/details/51511364
+使用 openssl 生成证书									http://www.cnblogs.com/littleatp/p/5878763.html
+window安装openssl										https://wiki.openssl.org/index.php/Binaries
+Eclipse的调试功能的10个小窍门								https://www.cnblogs.com/m-xy/p/3301242.html
+Eclipse BreakPoint断点调试技巧和基本步骤方法					http://adwrytuh.blog.163.com/blog/static/807736152010112643818359/
+分布式CAP定理，为什么不能同时满足三个特性？						https://blog.csdn.net/yeyazhishang/article/details/80758354
+CAP原则(CAP定理)、BASE理论								https://www.cnblogs.com/duanxz/p/5229352.html
+TestNG教程											https://www.yiibai.com/testng
+Maven 依赖范围											https://blog.csdn.net/seasonsbin/article/details/79093647
+Maven进价：Maven的生命周期阶段								http://www.cnblogs.com/tenghoo/p/maven_life_cycle.html
+Maven 依赖范围											https://blog.csdn.net/seasonsbin/article/details/79093647
+单元测试系列：Mock工具之Mockito实战							https://www.cnblogs.com/zishi/p/6780719.html
+HashMap的resize和Fail-Fast机制							https://www.cnblogs.com/think-in-java/p/5170914.html
+HashMap的fast-fail和ConcurrentHashMap的fail-safe实例	https://blog.csdn.net/u013365635/article/details/82971383
+HashTable有没有采用快速失败机制？							https://segmentfault.com/q/1010000009024712
+localStorage和sessionStorage区别						https://www.cnblogs.com/tylerdonet/p/4833681.html
+一篇文章教你看懂Photoshop和Sketch							https://baijiahao.baidu.com/s?id=1589306394888258262&wfr=spider&for=pc
+RS232转RS485电路图分析									https://www.cnblogs.com/amanlikethis/p/3966937.html
+会计科目表												https://baike.baidu.com/item/%E4%BC%9A%E8%AE%A1%E7%A7%91%E7%9B%AE%E8%A1%A8/2467679
+深入理解正则表达式高级教程									https://www.cnblogs.com/tsql/p/6386218.html
+服务端向客户端主动发送消息									https://blog.csdn.net/liujiandu101/article/details/81064707
+UED设计师网站											http://huaban.com	https://www.pinterest.com/
+解决host重定向屏蔽网站或无法显示此网页 错误代码：					https://blog.csdn.net/a1023182899/article/details/70155323
+使用正则匹配最后一个字符串									https://blog.csdn.net/qq_18703313/article/details/78794364
+服务端向客户端主动发送消息									https://blog.csdn.net/liujiandu101/article/details/81064707
+mysql update语句set中用and条件连接两个操作					https://blog.csdn.net/jiang297/article/details/82802735
+跨域资源共享 CORS 详解										http://www.ruanyifeng.com/blog/2016/04/cors.html
+计算机网络基础知识总结										http://www.cnblogs.com/maybe2030/p/4781555.html
+http请求头中Referer的含义和作用								https://blog.csdn.net/shenqueying/article/details/79426884
+antv可视化数据展示										https://antv.alipay.com/zh-cn
+Unicode(UTF-8, UTF-16)令人混淆的概念						https://www.cnblogs.com/fnlingnzb-learner/p/6163205.html
+java乱码 java使用的编码是utf-8还是utf-16还是unicode			https://blog.csdn.net/u014631304/article/details/77509380?utm_source=blogxgwz4
+Java8特性详解 lambda表达式 Stream							https://www.cnblogs.com/aoeiuv/p/5911692.html
+Java 8十个lambda表达式案例								https://www.jdon.com/idea/java/10-example-of-lambda-expressions-in-java8.html
+一些动画												http://spritejs.org/demo/#ray
+什么是引流？引流的目的是什么？怎么引流？							http://baijiahao.baidu.com/s?id=1605244496155089977&wfr=spider&for=pc
+react知识（三） 将Jquery集成进来							https://blog.csdn.net/weiyongliang_813/article/details/74985924
+阿里蚂蚁金服Java程序员面试的11个问题,你会几个呢?					http://baijiahao.baidu.com/s?id=1596318639675720868&wfr=spider&for=pc
+红酒													https://baike.baidu.com/item/%E7%BA%A2%E9%85%92/235?fr=aladdin
+蓝色互联网科技可视化元素素材									http://www.866pic.com/shejiyuansu/dc023e2dd9609ab610760964.html
+互联网可视化数据大屏显示矢量素材								http://www.866pic.com/shejiyuansu/777849357258d13610765566.html
+分辨率													https://baike.baidu.com/item/%E5%88%86%E8%BE%A8%E7%8E%87/213523?fr=aladdin
+一幅挂画												http://weili.ooopic.com/weili_12615404.html
+使用 SpringBoot + SpringCloud 构建分布式、负载均衡系统			https://blog.csdn.net/larger5/article/details/80549200
+关于springboot的demo									https://github.com/ityouknow
+Spring Boot 中文索引									http://springboot.fun/
+Spring Boot application starters					https://github.com/ityouknow/awesome-spring-boot/blob/master/starter-list.md
+YAML快速入门											https://www.jianshu.com/p/97222440cd08
+黑暗森林法则												https://baike.baidu.com/item/%E9%BB%91%E6%9A%97%E6%A3%AE%E6%9E%97%E6%B3%95%E5%88%99/828514?fr=aladdin
+看完《流浪地球》父亲给女儿手绘6张讲解图							https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_8948901670528392114%22%7D&n_type=0&p_from=1
+谨记“森林法则”，像索罗斯一样投资！								https://baijiahao.baidu.com/s?id=1611188751590239471&wfr=spider&for=pc
+森林法则												https://baike.baidu.com/item/%E6%A3%AE%E6%9E%97%E6%B3%95%E5%88%99/4128025
+JVM调优总结 -Xms -Xmx -Xmn -Xss							https://www.cnblogs.com/likehua/p/3369823.html
+Java8内存模型—永久代(PermGen)和元空间(Metaspace)			http://www.cnblogs.com/paddix/p/5309550.html
+深入探究JVM（2） - 探秘Metaspace							https://blog.csdn.net/sczyh22/article/details/46662279
+JDK8-废弃永久代（PermGen）迎来元空间（Metaspace）				https://www.cnblogs.com/dennyzhangdd/p/6770188.html
+基于JDK1.8 分析运行时常量池、字符串常量池、各种常量池					https://blog.csdn.net/qq_31615049/article/details/81611918
+关于@webFilter使用@Order无效问题							https://blog.lqdev.cn/2018/08/26/%E6%97%A5%E5%B8%B8%E7%A7%AF%E7%B4%AF/correct-webfilter/
+庄子：无用之用，方为大用！									http://baijiahao.baidu.com/s?id=1604032903201772727&wfr=spider&for=pc
+Java集合：整体结构										https://www.cnblogs.com/paddix/p/5539326.html
+@SpringBootApplication注解分析							https://www.cnblogs.com/duanxz/p/3756364.html
+Spring Boot实战：拦截器与过滤器								https://www.cnblogs.com/paddix/p/8365558.html
+Spring Boot实战：逐行释义HelloWorld						https://www.cnblogs.com/paddix/p/8116866.html
+tomcat对静态资源，servlet和jsp是如何访问的					https://blog.csdn.net/xingqibaing/article/details/80716522
+Spring Boot实战：数据库操作								https://www.cnblogs.com/paddix/p/8178943.html
+JPA + SpringData 操作数据库原来可以这么简单					https://www.cnblogs.com/crawl/p/7703679.html
+如何对 JPA 或者 MyBatis 进行技术选型							https://blog.csdn.net/yangsnow_rain_wind/article/details/79650616
+Maven的构建生命周期理解									https://www.cnblogs.com/EasonJim/p/6816340.html
+SpringBoot打成war包，部署到Tomcat服务器						https://blog.csdn.net/qq_33512843/article/details/80951741
+Druid在SpringBoot下的使用								https://blog.csdn.net/weixin_38187317/article/details/79556645
+Druid（新版starter）在SpringBoot下的使用					https://blog.csdn.net/weixin_38187317/article/details/81562571
+启动tomcat8提示内存泄漏问题解决								https://blog.csdn.net/ouyida3/article/details/49534839
+Spring Boot：内置tomcat启动和外部tomcat部署总结				https://blog.csdn.net/fanshukui/article/details/80258793
+【mybatis】Mybatis Generator最完整配置详解					https://blog.csdn.net/xiaopihai86/article/details/79034079
+Mysql编码之查看、修改总结									https://blog.csdn.net/jcw321/article/details/76184142
+spring boot 中使用JPA									https://blog.csdn.net/a15123837995/article/details/83788489
+Hibernate各种主键生成策略与配置详解							https://www.cnblogs.com/hoobey/p/5508992.html
+JPA ID生成策略											https://tendyming.iteye.com/blog/2024985
+MySQL单表数据量过千万，采坑优化记录，完美解决方案					https://www.toutiao.com/i6633207458275787268/?tt_from=weixin&utm_campaign=client_share&wxshare_count=2&from=singlemessage&timestamp=1544497057&app=news_article&utm_source=weixin&iid=36618779372&utm_medium=toutiao_android&group_id=6633207458275787268&pbid=6634051816228275726
+深入解析MySQL分区（Partition）功能							https://blog.csdn.net/tjcyjd/article/details/11194489
+MySQL 性能优化神器 Explain 使用分析							https://segmentfault.com/a/1190000008131735
+Spring3.1.0实现原理分析(二十二).Dao事务分析之事务管理器			https://blog.csdn.net/roberts939299/article/details/77587425
 
 
+
+
+一些关于springboot的文章
+Spring Boot/Cloud 背后豪华的研发团队介绍					https://www.cnblogs.com/ityouknow/p/10213304.html
+https://www.cnblogs.com/ityouknow/p/9175980.html
+一文读懂 Spring Boot、微服务架构和大数据治理三者之间的故事			https://www.cnblogs.com/ityouknow/p/9034377.html
+Spring Boot 2.0(七)：Spring Boot 如何解决项目启动时初始化资源	https://www.cnblogs.com/ityouknow/p/8990072.html
+https://www.cnblogs.com/ityouknow/p/7899349.html
+springboot(十二)：springboot如何测试打包部署				https://www.cnblogs.com/ityouknow/p/6834287.html
+spring boot(七)：springboot+mybatis多数据源最简解决方案		https://www.cnblogs.com/ityouknow/p/6102399.html
+spring boot(六)：如何优雅的使用mybatis						https://www.cnblogs.com/ityouknow/p/6037431.html
+
+https://github.com/ityouknow/spring-boot-examples
+
+
+
+https://baike.baidu.com/item/%E5%B9%B3%E6%96%B9%E5%92%8C%E5%85%AC%E5%BC%8F#2
+https://www.zybang.com/question/e19b920ff69a3f622e732861abf7ea42.html
 
 
 
@@ -56,12 +158,21 @@ https://www.zhihu.com/people/rednaxelafx/activities
 
 
 
+军规自检
+序号	军规名称	CHECK点	是否达到(是/否/部分)  除了是以外都要说明	说明
+1	不经过变更流程不允许上线	1.所有改动点是否都在发布需求列表里 2.数据初始化/消息变更是否都已经推进	所有变更均经过linke流程以及review	
+2	不经过CR不允许上线	1.所有功能是否CR完成 2.发布计划是否CR 3.数据变更/消息变更配置是否CR	涉及CR均已CR，包括配置变更项	
+3	不经过测试验证不允许上线	1.功能是否测试是否完成 2.预发是否测试完成 3.需要线上演练的是否有灰度机制	目前已完成DEV环境的验证，待进行SIT 预发验证	
+4	没有灰度不允许上线	1.后台类功能是否预发验证灰度 2.流量类功能是否BETA灰度 3.如果有DRM推送，是否先推单机灰度	本次发布后，预发进行灰度测试验证	
+5	没有发布监控不允许上线	1.线上变更过程均需要有监控项	默认监控	
+6	没有回滚方案不允许上线	1.发布计划是否包含回滚方案	回滚方案为代码回滚	
+7	不掌握系统指标不做owner	
 
 
 
 
 
-
+git log --oneline --graph --decorate --all
 
 
 

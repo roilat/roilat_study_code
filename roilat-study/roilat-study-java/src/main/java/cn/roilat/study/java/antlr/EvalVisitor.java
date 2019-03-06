@@ -3,6 +3,9 @@ package cn.roilat.study.java.antlr;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.roilat.study.java.antlr.CalParser.AddSubContext;
+import cn.roilat.study.java.antlr.CalParser.ExprContext;
+
 public class EvalVisitor extends CalBaseVisitor<Double> {
     private Map<String, Double> table;
 
@@ -63,13 +66,11 @@ public class EvalVisitor extends CalBaseVisitor<Double> {
             return left - right;
     }
 
-    @Override
-    public Double visitNUM(CalParser.NUMContext ctx) {
+    public Double visitNUM(ExprContext ctx) {
         return Double.valueOf(ctx.getText());
     }
 
-    @Override
-    public Double visitID(CalParser.IDContext ctx) {
+    public Double visitID(AddSubContext ctx) {
         String id = ctx.getText();
         int line, column;
         if (table.containsKey(id))

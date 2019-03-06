@@ -11,7 +11,6 @@ import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import cn.roilat.study.utils.fromali.log.ExceptionUtil;
 
 /**
  * Json序列化工具类fastjson
@@ -59,7 +58,6 @@ public class JsonUtils {
         try {
             return getObjectMapperInstance().writeValueAsString(data);
         } catch (IOException e) {
-            ExceptionUtil.caught(e, "反序列化对象失败");
             throw new RuntimeException(e);
         }
     }
@@ -80,7 +78,6 @@ public class JsonUtils {
         try {
             return getObjectMapperInstance().readValue(jsonString, type);
         } catch (IOException e) {
-            ExceptionUtil.caught(e, "序列化json字符串失败");
             throw new RuntimeException(e);
         }
     }

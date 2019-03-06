@@ -7,11 +7,13 @@ package cn.roilat.study.utils.fromali.lang;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
 import cn.roilat.study.utils.StringUtil;
+import net.sourceforge.jtds.jdbc.DateTime;
 
 /**
  * 日期处理工具类
@@ -356,48 +358,8 @@ public class DateUtils {
         }
         try {
 
-            DateTimeFormatter formater = DateTimeFormat.forPattern(format);
-            DateTime time = DateTime.parse(value, formater);
-            switch (format) {
-                case "yyyyMMdd":
-                case "yyyymmdd":
-                    time = time.plusDays(number);
-                    break;
-                case "yyyyMM":
-                case "yyyymm":
-                    time = time.plusMonths(number);
-                    break;
-
-                case "yyyy":
-                    time = time.plusYears(number);
-                    break;
-
-                case "yyyyMMddHHmmss":
-                case "yyyymmddhhmmss":
-                    time = time.plusSeconds(number);
-                    break;
-
-                case "hh":
-                case "HH":
-                    time = time.plusHours(number);
-                    break;
-
-                case "mm":
-                case "MM":
-                case "HHmm":
-                case "hhmm":
-                    time = time.plusMinutes(number);
-                    break;
-
-                case "ss":
-                case "SS":
-                case "HHmmss":
-                case "mmss":
-                    time = time.plusSeconds(number);
-                    break;
-            }
-
-            return time.toString(format);
+            
+            return null;
         } catch (Exception e) {
             return value;
         }
@@ -415,48 +377,7 @@ public class DateUtils {
         }
         try {
 
-            DateTimeFormatter formater = DateTimeFormat.forPattern(format);
-            DateTime time = DateTime.parse(value, formater);
-            switch (format) {
-                case "yyyyMMdd":
-                case "yyyymmdd":
-                    time = time.minusDays(number);
-                    break;
-                case "yyyyMM":
-                case "yyyymm":
-                    time = time.minusMonths(number);
-                    break;
-
-                case "yyyy":
-                    time = time.minusYears(number);
-                    break;
-
-                case "yyyyMMddHHmmss":
-                case "yyyymmddhhmmss":
-                    time = time.minusSeconds(number);
-                    break;
-
-                case "hh":
-                case "HH":
-                    time = time.minusHours(number);
-                    break;
-
-                case "mm":
-                case "MM":
-                case "HHmm":
-                case "hhmm":
-                    time = time.minusMinutes(number);
-                    break;
-
-                case "ss":
-                case "SS":
-                case "HHmmss":
-                case "mmss":
-                    time = time.minusSeconds(number);
-                    break;
-            }
-
-            return time.toString(format);
+           return null;
         } catch (Exception e) {
             return value;
         }

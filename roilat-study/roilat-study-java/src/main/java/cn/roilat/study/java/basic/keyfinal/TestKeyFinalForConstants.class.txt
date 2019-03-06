@@ -1,0 +1,135 @@
+Classfile /D:/WorkSpace/roilat/roilat-study/roilat-study-java/target/classes/cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants.class
+  Last modified 2019-2-12; size 1010 bytes
+  MD5 checksum 87800c03d5483384af306dd989512594
+  Compiled from "TestKeyFinalForConstants.java"
+public class cn.roilat.study.java.basic.keyfinal.TestKeyFinalForConstants
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Class              #2             // cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants
+   #2 = Utf8               cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               FINAL_FOR_CONSTANTS
+   #6 = Utf8               Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+   #7 = Utf8               key
+   #8 = Utf8               Ljava/lang/String;
+   #9 = Utf8               ConstantValue
+  #10 = String             #11            //
+  #11 = Utf8
+  #12 = Utf8               key1
+  #13 = Utf8               OTHER_CLASS
+  #14 = Utf8               Lcn/roilat/study/java/basic/keyfinal/OtherClass;
+  #15 = Utf8               <clinit>
+  #16 = Utf8               ()V
+  #17 = Utf8               Code
+  #18 = Methodref          #1.#19         // cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants."<init>":()V
+  #19 = NameAndType        #20:#16        // "<init>":()V
+  #20 = Utf8               <init>
+  #21 = Fieldref           #1.#22         // cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants.FINAL_FOR_CONSTANTS:Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+  #22 = NameAndType        #5:#6          // FINAL_FOR_CONSTANTS:Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+  #23 = String             #24            // 123
+  #24 = Utf8               123
+  #25 = Fieldref           #1.#26         // cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants.key1:Ljava/lang/String;
+  #26 = NameAndType        #12:#8         // key1:Ljava/lang/String;
+  #27 = Class              #28            // cn/roilat/study/java/basic/keyfinal/OtherClass
+  #28 = Utf8               cn/roilat/study/java/basic/keyfinal/OtherClass
+  #29 = Methodref          #27.#19        // cn/roilat/study/java/basic/keyfinal/OtherClass."<init>":()V
+  #30 = Fieldref           #1.#31         // cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants.OTHER_CLASS:Lcn/roilat/study/java/basic/keyfinal/OtherClass;
+  #31 = NameAndType        #13:#14        // OTHER_CLASS:Lcn/roilat/study/java/basic/keyfinal/OtherClass;
+  #32 = Utf8               LineNumberTable
+  #33 = Utf8               LocalVariableTable
+  #34 = Methodref          #3.#19         // java/lang/Object."<init>":()V
+  #35 = Utf8               this
+  #36 = Utf8               main
+  #37 = Utf8               ([Ljava/lang/String;)V
+  #38 = Fieldref           #39.#41        // java/lang/System.out:Ljava/io/PrintStream;
+  #39 = Class              #40            // java/lang/System
+  #40 = Utf8               java/lang/System
+  #41 = NameAndType        #42:#43        // out:Ljava/io/PrintStream;
+  #42 = Utf8               out
+  #43 = Utf8               Ljava/io/PrintStream;
+  #44 = Methodref          #45.#47        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #45 = Class              #46            // java/io/PrintStream
+  #46 = Utf8               java/io/PrintStream
+  #47 = NameAndType        #48:#49        // println:(Ljava/lang/String;)V
+  #48 = Utf8               println
+  #49 = Utf8               (Ljava/lang/String;)V
+  #50 = Utf8               args
+  #51 = Utf8               [Ljava/lang/String;
+  #52 = Utf8               SourceFile
+  #53 = Utf8               TestKeyFinalForConstants.java
+{
+  public static final cn.roilat.study.java.basic.keyfinal.TestKeyFinalForConstants FINAL_FOR_CONSTANTS;
+    descriptor: Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final java.lang.String key;
+    descriptor: Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: String
+
+  public static java.lang.String key1;
+    descriptor: Ljava/lang/String;
+    flags: ACC_PUBLIC, ACC_STATIC
+
+  public static final cn.roilat.study.java.basic.keyfinal.OtherClass OTHER_CLASS;
+    descriptor: Lcn/roilat/study/java/basic/keyfinal/OtherClass;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #1                  // class cn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants
+         3: dup
+         4: invokespecial #18                 // Method "<init>":()V
+         7: putstatic     #21                 // Field FINAL_FOR_CONSTANTS:Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+        10: ldc           #23                 // String 123
+        12: putstatic     #25                 // Field key1:Ljava/lang/String;
+        15: new           #27                 // class cn/roilat/study/java/basic/keyfinal/OtherClass
+        18: dup
+        19: invokespecial #29                 // Method cn/roilat/study/java/basic/keyfinal/OtherClass."<init>":()V
+        22: putstatic     #30                 // Field OTHER_CLASS:Lcn/roilat/study/java/basic/keyfinal/OtherClass;
+        25: return
+      LineNumberTable:
+        line 10: 0
+        line 15: 10
+        line 16: 15
+        line 19: 25
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+
+  public cn.roilat.study.java.basic.keyfinal.TestKeyFinalForConstants();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #34                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 9: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcn/roilat/study/java/basic/keyfinal/TestKeyFinalForConstants;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #38                 // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: getstatic     #25                 // Field key1:Ljava/lang/String;
+         6: invokevirtual #44                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         9: return
+      LineNumberTable:
+        line 21: 0
+        line 22: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  args   [Ljava/lang/String;
+}
+SourceFile: "TestKeyFinalForConstants.java"

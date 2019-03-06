@@ -25,13 +25,13 @@ public class MyInvocationHandler implements InvocationHandler {
 			System.out.println("++++++before " + method.getName() + "++++++");
 			MonitorUtil.start();
 			Object result = method.invoke(target, args);
-			MonitorUtil.end();
+			MonitorUtil.end(null);
 			System.out.println("++++++after " + method.getName() + "++++++");
 			return result;
 		} else {
 	          MonitorUtil.start();
 			Object result = method.invoke(target, args);
-	         MonitorUtil.end();
+	         MonitorUtil.end(null);
 
 			return result;
 		}

@@ -4,8 +4,6 @@
  */
 package cn.roilat.study.utils.fromali.page;
 
-import com.alibaba.common.logging.Logger;
-import com.alibaba.common.logging.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,6 @@ import java.util.List;
 public class QueryUtil {
 
     /** logger */
-    private static final Logger LOGGER = LoggerFactory.getLogger(QueryUtil.class);
 
     /**
      * ������ϸ������ҳ��С����ҳ��

@@ -6,4 +6,5 @@ public class TestEqualAndHashCode {
         System.out.println(obj.hashCode());//hotspot/src/share/vm/runtime/synchronizer.cpp
         System.out.println("aaa".hashCode());
     }
+    
 }

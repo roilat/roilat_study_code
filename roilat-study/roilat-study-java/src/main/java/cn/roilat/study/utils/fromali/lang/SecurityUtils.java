@@ -4,7 +4,7 @@
  */
 package cn.roilat.study.utils.fromali.lang;
 
-import com.alibaba.common.lang.StringUtil;
+import cn.roilat.study.utils.StringUtil;
 
 /**
  * 字符安全过滤工具类

@@ -4,7 +4,7 @@
  */
 package cn.roilat.study.utils.fromali.log;
 
-import com.alibaba.common.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  *  规范化日志打印工具，注意日志的级别选择：<br>
@@ -92,9 +92,9 @@ public class LoggerUtil {
      * @param obj    对象
      */
     public static void warn(Logger logger, Object... obj) {
-        if (logger.isWarnEnabled()) {
+        //if (logger.isWarnEnabled()) {
             logger.warn(getLogString(obj));
-        }
+        //}
     }
 
     /**
@@ -105,9 +105,9 @@ public class LoggerUtil {
      * @param e              异常信息
      */
     public static void warn(Logger logger, Throwable e, Object... obj) {
-        if (logger.isWarnEnabled()) {
+        //if (logger.isWarnEnabled()) {
             logger.warn(getLogString(obj), e);
-        }
+        //}
     }
 
     /**

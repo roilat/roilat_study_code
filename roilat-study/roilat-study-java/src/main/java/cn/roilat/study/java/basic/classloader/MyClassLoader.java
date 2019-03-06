@@ -17,6 +17,10 @@ public class MyClassLoader extends ClassLoader {
         this.fileName = fileName;
     }
 
+    /**
+     * 一般只重写这个方法，为了不破坏双亲委派（如果重写loadClass则会）
+     * @see java.lang.ClassLoader#findClass(java.lang.String)
+     */
     protected Class<?> findClass(String className) throws ClassNotFoundException {
         Class<?> clazz = this.findLoadedClass(className);
         if (null == clazz) {

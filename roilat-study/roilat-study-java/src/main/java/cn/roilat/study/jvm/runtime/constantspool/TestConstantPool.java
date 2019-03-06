@@ -20,63 +20,68 @@ public class TestConstantPool {
 javac TestConstantPool.java
 javap -verbose TestConstantPool
  javap结果:
-Classfile /C:/Users/wb-dtw368035/Desktop/Test.class
-  Last modified 2018-10-12; size 782 bytes
-  MD5 checksum 1492ce41dd0f3186e7568ddd8349b2e7
-  Compiled from "Test.java"
-public class Test
+Classfile /D:/WorkSpace/roilat/roilat-study/roilat-study-java/target/classes/cn/roilat/study/jvm/runtime/constantspool/TestConstantPool.class
+  Last modified 2018-12-17; size 942 bytes
+  MD5 checksum abd11f9dfe8f00350f43757b64bdf4e3
+  Compiled from "TestConstantPool.java"
+public class cn.roilat.study.jvm.runtime.constantspool.TestConstantPool
   minor version: 0
   major version: 52
   flags: ACC_PUBLIC, ACC_SUPER
 Constant pool:
-   #1 = Methodref          #11.#35        // java/lang/Object."<init>":()V
-   #2 = String             #36            // b
-   #3 = Class              #37            // Test
-   #4 = Methodref          #3.#35         // Test."<init>":()V
-   #5 = String             #12            // a
-   #6 = Fieldref           #3.#38         // Test.a:Ljava/lang/String;
-   #7 = Long               123l
-   #9 = Methodref          #39.#40        // java/lang/Long.valueOf:(J)Ljava/lang/Long;
-  #10 = Fieldref           #3.#41         // Test.lo:Ljava/lang/Long;
-  #11 = Class              #42            // java/lang/Object
-  #12 = Utf8               a
-  #13 = Utf8               Ljava/lang/String;
-  #14 = Utf8               lo
-  #15 = Utf8               Ljava/lang/Long;
-  #16 = Utf8               c
-  #17 = Utf8               I
-  #18 = Utf8               <init>
-  #19 = Utf8               ()V
-  #20 = Utf8               Code
-  #21 = Utf8               LineNumberTable
-  #22 = Utf8               main
-  #23 = Utf8               main1
-  #24 = Utf8               (Ljava/util/Date;)I
-  #25 = Utf8               StackMapTable
-  #26 = Class              #43            // java/util/Date
-  #27 = Class              #44            // java/lang/String
-  #28 = Class              #42            // java/lang/Object
-  #29 = Class              #45            // java/lang/Throwable
-  #30 = Utf8               Exceptions
-  #31 = Class              #46            // java/lang/Exception
-  #32 = Utf8               <clinit>
-  #33 = Utf8               SourceFile
-  #34 = Utf8               Test.java
-  #35 = NameAndType        #18:#19        // "<init>":()V
+   #1 = Class              #2             // cn/roilat/study/jvm/runtime/constantspool/TestConstantPool
+   #2 = Utf8               cn/roilat/study/jvm/runtime/constantspool/TestConstantPool
+   #3 = Class              #4             // java/lang/Object
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               a
+   #6 = Utf8               Ljava/lang/String;
+   #7 = Utf8               lo
+   #8 = Utf8               Ljava/lang/Long;
+   #9 = Utf8               c
+  #10 = Utf8               I
+  #11 = Utf8               <clinit>
+  #12 = Utf8               ()V
+  #13 = Utf8               Code
+  #14 = String             #5             // a
+  #15 = Fieldref           #1.#16         // cn/roilat/study/jvm/runtime/constantspool/TestConstantPool.a:Ljava/lang/String;
+  #16 = NameAndType        #5:#6          // a:Ljava/lang/String;
+  #17 = Long               123l
+  #19 = Methodref          #20.#22        // java/lang/Long.valueOf:(J)Ljava/lang/Long;
+  #20 = Class              #21            // java/lang/Long
+  #21 = Utf8               java/lang/Long
+  #22 = NameAndType        #23:#24        // valueOf:(J)Ljava/lang/Long;
+  #23 = Utf8               valueOf
+  #24 = Utf8               (J)Ljava/lang/Long;
+  #25 = Fieldref           #1.#26         // cn/roilat/study/jvm/runtime/constantspool/TestConstantPool.lo:Ljava/lang/Long;
+  #26 = NameAndType        #7:#8          // lo:Ljava/lang/Long;
+  #27 = Utf8               LineNumberTable
+  #28 = Utf8               LocalVariableTable
+  #29 = Utf8               <init>
+  #30 = Methodref          #3.#31         // java/lang/Object."<init>":()V
+  #31 = NameAndType        #29:#12        // "<init>":()V
+  #32 = Utf8               this
+  #33 = Utf8               Lcn/roilat/study/jvm/runtime/constantspool/TestConstantPool;
+  #34 = Utf8               main
+  #35 = String             #36            // b
   #36 = Utf8               b
-  #37 = Utf8               Test
-  #38 = NameAndType        #12:#13        // a:Ljava/lang/String;
-  #39 = Class              #47            // java/lang/Long
-  #40 = NameAndType        #48:#49        // valueOf:(J)Ljava/lang/Long;
-  #41 = NameAndType        #14:#15        // lo:Ljava/lang/Long;
-  #42 = Utf8               java/lang/Object
-  #43 = Utf8               java/util/Date
-  #44 = Utf8               java/lang/String
-  #45 = Utf8               java/lang/Throwable
-  #46 = Utf8               java/lang/Exception
-  #47 = Utf8               java/lang/Long
-  #48 = Utf8               valueOf
-  #49 = Utf8               (J)Ljava/lang/Long;
+  #37 = Fieldref           #38.#40        // java/lang/System.out:Ljava/io/PrintStream;
+  #38 = Class              #39            // java/lang/System
+  #39 = Utf8               java/lang/System
+  #40 = NameAndType        #41:#42        // out:Ljava/io/PrintStream;
+  #41 = Utf8               out
+  #42 = Utf8               Ljava/io/PrintStream;
+  #43 = Methodref          #44.#46        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #44 = Class              #45            // java/io/PrintStream
+  #45 = Utf8               java/io/PrintStream
+  #46 = NameAndType        #47:#48        // println:(Ljava/lang/String;)V
+  #47 = Utf8               println
+  #48 = Utf8               (Ljava/lang/String;)V
+  #49 = Utf8               main1
+  #50 = Utf8               (Ljava/util/Date;)I
+  #51 = Utf8               date
+  #52 = Utf8               Ljava/util/Date;
+  #53 = Utf8               SourceFile
+  #54 = Utf8               TestConstantPool.java
 {
   public static java.lang.String a;
     descriptor: Ljava/lang/String;
@@ -86,90 +91,74 @@ Constant pool:
     descriptor: Ljava/lang/Long;
     flags: ACC_PUBLIC, ACC_STATIC
 
-  public Test();
-    descriptor: ()V
+  public int c;
+    descriptor: I
     flags: ACC_PUBLIC
-    Code:
-      stack=1, locals=1, args_size=1
-         0: aload_0
-         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
-         4: return
-      LineNumberTable:
-        line 1: 0
-
-  public static void main();
-    descriptor: ()V
-    flags: ACC_PUBLIC, ACC_STATIC
-    Code:
-      stack=1, locals=1, args_size=0
-         0: ldc           #2                  // String b
-         2: astore_0
-         3: return
-      LineNumberTable:
-        line 6: 0
-        line 7: 3
-
-  public static int main1(java.util.Date) throws java.lang.Exception;
-    descriptor: (Ljava/util/Date;)I
-    flags: ACC_PUBLIC, ACC_STATIC
-    Code:
-      stack=2, locals=4, args_size=1
-         0: ldc           #2                  // String b
-         2: astore_1
-         3: ldc           #3                  // class Test
-         5: dup
-         6: astore_2
-         7: monitorenter
-         8: new           #3                  // class Test
-        11: dup
-        12: invokespecial #4                  // Method "<init>":()V
-        15: pop
-        16: aload_2
-        17: monitorexit
-        18: goto          26
-        21: astore_3
-        22: aload_2
-        23: monitorexit
-        24: aload_3
-        25: athrow
-        26: iconst_0
-        27: ireturn
-      Exception table:
-         from    to  target type
-             8    18    21   any
-            21    24    21   any
-      LineNumberTable:
-        line 9: 0
-        line 10: 3
-        line 11: 8
-        line 12: 16
-        line 13: 26
-      StackMapTable: number_of_entries = 2
-        frame_type = 255 // full_frame
-          offset_delta = 21
-          locals = [ class java/util/Date, class java/lang/String, class java/lang/Object ]
-          stack = [ class java/lang/Throwable ]
-        frame_type = 250 // chop
-          offset_delta = 4
-    Exceptions:
-      throws java.lang.Exception
 
   static {};
     descriptor: ()V
     flags: ACC_STATIC
     Code:
       stack=2, locals=0, args_size=0
-         0: ldc           #5                  // String a
-         2: putstatic     #6                  // Field a:Ljava/lang/String;
-         5: ldc2_w        #7                  // long 123l
-         8: invokestatic  #9                  // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
-        11: putstatic     #10                 // Field lo:Ljava/lang/Long;
+         0: ldc           #14                 // String a
+         2: putstatic     #15                 // Field a:Ljava/lang/String;
+         5: ldc2_w        #17                 // long 123l
+         8: invokestatic  #19                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+        11: putstatic     #25                 // Field lo:Ljava/lang/Long;
         14: return
       LineNumberTable:
-        line 2: 0
-        line 3: 5
+        line 5: 0
+        line 6: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+
+  public cn.roilat.study.jvm.runtime.constantspool.TestConstantPool();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 3: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcn/roilat/study/jvm/runtime/constantspool/TestConstantPool;
+
+  public static void main();
+    descriptor: ()V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=0
+         0: ldc           #35                 // String b
+         2: astore_0
+         3: getstatic     #37                 // Field java/lang/System.out:Ljava/io/PrintStream;
+         6: aload_0
+         7: invokevirtual #43                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        10: return
+      LineNumberTable:
+        line 10: 0
+        line 11: 3
+        line 12: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            3       8     0     b   Ljava/lang/String;
+
+  public static int main1(java.util.Date);
+    descriptor: (Ljava/util/Date;)I
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: iconst_0
+         1: ireturn
+      LineNumberTable:
+        line 15: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  date   Ljava/util/Date;
 }
-SourceFile: "Test.java"
+SourceFile: "TestConstantPool.java"
 */
 /**
  * 1.对于某个类或接口而言，其自身、父类和继承或实现的接口的信息会被直接组装成CONSTANT_Class_info常量池项放置到常量池中； 

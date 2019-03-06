@@ -1,9 +1,11 @@
 package cn.roilat.study.utils.fromali;
 
-import cn.roilat.study.utils.fromali.check.StringUtils;
 
 import javax.xml.bind.*;
 import javax.xml.transform.stream.StreamSource;
+
+import cn.roilat.study.utils.copybak.StringUtils;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 /**

@@ -1,7 +1,5 @@
 package cn.roilat.study.utils.fromali.lang;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 
@@ -55,15 +53,7 @@ public class MapUtils {
     @SuppressWarnings({ "unchecked", "deprecation", "rawtypes" })
     public static Map<String, Object> findMapInListByKey(List<Map<String, Object>> dataList,
                                                          final String key, final Object value) {
-        Map<String, Object> result = (Map<String, Object>) CollectionUtils.find(dataList,
-            new Predicate() {
-                @Override
-                public boolean evaluate(Object object) {
-                    Map<String, Object> next = (Map<String, Object>) object;
-                    return value == null ? false : value.equals(getStringIgnoreCase(next, key));
-                }
-            });
-        return result == null ? new HashMap<String, Object>() : result;
+        return null;
     }
 
     /**

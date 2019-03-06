@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="35" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="35" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+      <class name="cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest">
+        <test-method status="PASS" signature="gbkToUTF8_jvm()[pri:0, instance:cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest@76b0bfab]" name="gbkToUTF8_jvm" duration-ms="9" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- gbkToUTF8_jvm -->
+        <test-method status="PASS" signature="getBytesString()[pri:0, instance:cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest@76b0bfab]" name="getBytesString" duration-ms="1" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getBytesString -->
+        <test-method status="PASS" signature="test()[pri:0, instance:cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest@76b0bfab]" name="test" duration-ms="2" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="utf8ToGBK()[pri:0, instance:cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest@76b0bfab]" name="utf8ToGBK" duration-ms="1" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- utf8ToGBK -->
+        <test-method status="PASS" signature="utf8ToGBK_jvm()[pri:0, instance:cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest@76b0bfab]" name="utf8ToGBK_jvm" duration-ms="1" started-at="2019-01-16T10:06:40Z" finished-at="2019-01-16T10:06:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- utf8ToGBK_jvm -->
+      </class> <!-- cn.roilat.study.java.encode.UTF8AndGBKTransUtilsTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

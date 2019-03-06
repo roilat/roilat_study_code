@@ -18,9 +18,8 @@ import java.util.Set;
 
 import org.springframework.util.Assert;
 
-import com.alibaba.common.lang.StringUtil;
-import com.alibaba.common.logging.Logger;
-import com.alibaba.common.logging.LoggerFactory;
+import cn.roilat.study.utils.StringUtil;
+
 
 /**
  * 反射工具。【看看和spring的有没有重复的，可以的话就复用】
@@ -31,7 +30,6 @@ import com.alibaba.common.logging.LoggerFactory;
 public class ReflectionUtil {
 
     /** 日志 */
-    private static final Logger LOGGER = LoggerFactory.getLogger(ReflectionUtil.class);
 
     /**
      * 判断是否是接口方法
@@ -54,7 +52,6 @@ public class ReflectionUtil {
                 }
             }
         } catch (Throwable ex) {
-            LOGGER.error("判断方法是否是该类的接口方法时发生异常", ex);
         }
         return false;
 
@@ -79,7 +76,6 @@ public class ReflectionUtil {
             }
         } catch (Throwable ex) {
 
-            LOGGER.error("获取一个对象的DeclaredField时发生异常", ex);
         }
 
         return fields;
@@ -109,7 +105,6 @@ public class ReflectionUtil {
 
         } catch (Throwable ex) {
 
-            LOGGER.error("获取一个对象的DeclaredField时发生异常", ex);
         }
 
         return null;
@@ -134,7 +129,6 @@ public class ReflectionUtil {
 
         } catch (Throwable ex) {
 
-            LOGGER.error("获取一个DeclaredField的value时发生异常", ex);
         }
 
         return null;
@@ -267,7 +261,6 @@ public class ReflectionUtil {
         try {
             field.set(obj, replaceValue);
         } catch (Throwable e) {
-            LOGGER.error("字段设置值时发生异常", e);
             return false;
         }
 
@@ -335,7 +328,6 @@ public class ReflectionUtil {
         try {
             field.set(obj, replaceValue);
         } catch (Throwable e) {
-            LOGGER.error("字段设置值时发生异常", e);
             return false;
         }
 

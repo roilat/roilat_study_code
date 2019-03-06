@@ -8,6 +8,8 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * 
  * 
@@ -36,7 +38,8 @@ public class GscSmartServiceClassLoader extends URLClassLoader {
      * 一个可想类加载器的classpath中添加的文件url
      * @param
      */
-    public void addURLFile(URL file) {
+    @Transactional
+    private void addURLFile(URL file) {
         try {
             // 打开并缓存文件url连接
             URLConnection uc = file.openConnection();

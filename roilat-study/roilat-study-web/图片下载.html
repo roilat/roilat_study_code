@@ -1,0 +1,32 @@
+<html>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+///cgi-bin/mmwebwx-bin/webwxgeticon?seq=0&username=@f2f8bdeb127396e46ee67347bec2a66d&chatroomid=@b2b6d7fc57376693c73234d01ab7140c&skey=&type=big
+///cgi-bin/mmwebwx-bin/webwxgeticon?seq=0&username=@f2f8bdeb127396e46ee67347bec2a66d&chatroomid=@b2b6d7fc57376693c73234d01ab7140c&skey=
+
+function funDownload(src, filename) {
+    // 创建隐藏的可下载链接
+    var eleLink = document.createElement('a');
+    eleLink.download = filename;
+    eleLink.style.display = 'none';
+    // 字符内容转变成blob地址
+    //var blob = new Blob([content]);
+    eleLink.href = src;
+    // 触发点击
+    document.body.appendChild(eleLink);
+    eleLink.click();
+    // 然后移除
+    document.body.removeChild(eleLink);
+};
+var divs = $('#mmpop_chatroom_members > div > div > div.scrollbar-dynamic.members_inner.ng-scope.scroll-content.scroll-scrolly_visible > div');
+$(divs).each(function(i,e){
+	var name = i + "-" + $(e).children('p').html()+".jpg";
+	var url = "https://wx2.qq.com" + $(e).children('img').attr('src') + "&type=big";
+	funDownload(url,name);
+});
+
+</script>
+<div id="div"></div>
+<input id="input" />
+<textarea id='textarea'></textarea>
+</html>

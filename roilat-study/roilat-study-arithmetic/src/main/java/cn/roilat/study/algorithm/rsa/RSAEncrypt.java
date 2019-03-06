@@ -2,6 +2,7 @@ package cn.roilat.study.algorithm.rsa;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class RSAEncrypt {
     private static final char[] HEX_CHAR = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a',
                                              'b', 'c', 'd', 'e', 'f' };
 
+    private static final int MAX_ENCRYPT_BLOCK = 117;
+    private static final int MAX_DECRYPT_BLOCK = 128;
     /**
      * 随机生成密钥对
      */
@@ -161,6 +164,94 @@ public class RSAEncrypt {
             throw new Exception("私钥数据为空");
         }
     }
+    
+    /**
+     * 增强的加密算法,处理了加密块大小限制问题
+     * 
+     * @param publicKey
+     * @param plainTextData
+     * @return
+     * @throws Exception
+     */
+    public static byte[] encrypt(RSAPublicKey publicKey, byte[] plainTextData) throws Exception {
+        int originLen = plainTextData.length;
+        int offset = 0;
+        int len;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        while ((len = originLen - offset) > 0) {
+            byte[] temp = new byte[len > MAX_ENCRYPT_BLOCK ? MAX_ENCRYPT_BLOCK : len];
+            System.arraycopy(plainTextData, offset, temp, 0, temp.length);
+            baos.write(doEncrypt(publicKey, temp));
+            offset += MAX_ENCRYPT_BLOCK;
+        }
+        return baos.toByteArray();
+    }
+    
+    /**
+     * 增强的加密算法,处理了加密块大小限制问题
+     * 
+     * @param publicKey
+     * @param plainTextData
+     * @return
+     * @throws Exception
+     */
+    public static byte[] encrypt(RSAPrivateKey privateKey, byte[] plainTextData) throws Exception {
+        int originLen = plainTextData.length;
+        int offset = 0;
+        int len;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        while ((len = originLen - offset) > 0) {
+            byte[] temp = new byte[len > MAX_ENCRYPT_BLOCK ? MAX_ENCRYPT_BLOCK : len];
+            System.arraycopy(plainTextData, offset, temp, 0, temp.length);
+            baos.write(doEncrypt(privateKey, temp));
+            offset += MAX_ENCRYPT_BLOCK;
+        }
+        return baos.toByteArray();
+    }
+    
+    /**
+     * 增强的解密算法,处理了加密块大小限制问题
+     * 
+     * @param publicKey
+     * @param plainTextData
+     * @return
+     * @throws Exception
+     */
+    public static byte[] decrypt(RSAPublicKey publicKey, byte[] plainTextData) throws Exception {
+        int originLen = plainTextData.length;
+        int offset = 0;
+        int len;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        while ((len = originLen - offset) > 0) {
+            byte[] temp = new byte[len > MAX_DECRYPT_BLOCK ? MAX_DECRYPT_BLOCK : len];
+            System.arraycopy(plainTextData, offset, temp, 0, temp.length);
+            baos.write(doDecrypt(publicKey, temp));
+            offset += MAX_DECRYPT_BLOCK;
+        }
+        return baos.toByteArray();
+    }
+    
+    /**
+     * 增强的解密算法,处理了加密块大小限制问题
+     * 
+     * @param publicKey
+     * @param plainTextData
+     * @return
+     * @throws Exception
+     */
+    public static byte[] decrypt(RSAPrivateKey privateKey, byte[] plainTextData) throws Exception {
+        int originLen = plainTextData.length;
+        int offset = 0;
+        int len;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        while ((len = originLen - offset) > 0) {
+            byte[] temp = new byte[len > MAX_DECRYPT_BLOCK ? MAX_DECRYPT_BLOCK : len];
+            System.arraycopy(plainTextData, offset, temp, 0, temp.length);
+            baos.write(doDecrypt(privateKey, temp));
+            offset += MAX_DECRYPT_BLOCK;
+        }
+        return baos.toByteArray();
+    }
 
     /**
      * 公钥加密过程
@@ -173,7 +264,7 @@ public class RSAEncrypt {
      * @throws Exception
      *             加密过程中的异常信息
      */
-    public static byte[] encrypt(RSAPublicKey publicKey, byte[] plainTextData) throws Exception {
+    private static byte[] doEncrypt(RSAPublicKey publicKey, byte[] plainTextData) throws Exception {
         if (publicKey == null) {
             throw new Exception("加密公钥为空, 请设置");
         }
@@ -210,7 +301,7 @@ public class RSAEncrypt {
      * @throws Exception
      *             加密过程中的异常信息
      */
-    public static byte[] encrypt(RSAPrivateKey privateKey, byte[] plainTextData) throws Exception {
+    private static byte[] doEncrypt(RSAPrivateKey privateKey, byte[] plainTextData) throws Exception {
         if (privateKey == null) {
             throw new Exception("加密私钥为空, 请设置");
         }
@@ -246,7 +337,7 @@ public class RSAEncrypt {
      * @throws Exception
      *             解密过程中的异常信息
      */
-    public static byte[] decrypt(RSAPrivateKey privateKey, byte[] cipherData) throws Exception {
+    private static byte[] doDecrypt(RSAPrivateKey privateKey, byte[] cipherData) throws Exception {
         if (privateKey == null) {
             throw new Exception("解密私钥为空, 请设置");
         }
@@ -283,7 +374,7 @@ public class RSAEncrypt {
      * @throws Exception
      *             解密过程中的异常信息
      */
-    public static byte[] decrypt(RSAPublicKey publicKey, byte[] cipherData) throws Exception {
+    private static byte[] doDecrypt(RSAPublicKey publicKey, byte[] cipherData) throws Exception {
         if (publicKey == null) {
             throw new Exception("解密公钥为空, 请设置");
         }
