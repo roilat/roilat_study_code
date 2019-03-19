@@ -116,8 +116,13 @@ MySQL单表数据量过千万，采坑优化记录，完美解决方案					http
 深入解析MySQL分区（Partition）功能							https://blog.csdn.net/tjcyjd/article/details/11194489
 MySQL 性能优化神器 Explain 使用分析							https://segmentfault.com/a/1190000008131735
 Spring3.1.0实现原理分析(二十二).Dao事务分析之事务管理器			https://blog.csdn.net/roberts939299/article/details/77587425
-
-
+为什么同样大小的像素在移动端和pc端看起来不一样						https://www.jianshu.com/p/4583755b4f69
+log4j与logback包冲突原因及解决，不可忽视的Warning				https://blog.csdn.net/u011372108/article/details/83824274
+Log4j 2.x 配置详解及详细配置例子							https://blog.csdn.net/why_still_confused/article/details/79116565
+Log4j 2.x的体系架构详解									https://blog.csdn.net/why_still_confused/article/details/79097136
+nginx只允许域名访问，禁止ip访问								https://www.cnblogs.com/weifeng1463/p/9197971.html
+搭建vpn翻墙											http://blog.sciencenet.cn/blog-3054301-1108035.html
+Spring Boot实战：静态资源处理								https://www.cnblogs.com/paddix/p/8301331.html
 
 
 一些关于springboot的文章
