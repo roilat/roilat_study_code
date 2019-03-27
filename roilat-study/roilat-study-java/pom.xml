@@ -638,5 +638,10 @@
 			<artifactId>antlr4-runtime</artifactId>
 			<version>4.7</version>
 		</dependency>
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose.words</artifactId>
+			<version>11.1.0</version>
+		</dependency>		
 	</dependencies>
 </project>

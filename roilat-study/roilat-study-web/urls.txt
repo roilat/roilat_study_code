@@ -123,6 +123,14 @@ Log4j 2.x的体系架构详解									https://blog.csdn.net/why_still_confused/
 nginx只允许域名访问，禁止ip访问								https://www.cnblogs.com/weifeng1463/p/9197971.html
 搭建vpn翻墙											http://blog.sciencenet.cn/blog-3054301-1108035.html
 Spring Boot实战：静态资源处理								https://www.cnblogs.com/paddix/p/8301331.html
+mysql 索引长度和区分度									https://www.cnblogs.com/zox2011/p/7822791.html
+[Mysql]mysql索引长度和key_len计算						https://blog.csdn.net/randy6687/article/details/8437636
+order by调优的一些测试									https://www.cnblogs.com/yuyue2014/p/4337956.html
+Java魔法堂：String.format详解							https://www.cnblogs.com/fsjohnhuang/p/4094777.html
+Java 并发编程：volatile的使用及其原理						https://www.cnblogs.com/paddix/p/5428507.html
+va 中的Double Check Lock（转）							https://tomyz0223.iteye.com/blog/722675
+
+
 
 
 一些关于springboot的文章
@@ -150,8 +158,22 @@ https://www.zhihu.com/people/rednaxelafx/activities
 
 
 
+ysql索引长度的一些限制（https://www.cnblogs.com/yuyue2014/p/4339090.html）
+这里边的mysql版本是5.1.x,目前5.5.x相关参数变了，MYISAM引擎时，索引长度是1000，innoDB,索引长度是3072，不含长度（2不是1个字节）描述且默认如此。如name varchar(200) latin1,则name上默认索引长度是203，如果是not null,则是202.
+此外，在长度不足时，不是自己创建前缀索引，而是报错，这一点和文章的情况也不一样。如name varchar(4000)；如果字段是utf8,则前缀最大是1024*3=3072，长度应该是3074/3075（ alter table test_index_len add column desc1 varchar(4000) CHARSET utf8;）
+order by 优化的一些规则：
+• KEY(A,B)
+• Will use Index for Sorting
+– ORDER BY A - sorting by leading column
+– A=5 ORDER BY B - EQ filtering by 1st and sorting by 2nd
+– ORDER BY A DESC, B DESC - Sorting by 2 columns in same order 
+– A>5 ORDER BY A - Range on the column, sorting on the same
 
-
+• Will NOT use Index for Sorting
+– ORDER BY B - Sorting by second column in the index
+– A>5 ORDER BY B – Range on first column, sorting by second 
+– A IN(1,2) ORDER BY B - In-Range on first column
+– ORDER BY A ASC, B DESC - Sorting in the different order
 
 
 

@@ -14,10 +14,10 @@ import java.util.Map;
  */
 public class TestHashMap {
     public static void main(String[] args) {
-        Map<TestKey1, String> map1 = new HashMap<TestKey1, String>();
-        TestKey1 tk11, tk12;
-        map1.put(tk11 = new TestKey1("roilat", 12), "hello1");
-        map1.put(tk12 = new TestKey1("roilat", 12), "hello2");
+        Map<TestKey11, String> map1 = new HashMap<TestKey11, String>();
+        TestKey11 tk11, tk12;
+        map1.put(tk11 = new TestKey11("roilat", 12), "hello1");
+        map1.put(tk12 = new TestKey11("roilat", 12), "hello2");
         System.out.println(map1);
         System.out.println(tk11.hashCode() + "---" + tk12.hashCode());//value 相同
         System.out.println(tk11.equals(tk12));//false
@@ -37,11 +37,11 @@ public class TestHashMap {
     }
 }
 
-class TestKey1 {
+class TestKey11 {
     private String name;
     private int    age;
 
-    public TestKey1(String name, int age) {
+    public TestKey11(String name, int age) {
         super();
         this.name = name;
         this.age = age;
@@ -76,11 +76,11 @@ class TestKey1 {
     }*/
 }
 
-class TestKey2 {
+class TestKey22 {
     private String name;
     private int    age;
 
-    public TestKey2(String name, int age) {
+    public TestKey22(String name, int age) {
         super();
         this.name = name;
         this.age = age;
@@ -103,7 +103,7 @@ class TestKey2 {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        TestKey2 other = (TestKey2) obj;
+        TestKey22 other = (TestKey22) obj;
         if (age != other.age)
             return false;
         if (name == null) {
