@@ -134,7 +134,16 @@ cglib源码分析（四）：cglib 动态代理原理分析						https://www.cnb
 MySQL高可用——PXC简介									http://www.mamicode.com/info-detail-2389110.html
 MHA快速搭建											http://www.cnblogs.com/gomysql/p/6547797.html
 Cassandra简介											https://www.cnblogs.com/loveis715/p/5299495.html
-
+饿了么分布式服务治理及优化经验									https://www.cnblogs.com/roilat/articles/8444765.html
+如何应付表数据过大的查询问题?(如何尽量避免大表关联)					https://www.cnblogs.com/baihuitestsoftware/articles/4795305.html
+MySQL高可用架构之MHA	（包含keepalive）						https://www.cnblogs.com/gomysql/p/3675429.html
+Keepalived原理(通过VRRP来获取vip)						https://blog.csdn.net/qq_24336773/article/details/82143367
+Heartbeat高可用解决方案(ip地址接管和arp广播进行故障转移的)			https://www.cnblogs.com/zhangsubai/p/5393447.html
+注意区别辅助ip和别名ip，keepalived和heartbeat3都是用辅助ip的形式
+文章分类 - 抓包工具使用及介绍									https://www.cnblogs.com/baihuitestsoftware/category/1030163.html
+MySQL异步、同步、半同步复制									https://www.cnblogs.com/kazihuo/p/8274534.html
+面试10大刁钻问题与回答提示									https://www.cnblogs.com/baihuitestsoftware/articles/5051027.html
+Java中的锁分类											https://www.cnblogs.com/qifengshi/p/6831055.html
 
 
 
