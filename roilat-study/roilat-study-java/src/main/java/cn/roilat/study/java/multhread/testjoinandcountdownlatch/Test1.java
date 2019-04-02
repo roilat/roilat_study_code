@@ -48,7 +48,6 @@ class Worker1 extends Thread {
 			Thread.sleep(time);
 			System.out.println(name + "工作完成，耗费时间=" + time);
 		} catch (InterruptedException e) {
-			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
 	}

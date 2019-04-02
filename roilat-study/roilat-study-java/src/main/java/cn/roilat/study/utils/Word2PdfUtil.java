@@ -19,7 +19,8 @@ import com.aspose.words.SaveFormat;
 public class Word2PdfUtil {
 
     public static void main(String[] args) {
-        //doc2pdf("C:/Users/lss/Desktop/test.doc");
+        doc2pdf("C:\\Users\\wb-dtw368035\\Desktop\\新建 Microsoft Word 文档.docx",
+            "C:\\Users\\wb-dtw368035\\Desktop\\新建 Microsoft Word 文档.pdf");
     }
 
     public static boolean getLicense() {
@@ -36,9 +37,9 @@ public class Word2PdfUtil {
     }
 
     public static void doc2pdf(String inPath, String outPath) {
-        if (!getLicense()) { // 验证License 若不验证则转化出的pdf文档会有水印产生
+        /*if (!getLicense()) { // 验证License 若不验证则转化出的pdf文档会有水印产生
             return;
-        }
+        }*/
         try {
             long old = System.currentTimeMillis();
             File file = new File(outPath); // 新建一个空白pdf文档

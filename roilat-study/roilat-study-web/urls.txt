@@ -129,6 +129,13 @@ order by调优的一些测试									https://www.cnblogs.com/yuyue2014/p/433795
 Java魔法堂：String.format详解							https://www.cnblogs.com/fsjohnhuang/p/4094777.html
 Java 并发编程：volatile的使用及其原理						https://www.cnblogs.com/paddix/p/5428507.html
 va 中的Double Check Lock（转）							https://tomyz0223.iteye.com/blog/722675
+cglib源码分析（四）：cglib 动态代理原理分析						https://www.cnblogs.com/cruze/p/3865180.html
+碾压 Python！为什么 Julia 速度这么快？						https://www.infoq.cn/article/L03bMQVPEf*UWGEpOofs
+MySQL高可用——PXC简介									http://www.mamicode.com/info-detail-2389110.html
+MHA快速搭建											http://www.cnblogs.com/gomysql/p/6547797.html
+
+
+
 
 
 
