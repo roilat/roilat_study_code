@@ -22,7 +22,6 @@
 		<dependency>
 			<groupId>org.jgroups</groupId>
 			<artifactId>jgroups-raft</artifactId>
-			<version>0.2</version>
 		</dependency>   
   </dependencies>
 </project>

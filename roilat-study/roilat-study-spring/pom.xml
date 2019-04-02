@@ -3,24 +3,25 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.roilat</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>roilat-study</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>roilat-study</artifactId>
-	<name>roilat-study</name>
+	<artifactId>roilat-study-spring</artifactId>
+	<name>roilat-study-spring</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<packaging>pom</packaging>
-	<modules>
-		<module>roilat-study-java</module>
-		<module>roilat-study-web</module>
-    <module>roilat-study-arithmetic</module>
-    <module>roilat-study-spring</module>
+  <modules>
+    <module>roilat-study-spring-cloud</module>
   </modules>
 </project>
