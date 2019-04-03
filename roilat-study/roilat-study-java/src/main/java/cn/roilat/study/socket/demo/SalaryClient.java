@@ -3,7 +3,6 @@ package cn.roilat.study.socket.demo;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 import cn.roilat.study.utils.copybak.Crf3Des;

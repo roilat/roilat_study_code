@@ -144,8 +144,8 @@ Heartbeat高可用解决方案(ip地址接管和arp广播进行故障转移的)	
 MySQL异步、同步、半同步复制									https://www.cnblogs.com/kazihuo/p/8274534.html
 面试10大刁钻问题与回答提示									https://www.cnblogs.com/baihuitestsoftware/articles/5051027.html
 Java中的锁分类											https://www.cnblogs.com/qifengshi/p/6831055.html
-
-
+MySQL 5.7半同步复制技术									https://www.cnblogs.com/zero-gg/p/9057092.html
+Java Socket 连接 Client端 和 Server端						https://www.cnblogs.com/zhuangxiu/p/4740654.html
 
 
 

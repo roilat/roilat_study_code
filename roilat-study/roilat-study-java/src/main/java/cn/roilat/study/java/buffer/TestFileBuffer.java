@@ -13,10 +13,11 @@ public class TestFileBuffer {
         FileWriter fw = null;
         try {
             fw = new FileWriter("test1.txt");
-            for (int i = 0; i < 8193; i++) //写入超过8192个字节，即超过8k
+            for (int i = 0; i < 10000; i++) //写入超过8192个字节，即超过8k
             {
                 fw.write('a');
             }
+            fw.flush();
             fw.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -31,6 +32,7 @@ public class TestFileBuffer {
             {
                 fw.write('a');
             }
+            fw.flush();
             fw.close();
         } catch (Exception e) {
             e.printStackTrace();

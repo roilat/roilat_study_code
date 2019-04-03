@@ -29,7 +29,7 @@ public class SalaryServer {
 		acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(listenerLine));
 		acceptor.getFilterChain().addLast("logger", new LoggingFilter());
 		
-		//acceptor.setHandler(new SalaryServerHandler());
+		acceptor.setHandler(new SalaryServerHandler());
 		acceptor.getSessionConfig().setReadBufferSize(40960);
 		acceptor.getSessionConfig().setMaxReadBufferSize(40960);
 		acceptor.getSessionConfig().setReceiveBufferSize(40960);
