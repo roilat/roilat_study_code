@@ -72,4 +72,8 @@ public class FlatObjectSerializer {
             return false;
         }
     }
+
+    public FlatObject toFlatObjFromJson(String jsonStr) {
+        return toFlatObj(JSONObject.parse(jsonStr));
+    }
 }
