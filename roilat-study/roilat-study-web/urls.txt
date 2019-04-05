@@ -146,7 +146,7 @@ MySQL异步、同步、半同步复制									https://www.cnblogs.com/kazihuo/p
 Java中的锁分类											https://www.cnblogs.com/qifengshi/p/6831055.html
 MySQL 5.7半同步复制技术									https://www.cnblogs.com/zero-gg/p/9057092.html
 Java Socket 连接 Client端 和 Server端						https://www.cnblogs.com/zhuangxiu/p/4740654.html
-
+面试问题（java cas有什么优点和问题）							https://blog.csdn.net/hxpjava1/article/details/79408692
 
 
 一些关于springboot的文章

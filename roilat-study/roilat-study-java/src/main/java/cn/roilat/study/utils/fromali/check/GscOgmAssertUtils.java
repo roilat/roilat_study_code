@@ -2,9 +2,6 @@ package cn.roilat.study.utils.fromali.check;
 
 import java.util.Collection;
 
-import com.alipay.gsmartcenter.common.exception.GscOgmException;
-import com.alipay.gsmartcenter.common.exception.GscOgmResultCodeEnum;
-
 /**
  * ogm断言工具
  * 

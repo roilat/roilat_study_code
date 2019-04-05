@@ -4,8 +4,8 @@
  */
 package cn.roilat.study.utils.fromali.log;
 
-import com.alibaba.common.logging.Logger;
-import com.alibaba.common.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 捕捉到异常的时候，我们通常会使用<code>logger.error("xxxx",e)</code>方式打印日常堆栈日志<br>

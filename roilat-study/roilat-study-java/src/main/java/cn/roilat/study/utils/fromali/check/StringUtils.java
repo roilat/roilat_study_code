@@ -1,6 +1,5 @@
 package cn.roilat.study.utils.fromali.check;
 
-import com.alibaba.common.lang.StringUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -24,7 +23,7 @@ public class StringUtils {
      */
     public static boolean isJson(String str) {
 
-        if (StringUtil.isBlank(str)) {
+        if (isEmpty(str)) {
             return false;
         }
         try {
