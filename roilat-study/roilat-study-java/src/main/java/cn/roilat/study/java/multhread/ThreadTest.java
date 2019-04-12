@@ -7,11 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
@@ -26,7 +24,7 @@ public class ThreadTest {
 	}
 	
 	public static void testConcurrent(){
-		final int num = 10000;
+		final int num = 1000;
 		final CountDownLatch begin = new CountDownLatch(1);
 		final CountDownLatch end = new CountDownLatch(num);
 		for (int i = 0; i < num; i++) {
@@ -40,7 +38,7 @@ public class ThreadTest {
 		}
 		System.out.println(MyWorker.startedCount + " has ready!");
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(30000);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
@@ -53,6 +51,7 @@ public class ThreadTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
+		    MyWriter.getInstance().close();
 			long endTime = System.currentTimeMillis();
 			System.out.println("结束并发测试 !");
 			System.out.println("花费时间: " + (endTime - startTime));
@@ -67,7 +66,8 @@ class MyWorker implements Runnable {
 	public static int successCount = 0;
 	public static int startedCount = 0;
 	public static int exceptionCount = 0;
-	final String urlString = "http://fcrcportal-zth-6.gz00b.dev.alipay.net/hgboss/api/gateway.json?_input_charset=utf-8&componentName=RC_INDUSTRY_INFO_SUBSCRIBE_RULE&actionName=QUERY_ALL_SOURCE";//http://59.212.213.18:8080/cloud/login/login.do
+	//final String urlString = "http://fcrcportal-eu95-8.gz00b.dev.alipay.net/hgboss/api/gateway.json?_input_charset=utf-8&componentName=RC_INDUSTRY_INFO_SUBSCRIBE_RULE&actionName=QUERY_ALL_SOURCE";//"http://www.roilat.cn/blog/";
+	final String urlString = "http://localhost:8081/hello";//"http://www.roilat.cn/blog/";
 
 	final int id;
 	
@@ -88,7 +88,7 @@ class MyWorker implements Runnable {
 		} catch (Throwable e) {
 			exceptionCount ++;
 			try {
-				new MyWriter().writeLog(e);
+				MyWriter.getInstance().writeLog(e);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -103,16 +103,15 @@ class MyWorker implements Runnable {
 	public void requestWebUrl() throws Exception{
 		URL url = new URL(urlString);
 		 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		 connection.setDoOutput(true);//允许连接提交信息
-		 connection.setRequestMethod("POST");//网页提交方式“GET”、“POST”
+		 connection.setDoOutput(false);//允许连接提交信息
+		 connection.setRequestMethod("GET");//网页提交方式“GET”、“POST”
 //		 connection.setRequestProperty("User-Agent", "Mozilla/4.7 [en] (Win98; I)");
 		 StringBuffer sb = new StringBuffer();
 		 sb.append("userName=admin");
 		 sb.append("&passWord=21232f297a57a5a743894a0e4a801fc3");
-		 OutputStream os = connection.getOutputStream();
-		 String str = sb.toString();
-		 os.write(1);
-		 os.close();
+//		 OutputStream os = connection.getOutputStream();
+//		 os.write(1);
+//		 os.close();
 		 List<String> pageInfo = readLine(connection.getInputStream());
 		 for(String s: pageInfo){
 			 System.out.println(s);
@@ -138,11 +137,27 @@ class MyWorker implements Runnable {
 }
 
 class MyWriter{
-	
+    private static MyWriter myWriter = new MyWriter();
+	File file = new File("log-" + UUID.randomUUID().toString() + ".txt");
+	FileWriter fw;
+	private MyWriter() {
+	       try {
+            fw = new FileWriter(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 	public void writeLog(Object o) throws Exception{
-		File f = new File("log-" + UUID.randomUUID().toString() + ".txt");
-		FileWriter fw = new FileWriter(f);
-		fw.write(o.toString());
-		fw.close();
+		fw.append(o.toString());
+	}
+	public void close(){
+	    try {
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+	public static MyWriter getInstance() {
+	    return myWriter;
 	}
 }

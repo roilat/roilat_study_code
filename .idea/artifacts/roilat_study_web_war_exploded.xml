@@ -1,0 +1,37 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="roilat-study-web:war exploded">
+    <output-path>$PROJECT_DIR$/roilat-study/roilat-study-web/target/roilat</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="roilat-study-web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.12" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.14" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.14" />
+          <element id="library" level="project" name="Maven: com.github.virtuald:curvesapi:1.03" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-scratchpad:3.14" />
+          <element id="library" level="project" name="Maven: fr.opensagres.xdocreport:xdocreport:1.0.6" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.14" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.6.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.poi:ooxml-schemas:1.3" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.13" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itext-pdfa:5.5.13" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itext-xtra:5.5.13" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-imaging/1.0-SNAPSHOT/commons-imaging-1.0-20180908.110935-119.jar" output-file-name="commons-imaging-1.0-SNAPSHOT.jar" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
+          <element id="library" level="project" name="Maven: com.itextpdf.tool:xmlworker:5.5.13" />
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.10.3" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/roilat-study/roilat-study-web/target/roilat/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="roilat-study-web/web/Web" />
+    </root>
+  </artifact>
+</component>

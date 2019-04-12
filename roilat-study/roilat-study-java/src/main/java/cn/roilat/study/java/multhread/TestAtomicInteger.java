@@ -1,4 +1,4 @@
-package cn.roilat.study.java.basic;
+package cn.roilat.study.java.multhread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -195,6 +195,9 @@ public class TestAtomicInteger {
                         n++;
                     } while (!ai.compareAndSet(old, old + 1));//如此来保证数据安全
                     failTimes.addAndGet(n);
+                    if (n > 0) {
+                        System.out.println("the outdated data is:" + old + ",the retry times is:" + n);
+                    }
 
                     return null;
                 }
