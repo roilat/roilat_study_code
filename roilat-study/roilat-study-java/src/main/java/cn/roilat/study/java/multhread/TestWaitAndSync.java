@@ -1,8 +1,20 @@
 package cn.roilat.study.java.multhread;
 
 public class TestWaitAndSync {
-	private static boolean flag = false;
+	private static volatile boolean flag = false;
+	/*
+	 * flag没有增加volatile时
+	 * Thread-0 invoke test1 notifyAll...
+	 * 	Thread-3 invoke test2 notifyAll...
+	 * 	Thread-2 invoke test2 waiting...
+	 * 	Thread-1 invoke test1 notifyAll...
+	 * 	Thread-2 invoke test2 notifyAll...
+	 * */
 	public static void main(String[] args) throws InterruptedException {
+	    /**
+	     * wait和notify需要放到同步代码块中运行
+	     */
+	    //TestWaitAndSync.class.wait();
 		new Thread() {
 
 			@Override

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="roilat-study-web:war">
+    <output-path>$PROJECT_DIR$/roilat-study/roilat-study-web/target</output-path>
+    <root id="archive" name="roilat.war">
+      <element id="artifact" artifact-name="roilat-study-web:war exploded" />
+    </root>
+  </artifact>
+</component>

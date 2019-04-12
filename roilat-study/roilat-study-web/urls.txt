@@ -147,6 +147,13 @@ Java中的锁分类											https://www.cnblogs.com/qifengshi/p/6831055.html
 MySQL 5.7半同步复制技术									https://www.cnblogs.com/zero-gg/p/9057092.html
 Java Socket 连接 Client端 和 Server端						https://www.cnblogs.com/zhuangxiu/p/4740654.html
 面试问题（java cas有什么优点和问题）							https://blog.csdn.net/hxpjava1/article/details/79408692
+JAVA线程池shutdown和shutdownNow的区别					https://justsee.iteye.com/blog/999189
+如何保证消息消费时的幂等性									https://blog.csdn.net/qq_20788055/article/details/86560260
+30道Redis面试题，面试官能问的都被我找到了						https://www.jianshu.com/p/36a646cef11a
+Redis常见面试题											https://www.cnblogs.com/jasontec/p/9699242.html
+理解线程池的原理											https://blog.csdn.net/mine_song/article/details/70948223
+
+
 
 
 一些关于springboot的文章

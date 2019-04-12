@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study-arithmetic/roilat-study-arithmetic.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study-arithmetic/roilat-study-arithmetic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study-java/roilat-study-java.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study-java/roilat-study-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study-spring/roilat-study-spring.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study-spring/roilat-study-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study-spring/roilat-study-spring-cloud/roilat-study-spring-cloud.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study-spring/roilat-study-spring-cloud/roilat-study-spring-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-study/roilat-study-web/roilat-study-web.iml" filepath="$PROJECT_DIR$/roilat-study/roilat-study-web/roilat-study-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roilat-work/roilat-work.iml" filepath="$PROJECT_DIR$/roilat-work/roilat-work.iml" />
+    </modules>
+  </component>
+</project>
