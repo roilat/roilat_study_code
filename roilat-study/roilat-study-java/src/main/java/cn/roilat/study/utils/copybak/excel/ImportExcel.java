@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -28,7 +29,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
-import org.testng.collections.Lists;
 
 import cn.roilat.study.utils.copybak.Reflections;
 import cn.roilat.study.utils.copybak.excel.annotation.ExcelField;
@@ -216,7 +216,7 @@ public class ImportExcel {
 	 * @param groups 导入分组
 	 */
 	public <E> List<E> getDataList(Class<E> cls, int... groups) throws InstantiationException, IllegalAccessException{
-		List<Object[]> annotationList = Lists.newArrayList();
+		List<Object[]> annotationList = new ArrayList<>();
 		// Get annotation field 
 		Field[] fs = cls.getDeclaredFields();
 		for (Field f : fs){
@@ -274,7 +274,7 @@ public class ImportExcel {
 		});
 		//log.debug("Import column count:"+annotationList.size());
 		// Get excel data
-		List<E> dataList = Lists.newArrayList();
+		List<E> dataList = new ArrayList<>();
 		for (int i = this.getDataRowNum(); i < this.getLastDataRowNum(); i++) {
 			E e = (E)cls.newInstance();
 			int column = 0;

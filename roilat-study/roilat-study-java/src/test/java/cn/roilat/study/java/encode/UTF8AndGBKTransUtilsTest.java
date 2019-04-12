@@ -3,7 +3,8 @@ package cn.roilat.study.java.encode;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.CharacterCodingException;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
+
 
 /**
  * jvm的file.encoding=gbk

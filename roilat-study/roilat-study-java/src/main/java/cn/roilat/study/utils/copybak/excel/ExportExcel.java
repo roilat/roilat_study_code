@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -36,8 +38,6 @@ import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.collections.Lists;
-
 import cn.roilat.study.utils.copybak.Encodes;
 import cn.roilat.study.utils.copybak.Reflections;
 import cn.roilat.study.utils.copybak.excel.annotation.ExcelField;
@@ -75,7 +75,7 @@ public class ExportExcel {
 	/**
 	 * 注解列表（Object[]{ ExcelField, Field/Method }）
 	 */
-	List<Object[]> annotationList = Lists.newArrayList();
+	List<Object[]> annotationList = new ArrayList<>();
 	
 	/**
 	 * 构造函数
@@ -150,7 +150,7 @@ public class ExportExcel {
 			};
 		});
 		// Initialize
-		List<String> headerList = Lists.newArrayList();
+		List<String> headerList = new ArrayList<>();
 		for (Object[] os : annotationList){
 			String t = ((ExcelField)os[0]).title();
 			// 如果是导出，则去掉注释
@@ -171,7 +171,9 @@ public class ExportExcel {
 	 * @param headers 表头数组
 	 */
 	public ExportExcel(String title, String[] headers) {
-		initialize(title, Lists.newArrayList(headers));
+		List<String> list = new ArrayList<>();
+		list.addAll(Arrays.asList(headers));
+		initialize(title, list);
 	}
 	
 	/**
@@ -444,17 +446,17 @@ public class ExportExcel {
 //	 */
 //	public static void main(String[] args) throws Throwable {
 //		
-//		List<String> headerList = Lists.newArrayList();
+//		List<String> headerList = new ArrayList<>();
 //		for (int i = 1; i <= 10; i++) {
 //			headerList.add("表头"+i);
 //		}
 //		
-//		List<String> dataRowList = Lists.newArrayList();
+//		List<String> dataRowList = new ArrayList<>();
 //		for (int i = 1; i <= headerList.size(); i++) {
 //			dataRowList.add("数据"+i);
 //		}
 //		
-//		List<List<String>> dataList = Lists.newArrayList();
+//		List<List<String>> dataList = new ArrayList<>();
 //		for (int i = 1; i <=1000000; i++) {
 //			dataList.add(dataRowList);
 //		}
