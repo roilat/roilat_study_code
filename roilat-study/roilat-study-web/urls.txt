@@ -152,7 +152,7 @@ JAVA线程池shutdown和shutdownNow的区别					https://justsee.iteye.com/blog/
 30道Redis面试题，面试官能问的都被我找到了						https://www.jianshu.com/p/36a646cef11a
 Redis常见面试题											https://www.cnblogs.com/jasontec/p/9699242.html
 理解线程池的原理											https://blog.csdn.net/mine_song/article/details/70948223
-
+Index Seek和Index Scan的区别以及适用情况					https://www.cnblogs.com/wuxiaoqian726/articles/2015519.html
 
 
 
