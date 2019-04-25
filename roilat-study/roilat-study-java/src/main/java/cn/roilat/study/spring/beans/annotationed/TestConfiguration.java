@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class TestConfiguration {
     public static void main(String[] args) throws ClassNotFoundException {
-        System.setProperty("spring.profiles.active", "dev");
+        System.setProperty("spring.profiles.active", "test");
+        new TestConfiguration();
         @SuppressWarnings("resource")
         ApplicationContext context = new AnnotationConfigApplicationContext(
             TestConfiguration.class);
