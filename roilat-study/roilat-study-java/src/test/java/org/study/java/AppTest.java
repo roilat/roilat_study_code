@@ -33,6 +33,20 @@ public class AppTest
      */
     public void testApp()
     {
+    	int num = 707829217;
+    	doWork(num);
         assertTrue( true );
+    }
+    
+    public void doWork(int num){
+    	int end = (int) Math.sqrt(num);
+    	System.out.println(end);
+    	for (int i = 3; i < end; i+=2) {
+			if(num % i == 0){
+				System.out.println(i + "*" + num/i);
+				doWork(i);
+				doWork(num/i);
+			}
+		}
     }
 }

@@ -24,7 +24,7 @@ public class ThreadTest {
 	}
 	
 	public static void testConcurrent(){
-		final int num = 1000;
+		final int num = 2000;
 		final CountDownLatch begin = new CountDownLatch(1);
 		final CountDownLatch end = new CountDownLatch(num);
 		for (int i = 0; i < num; i++) {
@@ -38,7 +38,7 @@ public class ThreadTest {
 		}
 		System.out.println(MyWorker.startedCount + " has ready!");
 		try {
-			Thread.sleep(30000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
 		}
@@ -67,7 +67,7 @@ class MyWorker implements Runnable {
 	public static int startedCount = 0;
 	public static int exceptionCount = 0;
 	//final String urlString = "http://fcrcportal-eu95-8.gz00b.dev.alipay.net/hgboss/api/gateway.json?_input_charset=utf-8&componentName=RC_INDUSTRY_INFO_SUBSCRIBE_RULE&actionName=QUERY_ALL_SOURCE";//"http://www.roilat.cn/blog/";
-	final String urlString = "http://localhost:8081/hello";//"http://www.roilat.cn/blog/";
+	final String urlString = "http://localhost:8081/api/blog/article/";//"http://www.roilat.cn/blog/";
 
 	final int id;
 	

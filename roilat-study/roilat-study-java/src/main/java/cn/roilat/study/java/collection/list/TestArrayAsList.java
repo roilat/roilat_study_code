@@ -2,7 +2,6 @@ package cn.roilat.study.java.collection.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

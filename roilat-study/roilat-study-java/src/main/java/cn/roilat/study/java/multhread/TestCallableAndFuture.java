@@ -22,9 +22,9 @@ public class TestCallableAndFuture {
             Thread.sleep(200);
             System.out.println("主线程在执行其他任务");
 
-            if (future.get() != null) {
+            if (futureTask.get() != null) {
                 //输出获取到的结果
-                System.out.println("future.get()-->" + future.get());
+                System.out.println("future.get()-->" + futureTask.get());
             } else {
                 //输出获取到的结果
                 System.out.println("future.get()未获取到结果");
