@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.RolePermissionMapper">  
+	<delete id="deleteRolePermission" parameterType="hashmap">
+		DELETE FROM ms_role_permission WHERE role_id = #{roleId} 
+		and permission_id in (SELECT id from ms_permission WHERE module_id=#{moduleId})
+	</delete>
+	<insert id="saveRolePermission" parameterType="java.util.List">
+		INSERT INTO ms_role_permission (role_id,permission_id)   
+    	VALUES  
+	    <foreach collection="list" item="rp" index="index" separator="," >  
+	        (#{rp.roleId},#{rp.permissionId})  
+	    </foreach>
+	</insert>
+	<select id="selectRolePermissionByRoleId"
+		resultType="cn.roilat.modules.system.entity.MsRolePermission">
+		SELECT mrp.id as id,mrp.permission_id as permissionId,mrp.role_id as roleId
+		 FROM 
+		 	ms_role_permission mrp,ms_permission mp 
+		 WHERE 
+		 	mrp.role_id=#{roleId} 
+		 AND 
+		 	mp.id=mrp.permission_id 
+		 AND
+		 	 mp.module_id=#{moduleId}
+	</select>
+</mapper>  

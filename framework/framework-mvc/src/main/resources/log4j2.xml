@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!-- status log4j2内部日志级别 -->
+<configuration status="INFO">
+	<!-- 全局参数 -->
+	<Properties>
+		<Property name="simplePattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}(%L):%m%n</Property>
+		<Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c(%L):%m%n</Property>
+		<Property name="displayName">${linjiezhijia.log.displayName}</Property>
+		<Property name="LOG_HOME">D:/logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout>
+				<pattern>${simplePattern}</pattern>
+			</PatternLayout>
+		</Console>
+		
+		<RollingFile name="std_error" fileName="${LOG_HOME}/${displayName}/std_error.log"
+			filePattern="std_error_%d{yyyy-MM-dd}.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${simplePattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		<RollingFile name="std_common" fileName="${LOG_HOME}/${displayName}/std_common.log"
+			filePattern="std_common_%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>${simplePattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		
+		
+		<RollingFile name="biz_error_log" fileName="${LOG_HOME}/${displayName}/biz_error.log"
+			filePattern="biz_error_%d{yyyy-MM-dd}.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${simplePattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		<RollingFile name="biz_common_log" fileName="${LOG_HOME}/${displayName}/biz_common.log"
+			filePattern="biz_common_%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>${simplePattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		
+		<RollingFile name="web_error_log" fileName="${LOG_HOME}/${displayName}/web_error.log"
+			filePattern="web_error_%d{yyyy-MM-dd}.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		<RollingFile name="web_common_log" fileName="${LOG_HOME}/${displayName}/web_common.log"
+			filePattern="web_common_%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		
+		<RollingFile name="framework_common" fileName="${LOG_HOME}/framework/framework_common.log"
+			filePattern="framework_common_%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+		<RollingFile name="framework_error" fileName="${LOG_HOME}/framework/framework_error.log"
+			filePattern="framework_error_%d{yyyy-MM-dd}.log">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="50 MB" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.springframework" level="INFO" additivity="false">
+			<AppenderRef ref="framework_error"></AppenderRef>
+			<AppenderRef ref="framework_common"></AppenderRef>
+		</Logger>
+		<Logger name="cn.roilat.framework.biz" level="INFO" additivity="false">
+			<AppenderRef ref="biz_error_log"></AppenderRef>
+			<AppenderRef ref="biz_common_log"></AppenderRef>	
+		</Logger>
+		<Logger name="sytem" level="INFO" additivity="false">
+			<AppenderRef ref="web_error_log"></AppenderRef>
+			<AppenderRef ref="web_common_log"></AppenderRef>
+		</Logger>
+		<Root level="INFO">
+			<AppenderRef ref="console"></AppenderRef>
+			<AppenderRef ref="std_common"></AppenderRef>
+			<AppenderRef ref="std_error"></AppenderRef>
+		</Root>
+	</Loggers>
+</configuration>

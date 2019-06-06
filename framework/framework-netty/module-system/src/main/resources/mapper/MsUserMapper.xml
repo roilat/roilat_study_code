@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.UserMapper">  
+	<select id="getUserInfoList" resultType="cn.roilat.modules.system.entity.dto.UserInfoDTO" parameterType="hashmap">
+		SELECT  max(u.id) as id,
+				u.user_name AS userName,
+				MAX(u.true_name) AS trueName,
+				MAX(u.status) AS STATUS,
+				MAX(u.create_time) AS createTime,
+				MAX(u.mobile) AS mobile,
+				MAX(u.detail_address) AS detailAddress,
+				MAX(u.qq) AS qq,
+				MAX(u.email) AS email,
+				MAX(u.wechat) AS wechat,
+				MAX(u.skin) AS skin,
+				GROUP_CONCAT(r.`role_name` SEPARATOR ',') AS roles
+			FROM ms_user u,ms_role r,ms_user_role ur WHERE 
+			u.id=ur.user_id AND r.id=ur.role_id and u.id != 1
+			<if test="all != null ">
+			 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or r.role_name like CONCAT('%',#{all},'%'))
+			</if>
+			<if test="userName != null">
+				and u.user_name like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="trueName != null">
+				and u.true_name like CONCAT('%',#{trueName},'%')
+			</if>
+			<if test="roleName != null">
+				and r.role_name like CONCAT('%',#{roleName},'%')
+			</if>
+			<if test="status != null">
+				and u.status = #{status}
+			</if>
+			group by u.`user_name` LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getUserInfoCount" resultType="Integer" parameterType="hashmap">
+		select count(*) from 
+		(SELECT u.user_name AS userName
+			FROM ms_user u,ms_role r,ms_user_role ur WHERE 
+			u.id=ur.user_id AND r.id=ur.role_id and u.id != 1
+			<if test="all != null ">
+			 and (u.user_name like CONCAT('%',#{all},'%')  or u.true_name like CONCAT('%',#{all},'%') or r.role_name like CONCAT('%',#{all},'%'))
+			</if>
+			<if test="userName != null">
+				and u.user_name like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="trueName != null">
+				and u.true_name like CONCAT('%',#{trueName},'%')
+			</if>
+			<if test="roleName != null">
+				and r.role_name like CONCAT('%',#{roleName},'%')
+			</if>
+			<if test="status != null">
+				and u.status = #{status}
+			</if>
+			group by u.`user_name`
+			) aa
+	</select> 
+	
+	<select id="getUserInfoListNotInRoleId" resultType="cn.roilat.modules.system.entity.dto.UserInfoDTO" parameterType="hashmap">
+		SELECT  
+		u.id,
+		u.user_name AS userName,
+		u.true_name AS trueName,
+		u.status AS status,
+		u.create_time AS createTime,
+		u.create_user as createUser,
+		u.detail_address as detailAddress,
+		u.nick_name as nickName,
+		u.wechat as wechat,
+		u.qq as qq,
+		u.mobile as mobile,
+		u.email as email
+		FROM ms_user u WHERE u.id NOT IN (SELECT user_id FROM ms_user_role WHERE role_id=#{notRoleId}) and u.id != 1
+		<if test="all != null ">
+			and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or u.create_user like CONCAT('%',#{all},'%'))
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		<if test="createUser != null">
+			and r.create_user like CONCAT('%',#{createUser},'%')
+		</if>
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+		group by u.`user_name` LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getUserInfoCountNotInRoleId" resultType="Integer" parameterType="hashmap">
+		select count(*)
+		FROM ms_user u WHERE u.id NOT IN (SELECT user_id FROM ms_user_role WHERE role_id=#{notRoleId}) and u.id != 1
+		<if test="all != null ">
+			and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or u.create_user like CONCAT('%',#{all},'%'))
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		<if test="createUser != null">
+			and r.create_user like CONCAT('%',#{createUser},'%')
+		</if>
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+	</select>
+	
+	<select id="getUserInfoListNotOrganization" resultType="cn.roilat.modules.system.entity.dto.UserInfoDTO" parameterType="hashmap">
+		SELECT  max(u.id) as id,
+				u.user_name AS userName,
+				MAX(u.true_name) AS trueName,
+				MAX(u.status) AS STATUS,
+				MAX(u.create_time) AS createTime,
+				MAX(u.mobile) AS mobile,
+				MAX(u.detail_address) AS detailAddress,
+				MAX(u.qq) AS qq,
+				MAX(u.email) AS email,
+				MAX(u.wechat) AS wechat,
+				MAX(u.skin) AS skin,
+				GROUP_CONCAT(r.`role_name` SEPARATOR ',') AS roles
+			FROM ms_user u,ms_role r,ms_user_role ur WHERE 
+			u.id=ur.user_id AND r.id=ur.role_id and u.id != 1
+			<if test="all != null ">
+			 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or r.role_name like CONCAT('%',#{all},'%'))
+			</if>
+			<if test="userName != null">
+				and u.user_name like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="trueName != null">
+				and u.true_name like CONCAT('%',#{trueName},'%')
+			</if>
+			<if test="roleName != null">
+				and r.role_name like CONCAT('%',#{roleName},'%')
+			</if>
+			<if test="status != null">
+				and u.status = #{status}
+			</if>
+			<if test="notOrganizationId != null">
+				and not exists (SELECT * FROM ( SELECT mo.`user_id` FROM ms_user_organization mo WHERE mo.organization_id = #{notOrganizationId}) a WHERE a.user_id = u.id)  
+			</if>
+			
+			group by u.`user_name` LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getUserInfoCountNotOrganization" resultType="Integer" parameterType="hashmap">
+		select count(*) from 
+		(SELECT u.user_name AS userName
+			FROM ms_user u,ms_role r,ms_user_role ur WHERE 
+			u.id=ur.user_id AND r.id=ur.role_id and u.id != 1
+			<if test="all != null ">
+			 and (u.user_name like CONCAT('%',#{all},'%')  or u.true_name like CONCAT('%',#{all},'%') or r.role_name like CONCAT('%',#{all},'%'))
+			</if>
+			<if test="userName != null">
+				and u.user_name like CONCAT('%',#{userName},'%')
+			</if>
+			<if test="trueName != null">
+				and u.true_name like CONCAT('%',#{trueName},'%')
+			</if>
+			<if test="roleName != null">
+				and r.role_name like CONCAT('%',#{roleName},'%')
+			</if>
+			<if test="status != null">
+				and u.status = #{status}
+			</if>
+			<if test="notOrganizationId != null">
+				and not exists (SELECT * FROM ( SELECT mo.`user_id` FROM ms_user_organization mo WHERE mo.organization_id = #{notOrganizationId}) a WHERE a.user_id = u.id)  
+			</if>
+			group by u.`user_name`
+			) aa
+	</select> 
+</mapper>  

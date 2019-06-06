@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.MsUserRoleMapper"> 
+	<select id="getRoleByUserId" resultType="cn.roilat.modules.system.entity.MsRole" parameterType="Integer">
+		SELECT 
+			mr.`id`,mr.`role_name` as roleName
+			FROM ms_user_role ur,ms_role mr WHERE ur.`role_id`=mr.`id` AND ur.`user_id`=#{userId} and mr.id>1
+	</select> 
+</mapper>

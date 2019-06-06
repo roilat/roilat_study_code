@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 参考：https://www.cnblogs.com/hihtml5/p/6866532.html -->
+<generatorConfiguration>
+	<!-- <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" 
+		/> -->
+
+	<context id="mysqlBlogTables" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+
+		<!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+		<property name="autoDelimitKeywords" value="false" />
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC"
+			userId="root" password="abc123">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="cn.roilat.framework.biz.blog.model"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="cn.roilat.framework.biz.blog.dao.mappers"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.roilat.framework.biz.blog.dao.mappers" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="test" tableName="T_BLOG_ARTICLE"
+			domainObjectName="BlogArticle">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+		<table schema="test" tableName="T_BLOG_ATTACHMENT"
+			domainObjectName="BlogAttachment">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+		<table schema="test" tableName="T_BLOG_CATEGORY"
+			domainObjectName="BlogCategory">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+		<table schema="test" tableName="T_BLOG_LINK" domainObjectName="BlogLink">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+
+	</context>
+
+	<context id="mysqlDDCZTables" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+
+		<!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+		<property name="autoDelimitKeywords" value="false" />
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC"
+			userId="root" password="abc123">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="cn.roilat.framework.biz.ddcz.model"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="cn.roilat.framework.biz.ddcz.mappers"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.roilat.framework.biz.ddcz.mappers" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="test" tableName="T_DDCZ_EVENTS" domainObjectName="DdczEvents">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+	</context>
+
+	<context id="mysqlPhotoAlbumTables" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+
+		<!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+		<property name="autoDelimitKeywords" value="false" />
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC"
+			userId="root" password="abc123">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="cn.roilat.framework.biz.photoalbum.model"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="cn.roilat.framework.biz.photoalbum.mappers"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="cn.roilat.framework.biz.photoalbum.mappers" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table schema="test" tableName="T_PHOTO_ALBUM_FILE" domainObjectName="PhotoAlbumFile">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+		<table schema="test" tableName="T_PHOTO_ALBUM_LIST" domainObjectName="PhotoAlbumList">
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="ID" sqlStatement="mysql" identity="true" />
+		</table>
+	</context>
+</generatorConfiguration>

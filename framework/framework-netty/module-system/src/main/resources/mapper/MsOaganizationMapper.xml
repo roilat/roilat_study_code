@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.MsOaganizationMapper"> 
+	<select id="getOrganizationList" resultType="cn.roilat.modules.system.entity.MsOrganization">
+		select 
+			m.id as id,
+			m.abbreviation as abbreviation,
+			m.organization_name as organizationName,
+			m.create_time as createTime,
+			m.create_user as createUser,
+			m.description as description,
+			m.modify_time as modifyTime,
+			m.modify_user as modifyUser,
+			m.order_num as orderNum,
+			m.parent_id as parentId,
+			m.status as status
+		 from ms_organization m where m.organization_type=1 and m.status=1 and m.flag=1
+	</select> 
+	
+	<select id="getOrganizationByTreeId" parameterType="java.lang.String"  resultType="cn.roilat.modules.system.entity.MsOrganization">
+		select 
+			m.id as id
+		 from ms_organization m where m.tree_id=#{treeid} and m.status=1 and m.flag=1
+	</select> 
+	
+	<select id="getChildrenNode" parameterType="hashmap" resultType="cn.roilat.modules.system.entity.MsOrganization">
+		select 
+			m.id as id,
+			m.abbreviation as abbreviation,
+			m.organization_name as organizationName,
+			m.create_time as createTime,
+			m.create_user as createUser,
+			m.description as description,
+			m.modify_time as modifyTime,
+			m.modify_user as modifyUser,
+			m.order_num as orderNum,
+			m.parent_id as parentId,
+			m.status as status
+		 from ms_organization m where parent_id=#{pid} and m.status=1  and m.flag=1
+		 <if test="all != null ">
+		 and (m.organization_name like CONCAT('%',#{all},'%') or m.abbreviation like CONCAT('%',#{all},'%'))
+		</if>
+		<if test="organizationName != null">
+			and m.organization_name like CONCAT('%',#{organizationName},'%')
+		</if>
+		<if test="abbreviation != null">
+			and m.abbreviation like CONCAT('%',#{abbreviation},'%')
+		</if>
+		LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getChildrenNodeCounts" parameterType="hashmap" resultType="int">
+		select 
+			count(*)
+		 from ms_organization m where parent_id=#{pid} and m.status=1 and m.flag=1
+		 <if test="all != null ">
+		 and (m.organization_name like CONCAT('%',#{all},'%') or m.abbreviation like CONCAT('%',#{all},'%'))
+		</if>
+		<if test="organizationName != null">
+			and m.organization_name like CONCAT('%',#{organizationName},'%')
+		</if>
+		<if test="abbreviation != null">
+			and m.abbreviation like CONCAT('%',#{abbreviation},'%')
+		</if>
+	</select>
+	
+	<update id="batchDeleteOrganization">
+		UPDATE ms_organization SET STATUS=0  WHERE id IN 
+		<foreach item="item" index="index" collection="list" 
+                 open="(" separator="," close=")">
+                #{item}
+        </foreach>
+	</update>
+	
+	<select id="getUserInfoListByOrganizationId" parameterType="hashmap" resultType="cn.roilat.modules.system.entity.dto.UserInfoDTO">
+		SELECT 
+			u.id,
+			u.user_name AS userName,
+			u.true_name AS trueName,
+			u.status AS STATUS,
+			u.create_time AS createTime,
+			u.create_user as createUser,
+			u.detail_address as detailAddress,
+			u.nick_name as nickName,
+			u.wechat as wechat,
+			u.qq as qq,
+			u.mobile as mobile,
+			u.email as email,
+			uo.is_admin as isAdmin
+		FROM 
+		ms_organization o,ms_user_organization uo,ms_user u 
+		WHERE o.`id`=uo.`organization_id` AND u.`id`=uo.`user_id` AND o.`id`=#{id} and u.id != 1
+		<if test="all != null ">
+		 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') )
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+		LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getUserCountByOrganizationId" parameterType="hashmap" resultType="int">
+		SELECT 
+			count(*)
+		FROM 
+		ms_organization o,ms_user_organization uo,ms_user u 
+		WHERE o.`id`=uo.`organization_id` AND u.`id`=uo.`user_id` AND o.`id`=#{id} and u.id != 1 and o.flag=1
+		<if test="all != null ">
+		 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%'))
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+	</select>
+</mapper>  

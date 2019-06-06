@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.MsUserOrganizationMapper"> 
+	<select id="getMsUserOrganizationByUserId" resultType="cn.roilat.modules.system.entity.MsUserOrganization" parameterType="Integer">
+		SELECT *
+			FROM ms_user_organization muo WHERE ISNULL(muo.is_admin) and muo.user_id=#{userId}
+	</select>
+
+	<select id="getOrganizationByUserId" resultType="cn.roilat.modules.system.entity.MsOrganization" parameterType="Integer">
+		SELECT 
+			mo.`id`,mo.`organization_name` as organizationName
+			FROM ms_user_organization muo,ms_organization mo WHERE muo.organization_id=mo.id and muo.user_id=#{userId}
+	</select>
+	<select id="getSameOrganizationUserName" resultType="cn.roilat.modules.system.entity.dto.UserInfoDTO" parameterType="String">
+		SELECT id,
+		user_name AS userName,
+		true_name AS trueName,
+		status AS status,
+		create_time AS createTime,
+		create_user as createUser,
+		detail_address as detailAddress,
+		nick_name as nickName,
+		wechat as wechat,
+		qq as qq,
+		mobile as mobile,
+		email as email FROM ms_user WHERE id in
+		(SELECT DISTINCT user_id FROM ms_user_organization WHERE organization_id in
+		(SELECT organization_id FROM ms_user_organization WHERE user_id in
+		(SELECT id from ms_user WHERE ms_user.user_name=#{userName})))
+		AND `status`=1
+	</select>
+	
+	<select id="getUserOrganizationInfoByUserName" resultType="cn.roilat.modules.system.entity.dto.UserOrganizationDto" parameterType="String">
+		SELECT 
+		  u.id userId,
+		  u.user_name userName,
+		  u.true_name applyName,
+		  u.mobile,
+		  u.detail_address detailAddress,
+		  u.email appEmail,
+		  u.qq,
+		  u.wechat,
+		  u.`status` status,
+		  u.skin,
+		  u.duty,
+		  u.id_card idCard,
+		  o.id organizationId,
+		  o.`organization_name` organizationName,
+		  o.tree_id treeId 
+		FROM 
+		  ms_user u,
+		  ms_user_organization uo,
+		  ms_organization o 
+		WHERE u.id = uo.user_id 
+		  AND o.id = uo.organization_id 
+		  AND u.status = 1 
+		  AND o.status = 1 
+		  AND u.user_name = #{userName}
+	</select>
+	<select id="getOrgName" resultType="cn.roilat.modules.system.entity.dto.UserOrganizationDto" parameterType="java.lang.String">
+	SELECT o.id as applyUnit,o.organization_name componyName 
+		FROM ms_organization o WHERE o.tree_id=#{treeId}
+	</select>
+	<select id="getDeptName" resultType="string" parameterType="string">
+		SELECT 
+		  GROUP_CONCAT(
+		    o.organization_name 
+		    ORDER BY o.tree_id SEPARATOR '/'
+			  ) str
+			FROM
+			  ms_organization o 
+			WHERE o.`tree_id`!= SUBSTRING(#{treeId}, 1, 3) 
+			  AND #{treeId} LIKE CONCAT(o.tree_id, '%')
+	</select>
+</mapper> 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.RoleMapper"> 
+	<select id="getRoleList" resultType="cn.roilat.modules.system.entity.MsRole" parameterType="hashmap">
+		SELECT r.id as id, r.role_name as roleName, r.description as description, 
+		r.`status` as `status`, r.is_system_role as isSystemRole, r.create_time as createTime, 
+		r.modify_user as modifyUser, r.create_user as createUser, r.modify_time as modifyTime 
+		from ms_role r WHERE r.status=1 and r.id>1
+			<if test="all != null ">
+			 and (r.role_name LIKE CONCAT('%',#{all},'%' ) or r.create_user LIKE CONCAT('%',#{all},'%' ))
+			</if>
+			<if test="roleName != null">
+				and r.role_name LIKE CONCAT('%',#{roleName},'%' )
+			</if>
+			<if test="createUser != null">
+				and r.create_user LIKE CONCAT('%',#{createUser},'%' )
+			</if>
+			LIMIT #{offest},#{pageSize}
+	</select>
+	
+	<select id="getRoleListWithoutPage" resultType="cn.roilat.modules.system.entity.MsRole" parameterType="hashmap">
+		SELECT r.id as id, r.role_name as roleName, r.description as description, 
+		r.`status` as `status`, r.is_system_role as isSystemRole, r.create_time as createTime, 
+		r.modify_user as modifyUser, r.create_user as createUser, r.modify_time as modifyTime 
+		from ms_role r WHERE r.status=1 and r.id>1
+	</select>
+	
+	<select id="getRoleCount" resultType="Integer" parameterType="hashmap">
+		select count(*) from 
+		ms_role r WHERE r.status=1 and r.id>1
+			<if test="all != null ">
+			 and (r.role_name LIKE CONCAT('%',#{all},'%' ) or r.create_user LIKE CONCAT('%',#{all},'%' ))
+			</if>
+			<if test="roleName != null">
+				and r.role_name LIKE CONCAT('%',#{roleName},'%' )
+			</if>
+			<if test="createUser != null">
+				and r.create_user LIKE CONCAT('%',#{createUser},'%' )
+			</if>
+	</select> 
+</mapper>

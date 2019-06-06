@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.MsPermissionMapper">  
+  	<select id="getPermissionByUserId" parameterType="Integer" resultType="cn.roilat.modules.system.entity.MsPermission">
+  		SELECT 
+  			p.id as id,
+  			p.permission_code as permissionCode,
+  			p.permission_uri as permissionUri,
+  			p.permission_name as permissionName,
+  			p.permission_type permissionType,
+  			p.parent_id as parentId,
+  			p.is_menu as isMenu,
+  			p.url as url,
+  			p.status as status,
+  			p.module_id as moduleId,
+  			p.is_system_permission as isSystemPermission
+  			FROM ms_user u,ms_user_role ur,ms_role r,ms_role_permission rp,ms_permission p 
+  			WHERE u.`id`=ur.`user_id` AND r.`id`=ur.`role_id` AND 
+			r.`id`=rp.`role_id` AND p.`id`=rp.`permission_id` AND u.`id`=#{id}
+			GROUP BY p.id , p.permission_name , p.permission_type , p.parent_id , p.is_menu , p.url ,
+ 			p.status , p.module_id , p.is_system_permission 
+  	</select>
+  	<select id="getRoleModulePermission" parameterType="cn.roilat.modules.system.entity.dto.ModulePermissionDTO" resultType="cn.roilat.modules.system.entity.MsPermission">
+  		SELECT 
+  			p.id as id,
+  			p.permission_code as permissionCode,
+  			p.permission_uri as permissionUri,
+  			p.permission_name as permissionName,
+  			p.permission_type permissionType,
+  			p.parent_id as parentId,
+  			p.is_menu as isMenu,
+  			p.url as url,
+  			p.status as status,
+  			p.module_id as moduleId,
+  			p.is_system_permission as isSystemPermission
+  			FROM ms_user u,ms_user_role ur,ms_role r,ms_role_permission rp,ms_permission p 
+  			WHERE u.`id`=ur.`user_id` AND r.`id`=ur.`role_id` AND 
+			r.`id`=rp.`role_id` AND p.`id`=rp.`permission_id` AND u.`id`=#{userId} AND p.parent_id=#{parentId}
+			GROUP BY p.id , p.permission_name , p.permission_type , p.parent_id , p.is_menu , p.url ,
+ 			p.status , p.module_id , p.is_system_permission 
+  	</select>
+  	<select id="selectPermissionByName" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM ms_permission 
+		<if test="id != null">
+			WHERE id &lt;&gt; #{id} AND permission_name=#{permissionName}
+		</if>
+		<if test="id == null">
+			WHERE permission_name=#{permissionName}
+		</if>
+	</select>
+	<delete id="deletePermissionByIds" parameterType="java.lang.String">
+  		UPDATE ms_permission SET status=0 WHERE ID IN
+  		<foreach collection="array" item="id" open="(" separator="," close=")">
+			#{id}
+    	</foreach>
+  	</delete>
+  	<select id="getAllWithModuleId" parameterType="cn.roilat.modules.system.entity.MsPermission" resultType="cn.roilat.modules.system.entity.MsPermission">
+  		SELECT 
+  			p.id as id,
+  			p.permission_name as permissionName,
+  			p.permission_code as permissionCode,
+  			p.permission_uri as permissionUri,
+  			p.permission_type permissionType,
+  			p.parent_id as parentId,
+  			p.is_menu as isMenu,
+  			p.url as url,
+  			p.status as status,
+  			p.module_id as moduleId,
+  			p.is_system_permission as isSystemPermission
+  			FROM ms_permission p 
+  			WHERE p.module_id=#{moduleId}
+  	</select>
+</mapper>  
