@@ -21,6 +21,5 @@
 		<module>roilat-study-java</module>
 		<module>roilat-study-web</module>
     <module>roilat-study-arithmetic</module>
-    <module>roilat-study-spring</module>
   </modules>
 </project>

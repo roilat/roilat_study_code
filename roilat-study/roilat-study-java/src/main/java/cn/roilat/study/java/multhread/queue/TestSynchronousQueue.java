@@ -23,9 +23,10 @@ public class TestSynchronousQueue {
             public void run() {
                 System.out.println(Thread.currentThread().getName() + " take thread start");
                 try {
+                	Thread.sleep(5000);
                     System.out.println(
                         Thread.currentThread().getName() + " take from putThread: " + queue.take());
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                 }
                 System.out.println(Thread.currentThread().getName() + " take thread end");
@@ -33,16 +34,17 @@ public class TestSynchronousQueue {
         });
 
         putThread.start();
-        Thread.sleep(5000);
         takeThread.start();
+        
     }
 
     /**
      * put thread tart
-     * 等待5秒
      * take thread start
+     *	 等待5秒
      * put thread end
      * take from putThread: 1
+     *	 等待5秒
      * take thread end
      * 
      */
