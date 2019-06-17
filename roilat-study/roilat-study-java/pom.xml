@@ -532,7 +532,6 @@
 			<artifactId>antlr4-runtime</artifactId>
 			<version>4.7</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
