@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+label {
+	width: 180px;
+	display: inline-block;
+	text-align: right;
+}
+
+div#form>input {
+	width: 200px;
+	padding: 0px;
+}
+
+div#form>select {
+	padding: 0px;
+	width: 204px;
+	margin-left: 4.5px;
+}
+
+#check {
+	right: 30px;
+}
+
+#main {
+	width: 400px;
+}
+
+select {
+	height: 25px;
+	text-align: center;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body onload="start()">
+	<script type="text/javascript" src="schema.js"></script>
+	<script type="text/javascript" src="jsv.js"></script>
+	<script type="text/javascript" src="pager.js"></script>
+	<script type="text/javascript">
+		function start() {
+			var selector = document.getElementById("schemaSelector");
+			var form = document.getElementById("form");
+			var check = document.getElementById("check");
+
+			pager.init(selector, form, check, SchemaSet, JSV);
+
+		}
+	</script>
+	<div id="main">
+		<div style="text-align: center;">
+			<select id="schemaSelector">
+			</select>
+		</div>
+		<br />
+		<div id="form"></div>
+		<div style="text-align: center; padding-top: 10px;">
+			<input type="submit" id="check" value="开始验证" />
+		</div>
+	</div>
+</body>
+</html>
