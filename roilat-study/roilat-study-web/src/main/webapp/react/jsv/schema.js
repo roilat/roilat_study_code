@@ -1,7 +1,7 @@
 /**
  * 
  */
-var SchemaSet = {};
+let SchemaSet = {};
 SchemaSet.demo = {
 	"name" : "demo",
 	"desc" : "测试数据",
