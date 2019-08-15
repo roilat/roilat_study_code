@@ -53,8 +53,7 @@ public class JaxbUtil {
     /** 
      * Java Object->Xml, 特别支持对Root Element是Collection的情形. 
      */  
-    @SuppressWarnings("unchecked")  
-    public String toXml(Collection root, String rootName, String encoding) {  
+    public String toXml(Collection<?> root, String rootName, String encoding) {  
         try {  
             CollectionWrapper wrapper = new CollectionWrapper();  
             wrapper.collection = root;  

@@ -25,7 +25,7 @@ public class CommonExceptionHandler {
 	@Pointcut("execution(* cn.roilat.*Controller.*(..))")
 	public void exceptionPointcutController(){}
 	
-	@Pointcut("execution(* com.tjkj..*Impl.*(..))")
+	@Pointcut("execution(* cn.roilat..*Impl.*(..))")
 	public void exceptionPointcutService(){}
 	
 	@Around("exceptionPointcutController()")

@@ -60,7 +60,7 @@ public class FileDigester {
 	}
 
 	/**
-	 * 
+	 * 对文件内容进行摘要计算
 	 * @param file
 	 * @param digestArithmetic 包含值：MD5,SHA1
 	 * @return

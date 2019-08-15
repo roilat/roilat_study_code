@@ -39,7 +39,7 @@ public class Application {
 	public static void main(String[] args) throws InterruptedException {
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 		new Thread((Runnable) applicationContext.getBean("createRunnable")).start();
-		startNetty(applicationContext);
+		//startNetty(applicationContext);
 	}
 
 	/**
@@ -47,6 +47,7 @@ public class Application {
 	 * @throws InterruptedException
 	 */
 	public static void startNetty(ConfigurableApplicationContext applicationContext) throws InterruptedException {
+		
 		ServerBootstrap bootstrap = applicationContext.getBean(ServerBootstrap.class);
 		InetSocketAddress address = applicationContext.getBean(InetSocketAddress.class);
 		ChannelFuture f = bootstrap.bind(address).sync();

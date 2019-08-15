@@ -37,5 +37,4 @@ public interface BlogArticleMapper extends Mapper<BlogArticle>{
 
 	boolean existsById(Integer id);
 
-	BlogArticle selectById(Integer id);
 }

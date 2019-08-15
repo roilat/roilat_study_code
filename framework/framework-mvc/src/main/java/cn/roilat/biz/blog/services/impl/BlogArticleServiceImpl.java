@@ -78,7 +78,7 @@ public class BlogArticleServiceImpl extends BaseService<BlogArticle> implements 
     @Override
     public CommonResult<BlogArticle> getById(Integer id) {
         CommonResult<BlogArticle> result = new CommonResult<>();
-        BlogArticle blogArticle = blogArticleMapper.selectById(id);
+        BlogArticle blogArticle = blogArticleMapper.selectByPrimaryKey(id);
         result.setData(blogArticle);
         result.buildResult(blogArticle != null);
         return result;
