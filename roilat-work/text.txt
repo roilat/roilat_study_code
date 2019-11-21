@@ -34,7 +34,7 @@
 [INFO] +- com.itextpdf:itextpdf:jar:5.5.13:compile
 [INFO] +- com.itextpdf:itext-pdfa:jar:5.5.13:compile
 [INFO] +- com.itextpdf:itext-xtra:jar:5.5.13:compile
-[INFO] |  +- org.apache.commons:commons-imaging:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- org.apache.commons:commons-imaging:jar:0.0.1-SNAPSHOT:compile
 [INFO] |  \- commons-io:commons-io:jar:2.4:compile
 [INFO] +- com.itextpdf.tool:xmlworker:jar:5.5.13:compile
 [INFO] +- org.jsoup:jsoup:jar:1.11.3:compile

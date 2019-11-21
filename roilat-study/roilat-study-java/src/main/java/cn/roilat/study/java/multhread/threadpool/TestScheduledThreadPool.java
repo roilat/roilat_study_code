@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 定时任务ScheduledThreadPoolExecutor的使用详解
- * https://blog.csdn.net/wenzhi20102321/article/details/78681379
+ * https://cn.roilat.blog.csdn.net/wenzhi20102321/article/details/78681379
  * @author roilat-J
  * @version $Id: TestScheduledThreadPool.java, v 0.1 2019年4月17日 下午5:20:37 roilat-J Exp $
  */

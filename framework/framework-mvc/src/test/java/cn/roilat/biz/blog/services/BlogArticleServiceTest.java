@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import cn.roilat.Application;
 import cn.roilat.biz.blog.model.BlogArticle;
 import cn.roilat.biz.blog.po.BlogArticlePO;
-import cn.roilat.biz.blog.services.BlogArticleService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.RANDOM_PORT)

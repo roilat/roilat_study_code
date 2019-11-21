@@ -3,7 +3,7 @@ package cn.roilat.study.algorithm.rsa;
 import org.junit.Test;
 
 /**
- * https://blog.csdn.net/kzcming/article/details/80104084
+ * https://cn.roilat.blog.csdn.net/kzcming/article/details/80104084
  * 最大加密块:117,最大解密块:128
  * 
  * @author roilat-J
