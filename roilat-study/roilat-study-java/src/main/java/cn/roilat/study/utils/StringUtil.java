@@ -14,6 +14,7 @@ public class StringUtil {
         System.out.println(equals(null, ""));
         System.out.println(equals("", null));
         System.out.println(equals("", ""));
+        System.out.println("   \t:"+isBlank("   \t"));
 
     }
 
@@ -21,7 +22,7 @@ public class StringUtil {
         return str == null || str.length() <= 0;
     }
 
-    public static boolean isBlank(String dateFormtStr) {
-        return isEmpty(dateFormtStr);
+    public static boolean isBlank(String str) {
+        return str == null || str.replaceAll("\\s|\\t|\\n|\\r", "").length() <= 0;
     }
 }

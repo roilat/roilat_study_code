@@ -16,7 +16,7 @@ public class TestNIOBufferSize {
 	public static void start() {
 		try {
 			while (true) {
-				Selector selector;
+				Selector selector = null;
 				selector.select();
 				Iterator<SelectionKey> it = selector.selectedKeys().iterator();
 				while (it.hasNext()) {
@@ -40,7 +40,7 @@ public class TestNIOBufferSize {
 						ByteBuffer buffer = ByteBuffer.allocate(1024);
 						channel.read(buffer);
 						buffer.flip();
-						String msg = decoder.decode(buffer).toString();
+						//String msg = decoder.decode(buffer).toString();
 					}
 				}
 			}
