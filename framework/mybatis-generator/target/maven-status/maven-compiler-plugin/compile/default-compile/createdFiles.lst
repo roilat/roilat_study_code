@@ -1,0 +1,7 @@
+cn\roilat\demo\model\BkAccount.class
+cn\roilat\demo\dao\BkAccountMapper.class
+cn\roilat\demo\model\BkAccountKey.class
+cn\roilat\demo\model\BkAccountExample$Criteria.class
+cn\roilat\demo\model\BkAccountExample$Criterion.class
+cn\roilat\demo\model\BkAccountExample$GeneratedCriteria.class
+cn\roilat\demo\model\BkAccountExample.class

@@ -13,13 +13,14 @@ import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
  * 日期工具类, 继承org.apache.commons.lang.time.DateUtils类
+ * 
  * @author ThinkGem
  * @version 2013-3-15
  */
 public class DateUtils extends org.apache.commons.lang.time.DateUtils {
-	
-	private static String[] parsePatterns = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
-		"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" };
+
+	private static String[] parsePatterns = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy/MM/dd",
+			"yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" };
 
 	/**
 	 * 得到当前日期字符串 格式（yyyy-MM-dd）
@@ -27,14 +28,14 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	public static String getDate() {
 		return getDate("yyyy-MM-dd");
 	}
-	
+
 	/**
 	 * 得到当前日期字符串 格式（yyyy-MM-dd） pattern可以为："yyyy-MM-dd" "HH:mm:ss" "E"
 	 */
 	public static String getDate(String pattern) {
 		return DateFormatUtils.format(new Date(), pattern);
 	}
-	
+
 	/**
 	 * 得到日期字符串 默认格式（yyyy-MM-dd） pattern可以为："yyyy-MM-dd" "HH:mm:ss" "E"
 	 */
@@ -47,7 +48,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 		}
 		return formatDate;
 	}
-	
+
 	/**
 	 * 得到日期时间字符串，转换格式（yyyy-MM-dd HH:mm:ss）
 	 */
@@ -96,14 +97,13 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	public static String getWeek() {
 		return formatDate(new Date(), "E");
 	}
-	
+
 	/**
-	 * 日期型字符串转化为日期 格式
-	 * { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
-	 *   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" }
+	 * 日期型字符串转化为日期 格式 { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm",
+	 * "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm" }
 	 */
 	public static Date parseDate(Object str) {
-		if (str == null){
+		if (str == null) {
 			return null;
 		}
 		try {
@@ -115,41 +115,48 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 
 	/**
 	 * 获取过去的天数
+	 * 
 	 * @param date
 	 * @return
 	 */
 	public static long pastDays(Date date) {
-		long t = new Date().getTime()-date.getTime();
-		return t/(24*60*60*1000);
+		long t = new Date().getTime() - date.getTime();
+		return t / (24 * 60 * 60 * 1000);
 	}
-	
-    
+
 	public static Date getDateStart(Date date) {
-		if(date==null) {
+		if (date == null) {
 			return null;
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			date= sdf.parse(formatDate(date, "yyyy-MM-dd")+" 00:00:00");
+			date = sdf.parse(formatDate(date, "yyyy-MM-dd") + " 00:00:00");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return date;
 	}
-	
+
+	public static long getDayInterval(Date from, Date to) {
+		long end = getDateStart(to).getTime();
+		long start = getDateStart(from).getTime();
+		System.out.println(end - start);
+		return (end - start) / 1000 / 3600 / 24;
+	}
+
 	public static Date getDateEnd(Date date) {
-		if(date==null) {
+		if (date == null) {
 			return null;
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			date= sdf.parse(formatDate(date, "yyyy-MM-dd") +" 23:59:59");
+			date = sdf.parse(formatDate(date, "yyyy-MM-dd") + " 23:59:59");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return date;
 	}
-	
+
 	/**
 	 * @param args
 	 * @throws ParseException
@@ -159,5 +166,9 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 //		System.out.println(getDate("yyyy年MM月dd日 E"));
 //		long time = new Date().getTime()-parseDate("2012-11-19").getTime();
 //		System.out.println(time/(24*60*60*1000));
+//		System.out.println(new Date(2017, 6, 30));
+//		System.out.println(new Date(1950, 1, 1));
+//		System.out.println(getDayInterval(new Date(1950, 1, 1), new Date(2017, 6, 30)));
+//		System.out.println(getDayInterval(new Date(1950, 1, 1), new Date(1950, 12, 31)));
 	}
 }

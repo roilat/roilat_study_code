@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.roilat.modules.system.mapper.UserRoleMapper"> 
+	<select id="getRoleUserList" parameterType="hashmap" resultType="cn.roilat.modules.system.entity.MsUser">
+		SELECT 
+			u.id,
+			u.user_name AS userName,
+			u.true_name AS trueName,
+			u.status AS status,
+			u.create_time AS createTime,
+			u.create_user as createUser,
+			u.detail_address as detailAddress,
+			u.nick_name as nickName,
+			u.wechat as wechat,
+			u.qq as qq,
+			u.mobile as mobile,
+			u.email as email
+		FROM 
+		ms_role r,ms_user_role ur,ms_user u 
+		WHERE r.`id`=ur.`role_id` AND u.`id`=ur.`user_id` AND r.`id`=#{roleId} and u.id != 1
+		<if test="all != null ">
+		 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or u.create_user like CONCAT('%',#{createUser},'%'))
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		<if test="createUser != null">
+			and u.create_user like CONCAT('%',#{createUser},'%')
+		</if>
+		
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+		LIMIT #{offest},#{pageSize}
+  	</select> 
+  	<select id="getUserCountByRoleId" parameterType="hashmap" resultType="int">
+  		SELECT
+  			COUNT(*)
+		FROM 
+		ms_role r,ms_user_role ur,ms_user u 
+		WHERE r.`id`=ur.`role_id` AND u.`id`=ur.`user_id` AND r.`id`=#{roleId} and u.id != 1
+		<if test="all != null ">
+		 and (u.user_name like CONCAT('%',#{all},'%') or u.true_name like CONCAT('%',#{all},'%') or u.create_user like CONCAT('%',#{createUser},'%'))
+		</if>
+		<if test="userName != null">
+			and u.user_name like CONCAT('%',#{userName},'%')
+		</if>
+		<if test="trueName != null">
+			and u.true_name like CONCAT('%',#{trueName},'%')
+		</if>
+		<if test="createUser != null">
+			and u.create_user like CONCAT('%',#{createUser},'%')
+		</if>
+		
+		<if test="status != null">
+			and u.status = #{status}
+		</if>
+  	</select> 
+   	<select id="deleteRoleUser" resultType="Integer" parameterType="cn.roilat.modules.system.entity.MsUserRole">
+  		DELETE FROM ms_user_role WHERE role_id=#{roleId} AND user_id=#{userId};
+  	</select>
+  	<select id="addRoleUser" parameterType="cn.roilat.modules.system.entity.MsUserRole">
+  		INSERT INTO ms_user_role (role_id, user_id) VALUES (#{roleId} , #{userId});
+  	</select>
+  	<select id="emptyRoleUser" resultType="Integer" parameterType="cn.roilat.modules.system.entity.MsUserRole">
+  		DELETE FROM ms_user_role WHERE role_id=#{roleId};
+  	</select>
+</mapper>

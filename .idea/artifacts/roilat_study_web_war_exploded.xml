@@ -21,7 +21,7 @@
           <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.13" />
           <element id="library" level="project" name="Maven: com.itextpdf:itext-pdfa:5.5.13" />
           <element id="library" level="project" name="Maven: com.itextpdf:itext-xtra:5.5.13" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-imaging/1.0-SNAPSHOT/commons-imaging-1.0-20180908.110935-119.jar" output-file-name="commons-imaging-1.0-SNAPSHOT.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-imaging/0.0.1-SNAPSHOT/commons-imaging-1.0-20180908.110935-119.jar" output-file-name="commons-imaging-0.0.1-SNAPSHOT.jar" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: com.itextpdf.tool:xmlworker:5.5.13" />
           <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.10.3" />

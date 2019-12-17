@@ -46,7 +46,7 @@ public class UTF8AndGBKTransUtilsTest {
     
 
     /**
-     * https://blog.csdn.net/u014631304/article/details/77509380?utm_source=blogxgwz4
+     * https://cn.roilat.blog.csdn.net/u014631304/article/details/77509380?utm_source=blogxgwz4
      * @throws UnsupportedEncodingException
      */
     @Test

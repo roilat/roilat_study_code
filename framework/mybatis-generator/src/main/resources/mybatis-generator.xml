@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 参考：https://www.cnblogs.com/hihtml5/p/6866532.html -->
+<generatorConfiguration>
+    <!-- 引入 generator.properties -->
+    <properties resource="generator.properties"/>
+
+    <context id="mysqlTables" targetRuntime="MyBatis3"
+             defaultModelType="hierarchical">
+
+
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter"
+                  value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter"
+                  value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <!-- <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->
+        <!-- 使用自带序列化插件 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 整合lombok-->
+        <!--<plugin type="com.chrm.mybatis.generator.plugins.LombokPlugin">
+            <property name="hasLombok" value="true"/>
+        </plugin>-->
+        <!-- 指定生成 Mapper 的继承模板 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="${generator.mappers}"/>
+            <!--  <property name="caseSensitive" value="true"/> -->
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+            <!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 -->
+        </jdbcConnection>
+        <!-- java类型处理器 用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl； 注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和
+            NUMERIC数据类型； -->
+        <javaTypeResolver>
+            <!--
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- java模型创建器，是必须要的元素
+                负责：1，key类（见context的defaultModelType）；2，java类；3，查询类
+                targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
+                targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
+        -->
+        <javaModelGenerator targetPackage="${generator.javaModel-targetPackage}"
+                            targetProject="${generator.targetProject}\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${generator.sqlMap-targetPackage}"
+                         targetProject="${generator.targetProject}\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${generator.javaClient-targetPackage}" targetProject="${generator.targetProject}\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="" tableName="bk_account"> <!--domainObjectName="Article"-->
+            <property name="useActualColumnNames" value="false"/>
+<!--            <generatedKey column="ID" sqlStatement="mysql" identity="true"/>-->
+            <!-- <columnOverride column="DATE_FIELD" property="startDate" /> <ignoreColumn
+                column="FRED" /> <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"
+                /> -->
+        </table>
+
+    </context>
+</generatorConfiguration>

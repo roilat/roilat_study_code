@@ -1,8 +1,9 @@
 package cn.roilat;
 
 /**
- * Hello world!
- *
+ * 
+ * @author TF-PC
+ * App.java
  */
 public class App 
 {
@@ -10,4 +11,13 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+}
+/**
+ * 
+ * @author TF-PC
+ * App.java
+ */
+class A{
+	int a;
+	
 }
